@@ -16,7 +16,7 @@ abstract public class CoreTestCase {
 
         WebDriverManager.chromedriver().setup();
         ChromeOptions options= new ChromeOptions();
-        options.setHeadless(false);
+        //options.setHeadless(false);
         options.addArguments("--disable-gpu");
         driver= new ChromeDriver(options);
         driver.manage().window().maximize();
