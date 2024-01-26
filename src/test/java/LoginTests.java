@@ -20,6 +20,7 @@ public class LoginTests {
     private final SelenideElement buttonEnter = $("[type='submit']");
 
     @Test
+    // Успешная авторизация - пользователь с dostuplkp=on с полным доступом
     void Login()
     {
         //Configuration.browser = "firefox";
@@ -31,33 +32,31 @@ public class LoginTests {
     }
 
     @Test
-    void LoginWithoutData()
+        // Успешная авторизация - пользователь с limitedAccessOneTeam=on
+    void LoginLimitedAccessOneTeamON()
     {
         open(loginURL);
-        $("[type='submit']").shouldHave((text("войти"))).click();
-        loginHelpMessage.shouldHave(text("Введите логин"));
-        passwordHelpMessage.shouldHave(text("Введите пароль"));
+        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
+        loginInput.setValue("51951cka1");
+        passwordInput.setValue("wcqd8203").pressEnter();
+        $(By.xpath("//h1")).shouldHave(text("Анкета поставщика"));
     }
 
     @Test
-    void LoginWithoutLoginData()
+    //Авторизация с Невалидным паролем
+    void LoginUnvalidPassword()
     {
+        //Configuration.holdBrowserOpen = true;
         open(loginURL);
-        passwordInput.setValue("heph7146");
-        buttonEnter.shouldHave((text("войти"))).click();
-        loginHelpMessage.shouldHave(text("Введите логин"));
-    }
-
-    @Test
-    void LoginWithoutPasswordData()
-    {
-        open(loginURL);
+        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
         loginInput.setValue("51951tes");
+        passwordInput.setValue("heph8888");
         buttonEnter.shouldHave((text("войти"))).click();
-        passwordHelpMessage.shouldHave(text("Введите пароль"));
+        loginFormErrorMessage.shouldHave(text("Неверный логин или пароль"));
     }
 
     @Test
+        //Авторизация с Невалидным логином
     void LoginUnvalidLogin()
     {
         //Configuration.holdBrowserOpen = true;
@@ -69,17 +68,38 @@ public class LoginTests {
         loginFormErrorMessage.shouldHave(text("Неверный логин или пароль"));
     }
 
+
     @Test
-    void LoginUnvalidPassword()
+    // Сабмит формы авторизации без логина и пароля
+    void LoginWithoutData()
     {
-        //Configuration.holdBrowserOpen = true;
         open(loginURL);
-        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
-        loginInput.setValue("51951tes");
-        passwordInput.setValue("heph8888");
-        buttonEnter.shouldHave((text("войти"))).click();
-        loginFormErrorMessage.shouldHave(text("Неверный логин или пароль"));
+        $("[type='submit']").shouldHave((text("войти"))).click();
+        loginHelpMessage.shouldHave(text("Введите логин"));
+        passwordHelpMessage.shouldHave(text("Введите пароль"));
     }
+
+    @Test
+    //Сабмит формы авторизации без логина
+    void LoginWithoutLoginData()
+    {
+        open(loginURL);
+        passwordInput.setValue("heph7146");
+        buttonEnter.shouldHave((text("войти"))).click();
+        loginHelpMessage.shouldHave(text("Введите логин"));
+    }
+
+    @Test
+        //Сабмит формы авторизации без пароля
+    void LoginWithoutPasswordData()
+    {
+        open(loginURL);
+        loginInput.setValue("51951tes");
+        buttonEnter.shouldHave((text("войти"))).click();
+        passwordHelpMessage.shouldHave(text("Введите пароль"));
+    }
+
+
 
 
  }
