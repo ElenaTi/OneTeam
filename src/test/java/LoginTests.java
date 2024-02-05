@@ -26,9 +26,23 @@ public class LoginTests {
         //Configuration.browser = "firefox";
         open(loginURL);
         $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
+        loginInput.setValue("51951cka");
+        passwordInput.setValue("zlwo4445").pressEnter();
+        $(By.xpath("//h1")).shouldHave(text("Ежедневник"));
+        $("[aria-label='logout']").click();
+    }
+
+    @Test
+        // Успешная авторизация - пользователь с dostuplkp=on + limitedAccessOneTeam=on с полным доступом
+    void LoginMixRights()
+    {
+        //Configuration.browser = "firefox";
+        open(loginURL);
+        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
         loginInput.setValue("51951tes");
         passwordInput.setValue("heph7146").pressEnter();
         $(By.xpath("//h1")).shouldHave(text("Ежедневник"));
+        $("[aria-label='logout']").click();
     }
 
     @Test
@@ -40,6 +54,7 @@ public class LoginTests {
         loginInput.setValue("51951cka1");
         passwordInput.setValue("wcqd8203").pressEnter();
         $(By.xpath("//h1")).shouldHave(text("Анкета поставщика"));
+        $("[aria-label='logout']").click();
     }
 
     @Test
