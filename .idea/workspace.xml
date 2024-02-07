@@ -46,12 +46,22 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.LoginTests">
+  <component name="RunManager" selected="JUnit.LoginTests.GoToLoginPage">
     <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="LoginTests" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginTests.GoToLoginPage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OneTeam" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="LoginTests" />
+      <option name="METHOD_NAME" value="GoToLoginPage" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -86,23 +96,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginTests.LoginWithoutLoginData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OneTeam" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LoginTests" />
-      <option name="METHOD_NAME" value="LoginWithoutLoginData" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.LoginTests" />
+        <item itemvalue="JUnit.LoginTests.GoToLoginPage" />
         <item itemvalue="JUnit.LoginTests.Login" />
+        <item itemvalue="JUnit.LoginTests" />
         <item itemvalue="JUnit.LoginTests.LoginMixRights" />
         <item itemvalue="JUnit.LoginTests.LoginLimitedAccessOneTeamON" />
-        <item itemvalue="JUnit.LoginTests.LoginWithoutLoginData" />
       </list>
     </recent_temporary>
   </component>
