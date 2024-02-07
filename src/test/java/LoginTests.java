@@ -35,6 +35,15 @@ public class LoginTests {
         switchTo().window(1);
         String actualUrl = WebDriverRunner.url();
         assertThat(expectedUrl, equalTo(actualUrl));
+        Selenide.closeWindow();
+        switchTo().window(0);
+        $(".Footer_social_media_icons__qTWJ8 :nth-child(1)").click();
+        switchTo().window(1);
+        String actualUrlVk = WebDriverRunner.url();
+        assertThat("https://vk.com/etm_company", equalTo(actualUrlVk));
+        Selenide.closeWindow();
+        switchTo().window(0);
+
         //$("[aria-label='question-circle']").click();
         //$(By.xpath("//li[2]/span[2]/a")).click();
        /*$("[class*= 'LoginForm_title__R4WVI']").shouldHave(text("Вход в личный кабинет"));
