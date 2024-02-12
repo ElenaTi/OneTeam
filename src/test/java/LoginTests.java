@@ -11,8 +11,11 @@ import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import lib.ui.LoginPageObject;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import lib.ui.LoginPageObject;
+
 
 public class LoginTests {
     String loginURL = "https://idev.etm.ru/oneteam/login";
@@ -25,30 +28,23 @@ public class LoginTests {
     private final SelenideElement buttonEnter = $("[type='submit']");
 
 
+
     @Test
     void GoToLoginPage()
     {
         Configuration.holdBrowserOpen = true;
         open("https://idev.etm.ru/oneteam");
-        $(".Footer_logo_icons__pWS-2").click();
-        String expectedUrl = "https://idev.etm.ru/";
-        switchTo().window(1);
-        String actualUrl = WebDriverRunner.url();
-        assertThat(expectedUrl, equalTo(actualUrl));
-        Selenide.closeWindow();
-        switchTo().window(0);
-        $(".Footer_social_media_icons__qTWJ8 :nth-child(1)").click();
-        switchTo().window(1);
-        String actualUrlVk = WebDriverRunner.url();
-        assertThat("https://vk.com/etm_company", equalTo(actualUrlVk));
-        Selenide.closeWindow();
-        switchTo().window(0);
-
-        //$("[aria-label='question-circle']").click();
-        //$(By.xpath("//li[2]/span[2]/a")).click();
-       /*$("[class*= 'LoginForm_title__R4WVI']").shouldHave(text("Вход в личный кабинет"));
-        $("[type='submit']").shouldHave(text("войти"));*/
+        lib.ui.LoginPageObject.TransitionToSocialNetwork(".Footer_logo_icons__pWS-2","https://idev.etm.ru/");
+        lib.ui.LoginPageObject.TransitionToSocialNetwork(".Footer_social_media_icons__qTWJ8 :nth-child(1)", "https://vk.com/etm_company");
+        lib.ui.LoginPageObject.TransitionToSocialNetwork(".Footer_social_media_icons__qTWJ8 :nth-child(2) .ant-btn-icon", "https://t.me/etm_company");
+        /*$(".Footer_social_media_icons__qTWJ8 :nth-child(3) .ant-btn-icon").click();
+        switchTo().window(1);*/
+        lib.ui.LoginPageObject.TransitionToSocialNetwork(".Footer_social_media_icons__qTWJ8 :nth-child(4) .ant-btn-icon", "https://dzen.ru/etm_company?utm_referer=www.etm.ru&utm_referrer=idev.etm.ru");
+        $("[data-menu-id*='login']").click();
+        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
     }
+
+
     @Test
         //Авторизация с Невалидным паролем
     void LoginUnvalidPassword()
