@@ -1,6 +1,7 @@
 package lib.ui;
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -18,5 +19,12 @@ public class LoginPageObject {
         assertThat(expectedUrl, equalTo(actualUrl));
         Selenide.closeWindow();
         switchTo().window(0);
+    }
+
+    public static void Login(String login, String password)
+    {
+
+        $("#login").setValue(login);
+        $("#password").setValue(password).pressEnter();
     }
 }

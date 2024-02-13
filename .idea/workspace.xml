@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4940d5d9-c95e-4b06-a4e2-e339c3905889" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/lib/ui/LoginPageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/ui/LoginPageObject.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +47,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.LoginTests.GoToLoginPage">
+  <component name="RunManager" selected="JUnit.LoginTests">
     <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
@@ -99,10 +99,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.LoginTests.GoToLoginPage" />
         <item itemvalue="JUnit.LoginTests" />
-        <item itemvalue="JUnit.LoginTests.Login" />
         <item itemvalue="JUnit.LoginTests.LoginMixRights" />
+        <item itemvalue="JUnit.LoginTests.Login" />
+        <item itemvalue="JUnit.LoginTests.GoToLoginPage" />
         <item itemvalue="JUnit.LoginTests.LoginLimitedAccessOneTeamON" />
       </list>
     </recent_temporary>

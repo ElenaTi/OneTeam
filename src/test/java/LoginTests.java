@@ -32,7 +32,7 @@ public class LoginTests {
     @Test
     void GoToLoginPage()
     {
-        Configuration.holdBrowserOpen = true;
+        //Configuration.holdBrowserOpen = true;
         Configuration.browserSize = "1920x1280";
         open("https://idev.etm.ru/oneteam");
         lib.ui.LoginPageObject.TransitionToSocialNetwork(".Footer_logo_icons__pWS-2","https://idev.etm.ru/");
@@ -51,7 +51,6 @@ public class LoginTests {
         $("[class*=LoginPage_btn_back]").click();
         $(By.xpath("//h1")).shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
     }
-
 
     @Test
         //Авторизация с Невалидным паролем
@@ -113,12 +112,27 @@ public class LoginTests {
     // Успешная авторизация - пользователь с dostuplkp=on с полным доступом
     void Login()
     {
+        //Configuration.holdBrowserOpen = true;
+        Configuration.browserSize = "1920x1280";
         //Configuration.browser = "firefox";
         open(loginURL);
         $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
-        loginInput.setValue("51951cka");
-        passwordInput.setValue("zlwo4445").pressEnter();
+        lib.ui.LoginPageObject.Login("51951cka", "zlwo4445");
         $(By.xpath("//h1")).shouldHave(text("Ежедневник"));
+        $("[class*=ant-layout-sider-trigger]").click();
+        $("[class*=Menu_menu_container]").shouldHave(text("Каталог"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Ассортимент и логистика"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Проектная работа"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Коммуникации"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Заказы"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Финансы"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Интеграция"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Маркетинг"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Аналитика"));
+        $("[data-menu-id*='profile']").shouldHave(text("Профиль"));
+        $("[data-menu-id*='help']").shouldHave(text("Помощь"));
+        $("[data-menu-id*='logout']").shouldHave(text("Выйти"));
+        $("[class*=ant-layout-sider-trigger]").click();
         $("[aria-label='logout']").click();
     }
 
@@ -126,12 +140,25 @@ public class LoginTests {
         // Успешная авторизация - пользователь с dostuplkp=on + limitedAccessOneTeam=on с полным доступом
     void LoginMixRights()
     {
-        //Configuration.browser = "firefox";
         open(loginURL);
         $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
-        loginInput.setValue("51951tes");
-        passwordInput.setValue("heph7146").pressEnter();
+        lib.ui.LoginPageObject.Login("51951tes", "heph7146");
         $(By.xpath("//h1")).shouldHave(text("Ежедневник"));
+        $("[class*=ant-layout-sider-trigger]").click();
+        $("[class*=Menu_menu_container]").shouldHave(text("Анкета поставщика"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Каталог"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Ассортимент и логистика"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Проектная работа"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Коммуникации"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Заказы"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Финансы"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Интеграция"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Маркетинг"));
+        $("[class*=Menu_menu_container]").shouldHave(text("Аналитика"));
+        $("[data-menu-id*='profile']").shouldHave(text("Профиль"));
+        $("[data-menu-id*='help']").shouldHave(text("Помощь"));
+        $("[data-menu-id*='logout']").shouldHave(text("Выйти"));
+        $("[class*=ant-layout-sider-trigger]").click();
         $("[aria-label='logout']").click();
     }
 
