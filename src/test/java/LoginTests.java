@@ -1,27 +1,25 @@
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+import lib.webElements.webelements;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static com.codeborne.selenide.Condition.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static com.codeborne.selenide.Selenide.*;
-
-import com.codeborne.selenide.WebDriverRunner;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
-import lib.webElements.webelements;
-import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.visible;
-// import lib.ui.LoginPageObject;
-
+import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.SelenideElement;
 
 public class LoginTests {
     String loginURL = "https://idev.etm.ru/oneteam/login";
 
     @Test
+    //Проверка ссылок футера главной страницы, переход на страницу авторизации
     void GoToLoginPage()
     {
         //Configuration.holdBrowserOpen = true;

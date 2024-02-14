@@ -13,4 +13,6 @@ public class webelements {
     public static SelenideElement buttonEnter = $("[type='submit']");
     public static SelenideElement menuContainer =  $("[class*=Menu_menu_container]");
     public static SelenideElement menuCollapse = $("[class*=ant-layout-sider-trigger]");
+    public static SelenideElement menuCatalog = $("[data-menu-id*='catalog']");
+    public static SelenideElement menuDownloadNewGoods = $("[data-menu-id*='download']");
 }
