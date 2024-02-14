@@ -3,9 +3,10 @@ package lib.ui;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
+import lib.webElements.webelements;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -23,8 +24,10 @@ public class LoginPageObject {
 
     public static void Login(String login, String password)
     {
-
-        $("#login").setValue(login);
-        $("#password").setValue(password).pressEnter();
+        String loginURL = "https://idev.etm.ru/oneteam/login";
+        open(loginURL);
+        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
+        webelements.loginInput.setValue(login);
+        webelements.passwordInput.setValue(password).pressEnter();
     }
 }

@@ -11,6 +11,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import lib.webElements.webelements;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.visible;
@@ -19,15 +20,6 @@ import static com.codeborne.selenide.Condition.visible;
 
 public class LoginTests {
     String loginURL = "https://idev.etm.ru/oneteam/login";
-    private final SelenideElement loginInput = $("#login");
-    private final SelenideElement passwordInput = $("#password");
-    private final SelenideElement loginFormErrorMessage = $("[class*='LoginForm_error_message']");
-    private final SelenideElement loginHelpMessage = $("#login_help div");
-    private final SelenideElement passwordHelpMessage = $("#password_help div");
-
-    private final SelenideElement buttonEnter = $("[type='submit']");
-
-
 
     @Test
     void GoToLoginPage()
@@ -59,10 +51,10 @@ public class LoginTests {
         //Configuration.holdBrowserOpen = true;
         open(loginURL);
         $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
-        loginInput.setValue("51951tes");
-        passwordInput.setValue("heph8888");
-        buttonEnter.shouldHave((text("войти"))).click();
-        loginFormErrorMessage.shouldHave(text("Неверный логин или пароль"));
+        webelements.loginInput.setValue("51951tes");
+        webelements.passwordInput.setValue("heph8888");
+        webelements.buttonEnter.shouldHave((text("войти"))).click();
+        webelements.loginFormErrorMessage.shouldHave(text("Неверный логин или пароль"));
     }
 
     @Test
@@ -72,10 +64,10 @@ public class LoginTests {
         //Configuration.holdBrowserOpen = true;
         open(loginURL);
         $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
-        loginInput.setValue("51951te");
-        passwordInput.setValue("heph7146");
-        buttonEnter.shouldHave((text("войти"))).click();
-        loginFormErrorMessage.shouldHave(text("Неверный логин или пароль"));
+        webelements.loginInput.setValue("51951te");
+        webelements.passwordInput.setValue("heph7146");
+        webelements.buttonEnter.shouldHave((text("войти"))).click();
+        webelements.loginFormErrorMessage.shouldHave(text("Неверный логин или пароль"));
     }
 
     @Test
@@ -84,8 +76,8 @@ public class LoginTests {
     {
         open(loginURL);
         $("[type='submit']").shouldHave((text("войти"))).click();
-        loginHelpMessage.shouldHave(text("Введите логин"));
-        passwordHelpMessage.shouldHave(text("Введите пароль"));
+        webelements.loginHelpMessage.shouldHave(text("Введите логин"));
+        webelements.passwordHelpMessage.shouldHave(text("Введите пароль"));
     }
 
     @Test
@@ -93,9 +85,9 @@ public class LoginTests {
     void LoginWithoutLoginData()
     {
         open(loginURL);
-        passwordInput.setValue("heph7146");
-        buttonEnter.shouldHave((text("войти"))).click();
-        loginHelpMessage.shouldHave(text("Введите логин"));
+        webelements.passwordInput.setValue("heph7146");
+        webelements.buttonEnter.shouldHave((text("войти"))).click();
+        webelements.loginHelpMessage.shouldHave(text("Введите логин"));
     }
 
     @Test
@@ -103,9 +95,9 @@ public class LoginTests {
     void LoginWithoutPasswordData()
     {
         open(loginURL);
-        loginInput.setValue("51951tes");
-        buttonEnter.shouldHave((text("войти"))).click();
-        passwordHelpMessage.shouldHave(text("Введите пароль"));
+        webelements.loginInput.setValue("51951tes");
+        webelements.buttonEnter.shouldHave((text("войти"))).click();
+        webelements.passwordHelpMessage.shouldHave(text("Введите пароль"));
     }
 
     @Test
@@ -115,64 +107,64 @@ public class LoginTests {
         //Configuration.holdBrowserOpen = true;
         Configuration.browserSize = "1920x1280";
         //Configuration.browser = "firefox";
-        open(loginURL);
-        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
         lib.ui.LoginPageObject.Login("51951cka", "zlwo4445");
         $(By.xpath("//h1")).shouldHave(text("Ежедневник"));
-        $("[class*=ant-layout-sider-trigger]").click();
-        $("[class*=Menu_menu_container]").shouldHave(text("Каталог"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Ассортимент и логистика"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Проектная работа"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Коммуникации"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Заказы"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Финансы"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Интеграция"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Маркетинг"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Аналитика"));
+        webelements.menuCollapse.click();
+        webelements.menuContainer.shouldHave(text("Каталог"));
+        webelements.menuContainer.shouldHave(text("Ассортимент и логистика"));
+        webelements.menuContainer.shouldHave(text("Проектная работа"));
+        webelements.menuContainer.shouldHave(text("Коммуникации"));
+        webelements.menuContainer.shouldHave(text("Заказы"));
+        webelements.menuContainer.shouldHave(text("Финансы"));
+        webelements.menuContainer.shouldHave(text("Интеграция"));
+        webelements.menuContainer.shouldHave(text("Маркетинг"));
+        webelements.menuContainer.shouldHave(text("Аналитика"));
         $("[data-menu-id*='profile']").shouldHave(text("Профиль"));
         $("[data-menu-id*='help']").shouldHave(text("Помощь"));
         $("[data-menu-id*='logout']").shouldHave(text("Выйти"));
-        $("[class*=ant-layout-sider-trigger]").click();
+        webelements.menuCollapse.click();
         $("[aria-label='logout']").click();
+        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
     }
 
     @Test
         // Успешная авторизация - пользователь с dostuplkp=on + limitedAccessOneTeam=on с полным доступом
     void LoginMixRights()
     {
-        open(loginURL);
-        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
         lib.ui.LoginPageObject.Login("51951tes", "heph7146");
         $(By.xpath("//h1")).shouldHave(text("Ежедневник"));
-        $("[class*=ant-layout-sider-trigger]").click();
-        $("[class*=Menu_menu_container]").shouldHave(text("Анкета поставщика"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Каталог"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Ассортимент и логистика"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Проектная работа"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Коммуникации"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Заказы"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Финансы"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Интеграция"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Маркетинг"));
-        $("[class*=Menu_menu_container]").shouldHave(text("Аналитика"));
+        webelements.menuCollapse.click();
+        webelements.menuContainer.shouldHave(text("Анкета поставщика"));
+        webelements.menuContainer.shouldHave(text("Каталог"));
+        webelements.menuContainer.shouldHave(text("Ассортимент и логистика"));
+        webelements.menuContainer.shouldHave(text("Проектная работа"));
+        webelements.menuContainer.shouldHave(text("Коммуникации"));
+        webelements.menuContainer.shouldHave(text("Заказы"));
+        webelements.menuContainer.shouldHave(text("Финансы"));
+        webelements.menuContainer.shouldHave(text("Интеграция"));
+        webelements.menuContainer.shouldHave(text("Маркетинг"));
+        webelements.menuContainer.shouldHave(text("Аналитика"));
         $("[data-menu-id*='profile']").shouldHave(text("Профиль"));
         $("[data-menu-id*='help']").shouldHave(text("Помощь"));
         $("[data-menu-id*='logout']").shouldHave(text("Выйти"));
-        $("[class*=ant-layout-sider-trigger]").click();
+        webelements.menuCollapse.click();
         $("[aria-label='logout']").click();
+        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
     }
 
     @Test
         // Успешная авторизация - пользователь с limitedAccessOneTeam=on
     void LoginLimitedAccessOneTeamON()
     {
-        open(loginURL);
-
-        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
-        loginInput.setValue("9215641te");
-        passwordInput.setValue("goyz7736").pressEnter();
+        lib.ui.LoginPageObject.Login("9215641te", "goyz7736");
         $(By.xpath("//h1")).shouldHave(text("Анкета поставщика"));
-        $("[aria-label='logout']").click();
+        webelements.menuCollapse.click();
+        webelements.menuContainer.shouldHave(text("Анкета поставщика"));
+        webelements.menuContainer.shouldHave(text("Каталог"));
+        $("[data-menu-id*='help']").shouldHave(text("Помощь"));
+        $("[data-menu-id*='logout']").shouldHave(text("Выйти"));
+        $("[data-menu-id*='logout']").click();
+        $(By.xpath("//h1")).shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
     }
 
  }
