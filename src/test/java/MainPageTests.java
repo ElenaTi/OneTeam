@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import lib.webElements.webelements;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 
@@ -23,10 +24,6 @@ public class MainPageTests {
     {
         open("https://idev.etm.ru/oneteam");
         lib.ui.LoginPageObject.TransitionToSocialNetwork(".Footer_logo_icons__pWS-2","https://idev.etm.ru/");
-        $("[data-menu-id*='login']").click();
-        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
-        $("[class*=LoginPage_btn_back]").click();
-        $(By.xpath("//h1")).shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
     }
     @Test
     @Tag("Low priority")
@@ -79,8 +76,8 @@ public class MainPageTests {
     {
         open("https://idev.etm.ru/oneteam");
         $("[data-menu-id*='login']").click();
-        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
-        $("[class*=LoginPage_btn_back]").click();
+        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.backFromLoginPage.click();
         $(By.xpath("//h1")).shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
     }
 }
