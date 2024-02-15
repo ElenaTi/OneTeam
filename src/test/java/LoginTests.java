@@ -4,14 +4,13 @@ import static com.codeborne.selenide.Selenide.open;
 import com.codeborne.selenide.Configuration;
 import lib.webElements.webelements;
 import static com.codeborne.selenide.Condition.visible;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.urlToBe;
-import org.junit.jupiter.api.AfterEach;
+
 import com.codeborne.selenide.Selenide;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -187,7 +186,6 @@ public class LoginTests {
     @DisplayName("Авторизация пользователя Ipro без dostuplkp=on")
     void LoginIpro()
     {
-        Configuration.holdBrowserOpen = true;
         lib.ui.LoginPageObject.Login("60004392tes", "rvfa8424");
         Wait().until(urlToBe("https://idev.etm.ru/"));
         open("https://idev.etm.ru/oneteam");
