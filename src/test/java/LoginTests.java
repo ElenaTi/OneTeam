@@ -29,6 +29,7 @@ public class LoginTests {
 
     @Test
     @DisplayName("Авторизация с Невалидным паролем")
+    @Tag("TMOT-275")
     void LoginUnvalidPassword() {
         //Configuration.holdBrowserOpen = true;
         open(loginURL);
@@ -41,6 +42,7 @@ public class LoginTests {
 
     @Test
     @DisplayName("Авторизация с Невалидным логином")
+    @Tag("TMOT-277")
     void LoginUnvalidLogin() {
         //Configuration.holdBrowserOpen = true;
         open(loginURL);
@@ -53,6 +55,7 @@ public class LoginTests {
 
     @Test
     @DisplayName("Сабмит формы авторизации без логина и пароля")
+    @Tag("TMOT-278")
     void LoginWithoutData() {
         open(loginURL);
         $("[type='submit']").shouldHave((text("войти"))).click();
@@ -62,6 +65,7 @@ public class LoginTests {
 
     @Test
     @DisplayName("Сабмит формы авторизации без логина")
+    @Tag("TMOT-279")
     void LoginWithoutLoginData() {
         open(loginURL);
         webelements.passwordInput.setValue("heph7146");
@@ -71,6 +75,7 @@ public class LoginTests {
 
     @Test
     @DisplayName("Сабмит формы авторизации без пароля")
+    @Tag("TMOT-280")
     void LoginWithoutPasswordData() {
         open(loginURL);
         webelements.loginInput.setValue("51951tes");
@@ -80,6 +85,7 @@ public class LoginTests {
 
     @Test
     @DisplayName("Авторизация пользователя с dostuplkp=on с полным доступом")
+    @Tag("TMOT-281")
     void LoginFullRightsDostuplkp() {
         //Configuration.browser = "firefox";
         lib.ui.LoginPageObject.Login("51951cka", "zlwo4445");
@@ -95,16 +101,17 @@ public class LoginTests {
         webelements.menuContainer.shouldHave(text("Интеграция"));
         webelements.menuContainer.shouldHave(text("Маркетинг"));
         webelements.menuContainer.shouldHave(text("Аналитика"));
-        $("[data-menu-id*='profile']").shouldHave(text("Профиль"));
-        $("[data-menu-id*='help']").shouldHave(text("Помощь"));
-        $("[data-menu-id*='logout']").shouldHave(text("Выйти"));
+        webelements.buttonProfile.shouldHave(text("Профиль"));
+        webelements.buttonHelp.shouldHave(text("Помощь"));
+        webelements.buttonLogout.shouldHave(text("Выйти"));
         webelements.menuCollapse.click();
         webelements.buttonLogout.click();
-        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
     }
 
     @Test
     @DisplayName("Авторизация пользователя с dostuplkp=on с ограниченным доступом")
+    @Tag("TMOT-282")
     void LogiLimitedRightsDostuplkp() {
         //Configuration.browser = "firefox";
         lib.ui.LoginPageObject.Login("51951tee", "swfl6157");
@@ -120,16 +127,17 @@ public class LoginTests {
         webelements.menuContainer.shouldNotHave(text("Проектная работа"));
         webelements.menuContainer.shouldNotHave(text("Финансы"));
         webelements.menuContainer.shouldNotHave(text("Маркетинг"));
-        $("[data-menu-id*='profile']").shouldHave(text("Профиль"));
-        $("[data-menu-id*='help']").shouldHave(text("Помощь"));
-        $("[data-menu-id*='logout']").shouldHave(text("Выйти"));
+        webelements.buttonProfile.shouldHave(text("Профиль"));
+        webelements.buttonHelp.shouldHave(text("Помощь"));
+        webelements.buttonLogout.shouldHave(text("Выйти"));
         webelements.menuCollapse.click();
         webelements.buttonLogout.click();
-        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
     }
 
     @Test
     @DisplayName("Авторизация пользователя с dostuplkp=on + limitedAccessOneTeam=on с полным доступом")
+    @Tag("TMOT-283")
     void LoginMixRights() {
         lib.ui.LoginPageObject.Login("51951tes", "heph7146");
         $(By.xpath("//h1")).shouldHave(text("Ежедневник"));
@@ -144,35 +152,39 @@ public class LoginTests {
         webelements.menuContainer.shouldHave(text("Интеграция"));
         webelements.menuContainer.shouldHave(text("Маркетинг"));
         webelements.menuContainer.shouldHave(text("Аналитика"));
-        $("[data-menu-id*='profile']").shouldHave(text("Профиль"));
-        $("[data-menu-id*='help']").shouldHave(text("Помощь"));
-        $("[data-menu-id*='logout']").shouldHave(text("Выйти"));
+        webelements.buttonProfile.shouldHave(text("Профиль"));
+        webelements.buttonHelp.shouldHave(text("Помощь"));
+        webelements.buttonLogout.shouldHave(text("Выйти"));
         webelements.menuCollapse.click();
         webelements.buttonLogout.click();
-        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
     }
 
     @Test
     @DisplayName("Авторизация пользователя с limitedAccessOneTeam=on")
+    @Tag("TMOT-284")
     void LoginLimitedAccessOneTeamON() {
         lib.ui.LoginPageObject.Login("9215641te", "goyz7736");
         $(By.xpath("//h1")).shouldHave(text("Анкета поставщика"));
         webelements.menuCollapse.click();
         webelements.menuContainer.shouldHave(text("Анкета поставщика"));
         webelements.menuContainer.shouldHave(text("Каталог"));
-        $("[data-menu-id*='help']").shouldHave(text("Помощь"));
-        $("[data-menu-id*='logout']").shouldHave(text("Выйти"));
+        webelements.menuContainer.find("[data-menu-id*='profile']").shouldNot(exist);
+        webelements.buttonHelp.shouldHave(text("Помощь"));
+        webelements.buttonLogout.shouldHave(text("Выйти"));
         webelements.buttonLogout.click();
-        $(By.xpath("//h1")).shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
+        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
     }
 
     @Test
     @DisplayName("Авторизация физ.лица")
+    @Tag("TMOT-285")
     void LoginMarket()
     {
         lib.ui.LoginPageObject.Login("9119569663", "ntqz5730");
         webelements.loginFormErrorMessage.shouldHave(text("Неверный логин или пароль"));
         webelements.backFromLoginPage.click();
+        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         refresh();
         $("[role='alert']").shouldHave(text("Доступ запрещен"));
         webelements.menuContainer.find("[data-menu-id*=catalog]").shouldBe(visible);
@@ -180,10 +192,14 @@ public class LoginTests {
         webelements.menuContainer.find("[aria-label=logout]").shouldBe(visible);
         webelements.buttonLogout.click();
         webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.backFromLoginPage.click();
+        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
+        webelements.menuContainer.find("[data-menu-id*=catalog]").shouldNot(exist);
     }
 
     @Test
     @DisplayName("Авторизация пользователя Ipro без dostuplkp=on")
+    @Tag("TMOT-286")
     void LoginIpro()
     {
         lib.ui.LoginPageObject.Login("60004392tes", "rvfa8424");
@@ -195,7 +211,26 @@ public class LoginTests {
         webelements.buttonLogout.click();
         webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
         webelements.backFromLoginPage.click();
+        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         webelements.menuContainer.find("[data-menu-id*=catalog]").shouldNot(exist);
     }
-
+    @Test
+    @DisplayName("Авторизация WI")
+    @Tag("TMOT-287")
+    void LoginWI()
+    {
+        lib.ui.LoginPageObject.Login("ayrapetova_ea_mopp", "suut6494");
+        webelements.loginFormErrorMessage.shouldHave(text("Неверный логин или пароль"));
+        webelements.backFromLoginPage.click();
+        refresh();
+        $("[role='alert']").shouldHave(text("Доступ запрещен"));
+        webelements.menuContainer.find("[data-menu-id*=catalog]").shouldBe(visible);
+        webelements.menuContainer.find("[data-menu-id*=help]").shouldBe(visible);
+        webelements.menuContainer.find("[aria-label=logout]").shouldBe(visible);
+        webelements.buttonLogout.click();
+        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.backFromLoginPage.click();
+        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
+        webelements.menuContainer.find("[data-menu-id*=catalog]").shouldNot(exist);
+    }
  }

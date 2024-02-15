@@ -1,6 +1,7 @@
 package lib.webElements;
 
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -18,4 +19,8 @@ public class webelements {
     public static SelenideElement backFromLoginPage = $("[aria-label=arrow-left]");
     public static SelenideElement buttonLogout = $("[data-menu-id*='logout']");
     public static SelenideElement loginFormTitle = $(".LoginForm_title__R4WVI ");
+    public static SelenideElement buttonProfile = $("[data-menu-id*='profile']");
+    public static SelenideElement buttonHelp =  $("[data-menu-id*='help']");
+    public static SelenideElement titleMainPage = $(By.xpath("//h1"));
+
 }
