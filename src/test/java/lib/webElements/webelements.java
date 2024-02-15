@@ -15,4 +15,7 @@ public class webelements {
     public static SelenideElement menuCollapse = $("[class*=ant-layout-sider-trigger]");
     public static SelenideElement menuCatalog = $("[data-menu-id*='catalog']");
     public static SelenideElement menuDownloadNewGoods = $("[data-menu-id*='download']");
+    public static SelenideElement backFromLoginPage = $("[aria-label=arrow-left]");
+    public static SelenideElement buttonLogout = $("[data-menu-id*='logout']");
+    public static SelenideElement loginFormTitle = $(".LoginForm_title__R4WVI ");
 }

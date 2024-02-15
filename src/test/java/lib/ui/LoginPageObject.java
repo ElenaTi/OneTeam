@@ -26,7 +26,7 @@ public class LoginPageObject {
     {
         String loginURL = "https://idev.etm.ru/oneteam/login";
         open(loginURL);
-        $(".LoginForm_title__R4WVI ").shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
         webelements.loginInput.setValue(login);
         webelements.passwordInput.setValue(password).pressEnter();
     }
