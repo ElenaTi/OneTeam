@@ -22,7 +22,7 @@ public class LoginTests {
     String loginURL = "https://idev.etm.ru/oneteam/login";
 
     @BeforeAll
-    @DisplayName("Открытие страницы авторизации")
+    @DisplayName("Размер экрана 1920х1280")
     static void start() {
         Configuration.browserSize = "1920x1280";
     }
