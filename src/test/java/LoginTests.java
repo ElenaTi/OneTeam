@@ -89,9 +89,9 @@ public class LoginTests {
     void LoginFullRightsDostuplkp() {
         //Configuration.browser = "firefox";
         lib.ui.LoginPageObject.Login("51951cka", "zlwo4445");
-        $(By.xpath("//h1")).shouldHave(text("Ежедневник"));
-        $("button[class*=ant-btn-primary]").shouldHave(text("Создать встречу"));
-        webelements.menuCollapse.click();
+        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
+        $("[data-menu-id*='orders']").click();
+        $(By.xpath("//h1")).shouldHave(text("Заказы"));
         webelements.menuContainer.shouldHave(text("Каталог"));
         webelements.menuContainer.shouldHave(text("Ассортимент и логистика"));
         webelements.menuContainer.shouldHave(text("Проектная работа"));
@@ -104,20 +104,29 @@ public class LoginTests {
         webelements.buttonProfile.shouldHave(text("Профиль"));
         webelements.buttonHelp.shouldHave(text("Помощь"));
         webelements.buttonLogout.shouldHave(text("Выйти"));
+        $("[data-menu-id*='communications']").click();
+        $("[href='/oneteam/communications/diary']").click();
+        $(By.xpath("//h1")).shouldHave(text("Ежедневник"));
+        $("button[class*=ant-btn-primary]").shouldHave(text("Создать встречу"));
         webelements.menuCollapse.click();
+        webelements.buttonLogout.click();
+        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginInput.setValue("51951cka");
+        webelements.passwordInput.setValue("zlwo4445").pressEnter();
+        $(By.xpath("//h1")).shouldHave(text("Ежедневник"));
         webelements.buttonLogout.click();
         webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
     }
 
     @Test
-    @DisplayName("Авторизация пользователя с dostuplkp=on с ограниченным доступом")
+    @DisplayName("Авторизация пользователя с dostuplkp=on с базовым доступом")
     @Tag("TMOT-282")
     void LogiLimitedRightsDostuplkp() {
         //Configuration.browser = "firefox";
         lib.ui.LoginPageObject.Login("51951tee", "swfl6157");
-        $(By.xpath("//h1")).shouldHave(text("Ежедневник"));
-        $(By.xpath("//h1/following::div")).shouldNotHave(text("Создать встречу"));
-        webelements.menuCollapse.click();
+        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
+        $("[data-menu-id*='analytics']").click();
+        $(By.xpath("//h1")).shouldHave(text("Аналитика"));
         webelements.menuContainer.shouldHave(text("Каталог"));
         webelements.menuContainer.shouldHave(text("Ассортимент и логистика"));
         webelements.menuContainer.shouldHave(text("Коммуникации"));
@@ -133,6 +142,17 @@ public class LoginTests {
         webelements.menuCollapse.click();
         webelements.buttonLogout.click();
         webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginInput.setValue("51951tee");
+        webelements.passwordInput.setValue("swfl6157").pressEnter();
+        $(By.xpath("//h1")).shouldHave(text("Аналитика"));
+        webelements.menuCollapse.click();
+        $("[data-menu-id*='communications']").click();
+        $("[href='/oneteam/communications/diary']").click();
+        $(By.xpath("//h1")).shouldHave(text("Ежедневник"));
+        $(By.xpath("//h1/following::div")).shouldNotHave(text("Создать встречу"));
+        webelements.menuCollapse.click();
+        webelements.buttonLogout.click();
+        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
     }
 
     @Test
@@ -140,7 +160,15 @@ public class LoginTests {
     @Tag("TMOT-283")
     void LoginMixRights() {
         lib.ui.LoginPageObject.Login("51951tes", "heph7146");
-        $(By.xpath("//h1")).shouldHave(text("Ежедневник"));
+        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
+        $("[data-menu-id*='vendorForm']").click();
+        $(By.xpath("//h1")).shouldHave(text("Анкета поставщика"));
+        webelements.menuCollapse.click();
+        webelements.buttonLogout.click();
+        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginInput.setValue("51951tes");
+        webelements.passwordInput.setValue("heph7146").pressEnter();
+        $(By.xpath("//h1")).shouldHave(text("Анкета поставщика"));
         webelements.menuCollapse.click();
         webelements.menuContainer.shouldHave(text("Анкета поставщика"));
         webelements.menuContainer.shouldHave(text("Каталог"));
@@ -155,6 +183,10 @@ public class LoginTests {
         webelements.buttonProfile.shouldHave(text("Профиль"));
         webelements.buttonHelp.shouldHave(text("Помощь"));
         webelements.buttonLogout.shouldHave(text("Выйти"));
+        $("[data-menu-id*='communications']").click();
+        $("[href='/oneteam/communications/diary']").click();
+        $(By.xpath("//h1")).shouldHave(text("Ежедневник"));
+        $("button[class*=ant-btn-primary]").shouldHave(text("Создать встречу"));
         webelements.menuCollapse.click();
         webelements.buttonLogout.click();
         webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
@@ -164,8 +196,17 @@ public class LoginTests {
     @DisplayName("Авторизация пользователя с limitedAccessOneTeam=on")
     @Tag("TMOT-284")
     void LoginLimitedAccessOneTeamON() {
+        //Configuration.holdBrowserOpen = true;
         lib.ui.LoginPageObject.Login("9215641te", "goyz7736");
-        $(By.xpath("//h1")).shouldHave(text("Анкета поставщика"));
+        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
+        $("[data-menu-id*='vendorContract']").click();
+        webelements.titleMainPage.shouldHave(text("Договор поставщика"));
+        webelements.menuCollapse.click();
+        webelements.buttonLogout.click();
+        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginInput.setValue("9215641te");
+        webelements.passwordInput.setValue("goyz7736").pressEnter();
+        webelements.titleMainPage.shouldHave(text("Договор поставщика"));
         webelements.menuCollapse.click();
         webelements.menuContainer.shouldHave(text("Анкета поставщика"));
         webelements.menuContainer.shouldHave(text("Каталог"));
@@ -173,6 +214,8 @@ public class LoginTests {
         webelements.buttonHelp.shouldHave(text("Помощь"));
         webelements.buttonLogout.shouldHave(text("Выйти"));
         webelements.buttonLogout.click();
+        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        $("[aria-label='arrow-left']").click();
         webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
     }
 
@@ -203,8 +246,8 @@ public class LoginTests {
     void LoginIpro()
     {
         lib.ui.LoginPageObject.Login("60004392tes", "rvfa8424");
-        Wait().until(urlToBe("https://idev.etm.ru/"));
-        open("https://idev.etm.ru/oneteam");
+        //Wait().until(urlToBe("https://idev.etm.ru/"));
+        //open("https://idev.etm.ru/oneteam");
         webelements.menuContainer.find("[data-menu-id*=catalog]").shouldBe(visible);
         webelements.menuContainer.find("[data-menu-id*=help]").shouldBe(visible);
         webelements.menuContainer.find("[aria-label=logout]").shouldBe(visible);
