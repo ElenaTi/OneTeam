@@ -21,6 +21,6 @@ public class webelements {
     public static SelenideElement loginFormTitle = $(".LoginForm_title__R4WVI ");
     public static SelenideElement buttonProfile = $("[data-menu-id*='profile']");
     public static SelenideElement buttonHelp =  $("[data-menu-id*='help']");
-    public static SelenideElement titleMainPage = $(By.xpath("//h1"));
+    public static SelenideElement title = $(By.xpath("//h1"));
 
 }

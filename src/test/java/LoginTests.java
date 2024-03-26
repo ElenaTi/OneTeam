@@ -89,7 +89,7 @@ public class LoginTests {
     void LoginFullRightsDostuplkp() {
         //Configuration.browser = "firefox";
         lib.ui.LoginPageObject.Login("51951cka", "zlwo4445");
-        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
+        webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         $("[data-menu-id*='orders']").click();
         $(By.xpath("//h1")).shouldHave(text("Заказы"));
         webelements.menuContainer.shouldHave(text("Каталог"));
@@ -124,7 +124,7 @@ public class LoginTests {
     void LogiLimitedRightsDostuplkp() {
         //Configuration.browser = "firefox";
         lib.ui.LoginPageObject.Login("51951tee", "swfl6157");
-        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
+        webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         $("[data-menu-id*='analytics']").click();
         $(By.xpath("//h1")).shouldHave(text("Аналитика"));
         webelements.menuContainer.shouldHave(text("Каталог"));
@@ -160,7 +160,7 @@ public class LoginTests {
     @Tag("TMOT-283")
     void LoginMixRights() {
         lib.ui.LoginPageObject.Login("51951tes", "heph7146");
-        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
+        webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         $("[data-menu-id*='vendorForm']").click();
         $(By.xpath("//h1")).shouldHave(text("Анкета поставщика"));
         webelements.menuCollapse.click();
@@ -198,15 +198,15 @@ public class LoginTests {
     void LoginLimitedAccessOneTeamON() {
         //Configuration.holdBrowserOpen = true;
         lib.ui.LoginPageObject.Login("9215641te", "goyz7736");
-        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
+        webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         $("[data-menu-id*='vendorContract']").click();
-        webelements.titleMainPage.shouldHave(text("Договор поставщика"));
+        webelements.title.shouldHave(text("Договор поставщика"));
         webelements.menuCollapse.click();
         webelements.buttonLogout.click();
         webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
         webelements.loginInput.setValue("9215641te");
         webelements.passwordInput.setValue("goyz7736").pressEnter();
-        webelements.titleMainPage.shouldHave(text("Договор поставщика"));
+        webelements.title.shouldHave(text("Договор поставщика"));
         webelements.menuCollapse.click();
         webelements.menuContainer.shouldHave(text("Анкета поставщика"));
         webelements.menuContainer.shouldHave(text("Каталог"));
@@ -216,7 +216,7 @@ public class LoginTests {
         webelements.buttonLogout.click();
         webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
         $("[aria-label='arrow-left']").click();
-        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
+        webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
     }
 
     @Test
@@ -227,7 +227,7 @@ public class LoginTests {
         lib.ui.LoginPageObject.Login("9119569663", "ntqz5730");
         webelements.loginFormErrorMessage.shouldHave(text("Неверный логин или пароль"));
         webelements.backFromLoginPage.click();
-        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
+        webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         refresh();
         $("[role='alert']").shouldHave(text("Доступ запрещен"));
         webelements.menuContainer.find("[data-menu-id*=catalog]").shouldBe(visible);
@@ -236,7 +236,7 @@ public class LoginTests {
         webelements.buttonLogout.click();
         webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
         webelements.backFromLoginPage.click();
-        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
+        webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         webelements.menuContainer.find("[data-menu-id*=catalog]").shouldNot(exist);
     }
 
@@ -254,7 +254,7 @@ public class LoginTests {
         webelements.buttonLogout.click();
         webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
         webelements.backFromLoginPage.click();
-        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
+        webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         webelements.menuContainer.find("[data-menu-id*=catalog]").shouldNot(exist);
     }
     @Test
@@ -273,7 +273,7 @@ public class LoginTests {
         webelements.buttonLogout.click();
         webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
         webelements.backFromLoginPage.click();
-        webelements.titleMainPage.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
+        webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         webelements.menuContainer.find("[data-menu-id*=catalog]").shouldNot(exist);
     }
  }

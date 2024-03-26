@@ -19,10 +19,10 @@ public class UploudFilesTests {
         Configuration.browserSize = "1920x1280";
         //Configuration.holdBrowserOpen =true;
         lib.ui.LoginPageObject.Login("51951tes", "heph7146");
-        lib.webElements.webelements.menuCollapse.click();
+        //lib.webElements.webelements.menuCollapse.click();
         webelements.menuCatalog.click();
         webelements.menuDownloadNewGoods.click();
-        $(By.xpath("//h1")).shouldHave(text("Загрузить новые товары"));
+        webelements.title.shouldHave(text("Загрузить новые товары"));
         $(By.xpath("//h1/following::div")).shouldHave(text("Для добавления новых товаров загрузите заполненный файл в формате .csv, разделитель - точка с запятой"));
         $(By.xpath("//h1/following::div")).shouldHave(text("Скачать шаблон"));
         $("[aria-label = 'upload']").click();

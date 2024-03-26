@@ -21,7 +21,7 @@ public class VendorFormTests {
     @Tag("")
     void VendorForm() {
         lib.ui.LoginPageObject.Login("9215642te", "rikb0444");
-        webelements.titleMainPage.shouldHave(text("Анкета поставщика"));
+        webelements.title.shouldHave(text("Анкета поставщика"));
         $(By.xpath("//h1/following::div")).shouldHave(text("При рассмотрении вашей анкеты компания ЭТМ может запросить документы для подтверждения указанной информации"));
     }
 }
