@@ -23,11 +23,11 @@ public class UploudFilesTests {
         webelements.menuCatalog.click();
         webelements.menuDownloadNewGoods.click();
         webelements.title.shouldHave(text("Загрузить новые товары"));
-        $(By.xpath("//h1/following::div")).shouldHave(text("Для добавления новых товаров загрузите заполненный файл в формате .csv, разделитель - точка с запятой"));
-        $(By.xpath("//h1/following::div")).shouldHave(text("Скачать шаблон"));
+        webelements.subTitle.shouldHave(text("Для добавления новых товаров загрузите заполненный файл в формате .csv, разделитель - точка с запятой"));
+        webelements.subTitle.shouldHave(text("Скачать шаблон"));
         $("[aria-label = 'upload']").click();
         $("[class*='Drawer_title']").shouldHave(text("Загрузка новых товаров"));
-        $("input[id=files]").uploadFromClasspath("1 — копия (1).csv");
+        $("input[id=files]").uploadFromClasspath("Новые товары.csv");
         $("button[type='submit']").click();
         $(By.xpath("//tbody/tr[2]")).shouldHave(text("В очереди"));
         $(By.xpath("//tbody/tr[2]")).shouldHave(text("51951tes"));

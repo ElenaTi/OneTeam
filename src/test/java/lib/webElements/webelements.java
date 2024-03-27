@@ -23,4 +23,6 @@ public class webelements {
     public static SelenideElement buttonHelp =  $("[data-menu-id*='help']");
     public static SelenideElement title = $(By.xpath("//h1"));
 
+    public static SelenideElement subTitle = $(By.xpath("//h1/following::div"));
+
 }
