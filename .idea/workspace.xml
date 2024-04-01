@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="4940d5d9-c95e-4b06-a4e2-e339c3905889" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UploudFilesTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UploudFilesTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/lib/webElements/webelements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/webElements/webelements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/characteristics.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,10 +102,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.UploudFilesTests" />
+        <item itemvalue="JUnit.LoginTests" />
         <item itemvalue="JUnit.UploudFilesTests.UploadNewGoods" />
         <item itemvalue="JUnit.UploudFilesTests.UploadSerts" />
         <item itemvalue="JUnit.UploudFilesTests.UploadCharacteristics" />
-        <item itemvalue="JUnit.LoginTests" />
       </list>
     </recent_temporary>
   </component>

@@ -58,7 +58,7 @@ public class LoginTests {
     @Tag("TMOT-278")
     void LoginWithoutData() {
         open(loginURL);
-        $("[type='submit']").shouldHave((text("войти"))).click();
+        webelements.buttonEnter.shouldHave((text("войти"))).click();
         webelements.loginHelpMessage.shouldHave(text("Введите логин"));
         webelements.passwordHelpMessage.shouldHave(text("Введите пароль"));
     }

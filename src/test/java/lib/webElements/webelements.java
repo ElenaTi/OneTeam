@@ -12,11 +12,16 @@ public class webelements {
     public static SelenideElement loginHelpMessage = $("#login_help div");
     public static SelenideElement passwordHelpMessage = $("#password_help div");
     public static SelenideElement buttonEnter = $("[type='submit']");
+    public static SelenideElement buttonSubmit = $("[type='submit']");
     public static SelenideElement menuContainer =  $("[class*=Menu_menu_container]");
     public static SelenideElement menuCollapse = $("[class*=ant-layout-sider-trigger]");
     public static SelenideElement menuCatalog = $("[data-menu-id*='catalog']");
     public static SelenideElement menuDownloadNewGoods = $("[data-menu-id*='download']");
+    public static SelenideElement menuLogistics = $("[data-menu-id*='logistics']");
     public static SelenideElement menuProductInformation = $("[data-menu-id*='control']");
+    public static SelenideElement menuLogisticsData = $("[data-menu-id*='info']");
+    public static SelenideElement menuLogisticsAssortment = $("[data-menu-id*='management']");
+    public static SelenideElement tagDeliveryTerms = $("[data-node-key='2']");
     public static SelenideElement backFromLoginPage = $("[aria-label=arrow-left]");
     public static SelenideElement buttonLogout = $("[data-menu-id*='logout']");
     public static SelenideElement loginFormTitle = $(".LoginForm_title__R4WVI ");
@@ -34,4 +39,7 @@ public class webelements {
     public static SelenideElement tagKonstructor = $("[data-node-key='8']");
     public static SelenideElement tagSametypes = $("[data-node-key='9']");
     public static SelenideElement uploadSample = $("[aria-label = 'upload']");
+    public static SelenideElement drawerTitle = $("[class*='Drawer_title']");
+    public static SelenideElement uploadInput = $("input[id=files]");
+    public static SelenideElement uploadDrawer = $(".ant-upload-drag");
 }
