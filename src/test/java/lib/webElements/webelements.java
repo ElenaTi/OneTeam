@@ -16,13 +16,13 @@ public class webelements {
     public static SelenideElement menuCollapse = $("[class*=ant-layout-sider-trigger]");
     public static SelenideElement menuCatalog = $("[data-menu-id*='catalog']");
     public static SelenideElement menuDownloadNewGoods = $("[data-menu-id*='download']");
+    public static SelenideElement menuProductInformation = $("[data-menu-id*='control']");
     public static SelenideElement backFromLoginPage = $("[aria-label=arrow-left]");
     public static SelenideElement buttonLogout = $("[data-menu-id*='logout']");
     public static SelenideElement loginFormTitle = $(".LoginForm_title__R4WVI ");
     public static SelenideElement buttonProfile = $("[data-menu-id*='profile']");
     public static SelenideElement buttonHelp =  $("[data-menu-id*='help']");
     public static SelenideElement title = $(By.xpath("//h1"));
-
     public static SelenideElement subTitle = $(By.xpath("//h1/following::div"));
 
 }

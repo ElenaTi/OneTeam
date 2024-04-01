@@ -88,7 +88,7 @@ public class LoginTests {
     @Tag("TMOT-281")
     void LoginFullRightsDostuplkp() {
         //Configuration.browser = "firefox";
-        lib.ui.LoginPageObject.Login("51951cka", "zlwo4445");
+        lib.ui.LoginPageObject.Login("51951cka", "lxca1500");
         webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         $("[data-menu-id*='orders']").click();
         $(By.xpath("//h1")).shouldHave(text("Заказы"));
@@ -112,7 +112,7 @@ public class LoginTests {
         webelements.buttonLogout.click();
         webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
         webelements.loginInput.setValue("51951cka");
-        webelements.passwordInput.setValue("zlwo4445").pressEnter();
+        webelements.passwordInput.setValue("lxca1500").pressEnter();
         $(By.xpath("//h1")).shouldHave(text("Ежедневник"));
         webelements.buttonLogout.click();
         webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
