@@ -1,5 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import lib.webElements.webelements;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -12,47 +13,191 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class UploudFilesTests {
 
-    String loginURL = "https://idev.etm.ru/oneteam/login";
+    @BeforeAll
+    @DisplayName("Авторизация")
+    static void start() {
+        Configuration.browserSize = "1920x1280";
+        lib.ui.LoginPageObject.Login("51951tes", "heph7146");
+        webelements.menuCatalog.click();
+    }
+
     @Test
     @DisplayName("Загрузка новых товаров")
     void UploadNewGoods()
     {
-        Configuration.browserSize = "1920x1280";
-        //Configuration.holdBrowserOpen =true;
-        lib.ui.LoginPageObject.Login("51951tes", "heph7146");
-        //lib.webElements.webelements.menuCollapse.click();
         webelements.menuCatalog.click();
         webelements.menuDownloadNewGoods.click();
         webelements.title.shouldHave(text("Загрузить новые товары"));
         webelements.subTitle.shouldHave(text("Для добавления новых товаров загрузите заполненный файл в формате .csv, разделитель - точка с запятой"));
         webelements.subTitle.shouldHave(text("Скачать шаблон"));
-        $("[aria-label = 'upload']").click();
+        webelements.uploadSample.click();
         $("[class*='Drawer_title']").shouldHave(text("Загрузка новых товаров"));
-        $("input[id=files]").uploadFromClasspath("Новые товары.csv");
+        $("input[id=files]").uploadFromClasspath("New goods_with mistakes.csv");
         $("button[type='submit']").click();
         $(By.xpath("//tbody/tr[2]")).shouldHave(text("В очереди"));
         $(By.xpath("//tbody/tr[2]")).shouldHave(text("51951tes"));
-        $("div[role='alert']").shouldHave(text("Данные успешно загружены"));
+        webelements.alert.shouldHave(text("Данные успешно загружены"));
     }
 
     @Test
-    @DisplayName("Загрузка характеристик]")
+    @DisplayName("Загрузка характеристик")
     void UploadCharacteristics()
     {
-        Configuration.browserSize = "1920x1280";
-        Configuration.holdBrowserOpen =true;
-        lib.ui.LoginPageObject.Login("51951tes", "heph7146");
-        //$(By.xpath("/div/a[contains(.,'Каталог')]")).click();
-        webelements.menuCatalog.click();
+        //lib.ui.LoginPageObject.Login("51951tes", "heph7146");
+        //webelements.menuCatalog.click();
         webelements.menuProductInformation.click();
         webelements.title.shouldHave(text("Управление данными о товарах"));
-        //webelements.subTitle.shouldHave(text("Для добавления новых товаров загрузите заполненный файл в формате .csv, разделитель - точка с запятой"));
-        //webelements.subTitle.shouldHave(text("Скачать шаблон"));
-        $("[aria-label = 'upload']").click();
+        webelements.uploadSample.click();
         $("[class*='Drawer_title']").shouldHave(text("Загрузка сопоставления характеристик товаров"));
         $("input[id=files]").uploadFromClasspath("characteristics.csv");
         $("button[type='submit']").click();
         $(By.xpath("//tbody/tr[2]")).shouldHave(text("В очереди"));
         $(By.xpath("//tbody/tr[2]")).shouldHave(text("51951tes"));
+    }
+
+    @Test
+    @DisplayName("Загрузка сертификатов")
+    void UploadSerts()
+    {
+        Configuration.browserSize = "1920x1280";
+        webelements.menuCatalog.click();
+        webelements.menuProductInformation.click();
+        webelements.title.shouldHave(text("Управление данными о товарах"));
+        webelements.tagSerts.click();
+        webelements.title.shouldHave(text("Управление данными о товарах"));
+        webelements.subTitle.shouldHave(text("Для управления сертификатами на товары загрузите заполненный файл в формате .csv, разделитель - точка с запятой"));
+        webelements.subTitle.shouldHave(text("Скачать шаблон"));
+        webelements.uploadSample.click();
+        $("[class*='Drawer_title']").shouldHave(text("Загрузка сопоставления сертификатов товаров"));
+         $("input[id=files]").uploadFromClasspath("sert.csv");
+        $("button[type='submit']").click();
+        $(By.xpath("//tbody/tr[2]")).shouldHave(text("В очереди"));
+        $(By.xpath("//tbody/tr[2]")).shouldHave(text("51951tes"));
+    }
+    @Test
+    @DisplayName("Загрузка изображений")
+    void UploadImages()
+    {
+        webelements.menuProductInformation.click();
+        webelements.tagImages.click();
+        webelements.title.shouldHave(text("Управление данными о товарах"));
+        webelements.subTitle.shouldHave(text("Для управления изображениями товаров загрузите заполненный файл в формате .csv, разделитель - точка с запятой"));
+        webelements.subTitle.shouldHave(text("Скачать шаблон"));
+        webelements.uploadSample.click();
+        $("[class*='Drawer_title']").shouldHave(text("Загрузка сопоставления изображений товаров"));
+        $("input[id=files]").uploadFromClasspath("Image.csv");
+        $("button[type='submit']").click();
+        $(By.xpath("//tbody/tr[2]")).shouldHave(text("В очереди"));
+        $(By.xpath("//tbody/tr[2]")).shouldHave(text("51951tes"));
+        $("div[role='alert']").shouldHave(text("Данные успешно загружены"));
+        webelements.alert.shouldHave(text("Данные успешно загружены"));
+    }
+    @Test
+    @DisplayName("Загрузка описаний товаров")
+    void UploadDescriptions()
+    {
+        webelements.menuCatalog.click();
+        webelements.menuProductInformation.click();
+        webelements.tagDescription.click();
+        webelements.title.shouldHave(text("Управление данными о товарах"));
+        webelements.subTitle.shouldHave(text("Для управления описаниями товаров загрузите заполненный файл в формате .csv, разделитель - точка с запятой"));
+        webelements.subTitle.shouldHave(text("Скачать шаблон"));
+        webelements.uploadSample.click();
+        $("[class*='Drawer_title']").shouldHave(text("Загрузка описаний товаров"));
+        $("input[id=files]").uploadFromClasspath("Descripton_goods.csv");
+        $("button[type='submit']").click();
+        $(By.xpath("//tbody/tr[2]")).shouldHave(text("В очереди"));
+        $(By.xpath("//tbody/tr[2]")).shouldHave(text("51951tes"));
+        webelements.alert.shouldHave(text("Данные успешно загружены"));
+    }
+    @Test
+    @DisplayName("Загрузка технической информации")
+    void UploadTechInformation()
+    {
+        webelements.menuCatalog.click();
+        webelements.menuProductInformation.click();
+        webelements.tagTechInfo.click();
+        webelements.title.shouldHave(text("Управление данными о товарах"));
+        webelements.subTitle.shouldHave(text("Для управления технической информацией на товары загрузите заполненный файл в формате .csv, разделитель - точка с запятой"));
+        webelements.subTitle.shouldHave(text("Скачать шаблон"));
+        webelements.uploadSample.click();
+        $("[class*='Drawer_title']").shouldHave(text("Загрузка сопоставления технической информации товаров"));
+        $("input[id=files]").uploadFromClasspath("Tech_info_goods.csv");
+        $("button[type='submit']").click();
+        $(By.xpath("//tbody/tr[2]")).shouldHave(text("В очереди"));
+        $(By.xpath("//tbody/tr[2]")).shouldHave(text("51951tes"));
+        webelements.alert.shouldHave(text("Данные успешно загружены"));
+    }
+    @Test
+    @DisplayName("Загрузка цен")
+    void UploadPrices()
+    {
+        webelements.menuCatalog.click();
+        webelements.menuProductInformation.click();
+        webelements.tagPrices.click();
+        webelements.title.shouldHave(text("Управление данными о товарах"));
+        webelements.subTitle.shouldHave(text("Для управления ценами на товары загрузите заполненный файл в формате .csv, разделитель - точка с запятой"));
+        webelements.subTitle.shouldHave(text("Скачать шаблон"));
+        webelements.uploadSample.click();
+        $("[class*='Drawer_title']").shouldHave(text("Загрузка цен товаров"));
+        $("input[id=files]").uploadFromClasspath("Prices_goods.csv");
+        $("button[type='submit']").click();
+        $(By.xpath("//tbody/tr[2]")).shouldHave(text("В очереди"));
+        $(By.xpath("//tbody/tr[2]")).shouldHave(text("51951tes"));
+        webelements.alert.shouldHave(text("Данные успешно загружены"));
+    }
+    @Test
+    @DisplayName("Загрузка аналогов")
+    void UploadAnalogs()
+    {
+        webelements.menuCatalog.click();
+        webelements.menuProductInformation.click();
+        webelements.tagAnalogs.click();
+        webelements.title.shouldHave(text("Управление данными о товарах"));
+        webelements.subTitle.shouldHave(text("Для загрузки аналогов товаров загрузите заполненный файл в формате .csv, разделитель - точка с запятой"));
+        webelements.subTitle.shouldHave(text("Скачать шаблон"));
+        webelements.uploadSample.click();
+        $("[class*='Drawer_title']").shouldHave(text("Загрузка аналогов товаров"));
+        $("input[id=files]").uploadFromClasspath("Analog_goods.csv");
+        $("button[type='submit']").click();
+        $(By.xpath("//tbody/tr[2]")).shouldHave(text("В очереди"));
+        $(By.xpath("//tbody/tr[2]")).shouldHave(text("51951tes"));
+        webelements.alert.shouldHave(text("Данные успешно загружены"));
+    }
+    @Test
+    @DisplayName("Загрузка конструктора товаров")
+    void UploadKonstructor()
+    {
+        webelements.menuCatalog.click();
+        webelements.menuProductInformation.click();
+        webelements.tagKonstructor.click();
+        webelements.title.shouldHave(text("Управление данными о товарах"));
+        webelements.subTitle.shouldHave(text("Для загрузки конструктора товаров загрузите заполненный файл в формате .csv, разделитель - точка с запятой"));
+        webelements.subTitle.shouldHave(text("Скачать шаблон"));
+        webelements.uploadSample.click();
+        $("[class*='Drawer_title']").shouldHave(text("Загрузка конструктора товаров"));
+        $("input[id=files]").uploadFromClasspath("Konstructor_goods.csv");
+        $("button[type='submit']").click();
+        $(By.xpath("//tbody/tr[2]")).shouldHave(text("В очереди"));
+        $(By.xpath("//tbody/tr[2]")).shouldHave(text("51951tes"));
+        webelements.alert.shouldHave(text("Данные успешно загружены"));
+    }
+    @Test
+    @DisplayName("Загрузка однотипных товаров")
+    void UploadSametypes()
+    {
+        webelements.menuCatalog.click();
+        webelements.menuProductInformation.click();
+        webelements.tagSametypes.click();
+        webelements.title.shouldHave(text("Управление данными о товарах"));
+        webelements.subTitle.shouldHave(text("Для загрузки однотипных товаров загрузите заполненный файл в формате .csv, разделитель - точка с запятой"));
+        webelements.subTitle.shouldHave(text("Скачать шаблон"));
+        webelements.uploadSample.click();
+        $("[class*='Drawer_title']").shouldHave(text("Загрузка однотипных товаров"));
+        $("input[id=files]").uploadFromClasspath("Sametypes_goods.csv");
+        $("button[type='submit']").click();
+        $(By.xpath("//tbody/tr[2]")).shouldHave(text("В очереди"));
+        $(By.xpath("//tbody/tr[2]")).shouldHave(text("51951tes"));
+        webelements.alert.shouldHave(text("Данные успешно загружены"));
     }
 }

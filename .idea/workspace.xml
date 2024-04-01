@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4940d5d9-c95e-4b06-a4e2-e339c3905889" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/UploudFilesTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UploudFilesTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/lib/webElements/webelements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/webElements/webelements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/Новые товары.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +48,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.LoginTests.LoginFullRightsDostuplkp">
+  <component name="RunManager" selected="JUnit.UploudFilesTests">
     <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
@@ -58,12 +58,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginTests.LoginFullRightsDostuplkp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UploudFilesTests" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LoginTests" />
-      <option name="METHOD_NAME" value="LoginFullRightsDostuplkp" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="UploudFilesTests" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -88,22 +88,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorFormTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UploudFilesTests.UploadSerts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorFormTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="UploudFilesTests" />
+      <option name="METHOD_NAME" value="UploadSerts" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.LoginTests.LoginFullRightsDostuplkp" />
-        <item itemvalue="JUnit.LoginTests" />
-        <item itemvalue="JUnit.UploudFilesTests.UploadCharacteristics" />
+        <item itemvalue="JUnit.UploudFilesTests" />
         <item itemvalue="JUnit.UploudFilesTests.UploadNewGoods" />
-        <item itemvalue="JUnit.VendorFormTests" />
+        <item itemvalue="JUnit.UploudFilesTests.UploadSerts" />
+        <item itemvalue="JUnit.UploudFilesTests.UploadCharacteristics" />
+        <item itemvalue="JUnit.LoginTests" />
       </list>
     </recent_temporary>
   </component>

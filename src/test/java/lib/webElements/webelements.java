@@ -24,5 +24,14 @@ public class webelements {
     public static SelenideElement buttonHelp =  $("[data-menu-id*='help']");
     public static SelenideElement title = $(By.xpath("//h1"));
     public static SelenideElement subTitle = $(By.xpath("//h1/following::div"));
-
+    public static SelenideElement alert = $("div[role='alert']");
+    public static SelenideElement tagSerts = $("[data-node-key='2']");
+    public static SelenideElement tagImages = $("[data-node-key='3']");
+    public static SelenideElement tagDescription = $("[data-node-key='4']");
+    public static SelenideElement tagTechInfo = $("[data-node-key='5']");
+    public static SelenideElement tagPrices = $("[data-node-key='6']");
+    public static SelenideElement tagAnalogs = $("[data-node-key='7']");
+    public static SelenideElement tagKonstructor = $("[data-node-key='8']");
+    public static SelenideElement tagSametypes = $("[data-node-key='9']");
+    public static SelenideElement uploadSample = $("[aria-label = 'upload']");
 }
