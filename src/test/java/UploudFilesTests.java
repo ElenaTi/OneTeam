@@ -69,7 +69,7 @@ public class UploudFilesTests {
         webelements.subTitle.shouldHave(text("Скачать шаблон"));
         webelements.uploadSample.click();
         $("[class*='Drawer_title']").shouldHave(text("Загрузка сопоставления сертификатов товаров"));
-         $("input[id=files]").uploadFromClasspath("sert.csv");
+         $("input[id=files]").uploadFromClasspath("Sertificates_of_goods.csv");
         $("button[type='submit']").click();
         $(By.xpath("//tbody/tr[2]")).shouldHave(text("В очереди"));
         $(By.xpath("//tbody/tr[2]")).shouldHave(text("51951tes"));
@@ -85,7 +85,7 @@ public class UploudFilesTests {
         webelements.subTitle.shouldHave(text("Скачать шаблон"));
         webelements.uploadSample.click();
         $("[class*='Drawer_title']").shouldHave(text("Загрузка сопоставления изображений товаров"));
-        $("input[id=files]").uploadFromClasspath("Image.csv");
+        $("input[id=files]").uploadFromClasspath("Images_goods.csv");
         $("button[type='submit']").click();
         $(By.xpath("//tbody/tr[2]")).shouldHave(text("В очереди"));
         $(By.xpath("//tbody/tr[2]")).shouldHave(text("51951tes"));
