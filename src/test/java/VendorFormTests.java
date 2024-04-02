@@ -15,13 +15,25 @@ public class VendorFormTests {
     @DisplayName("Размер экрана 1920х1280")
     static void start() {
         Configuration.browserSize = "1920x1280";
+        lib.ui.LoginPageObject.Login("9215642te", "rikb0444");
     }
     @Test
-    @DisplayName("Заполнение Анкеты")
+    @DisplayName("Сабмит анкеты с незаполненными полями")
     @Tag("")
     void VendorForm() {
-        lib.ui.LoginPageObject.Login("9215642te", "rikb0444");
+        webelements.menuVendorForm.click();
         webelements.title.shouldHave(text("Анкета поставщика"));
         $(By.xpath("//h1/following::div")).shouldHave(text("При рассмотрении вашей анкеты компания ЭТМ может запросить документы для подтверждения указанной информации"));
+        webelements.alert.shouldHave(text("При рассмотрении вашей анкеты компания ЭТМ может запросить документы для подтверждения указанной информации"));
+        webelements.buttonSubmit.click();
+        $("#orgCategory_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        $("#goodsCategory_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        $("#brands_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        $("#orgSite_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        $("#orgCatalogLink_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        $("#deJuroAddress_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        $("#warehouses_0_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        $("#signTheContract_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        $("#sum_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
     }
 }

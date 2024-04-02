@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4940d5d9-c95e-4b06-a4e2-e339c3905889" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/UploudFilesTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UploudFilesTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/VendorFormTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VendorFormTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/lib/webElements/webelements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/webElements/webelements.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,11 +86,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UploudFilesTests.UploadNewGoods" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorFormTests.VendorForm" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="UploudFilesTests" />
-      <option name="METHOD_NAME" value="UploadNewGoods" />
+      <option name="MAIN_CLASS_NAME" value="VendorFormTests" />
+      <option name="METHOD_NAME" value="VendorForm" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -99,10 +99,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.UploudFilesTests" />
+        <item itemvalue="JUnit.VendorFormTests.VendorForm" />
         <item itemvalue="JUnit.UploudFilesTests.UploadImages" />
         <item itemvalue="JUnit.LoginTests" />
         <item itemvalue="JUnit.MainPageTests" />
-        <item itemvalue="JUnit.UploudFilesTests.UploadNewGoods" />
       </list>
     </recent_temporary>
   </component>
