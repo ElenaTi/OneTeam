@@ -27,6 +27,7 @@ public class UploudFilesTests {
     @Tag("TMOT-312")
     void UploadNewGoods()
     {
+        webelements.mainLogo.click();
         webelements.menuCatalog.click();
         webelements.menuDownloadNewGoods.click();
         webelements.title.shouldHave(text("Загрузить новые товары"));
@@ -48,6 +49,7 @@ public class UploudFilesTests {
     @Tag("TMOT-313")
     void UploadCharacteristics()
     {
+        webelements.mainLogo.click();
         webelements.menuCatalog.click();
         webelements.menuProductInformation.click();
         webelements.title.shouldHave(text("Управление данными о товарах"));
@@ -66,6 +68,7 @@ public class UploudFilesTests {
     @Tag("TMOT-314")
     void UploadSerts()
     {
+        webelements.mainLogo.click();
         webelements.menuCatalog.click();
         webelements.menuProductInformation.click();
         webelements.title.shouldHave(text("Управление данными о товарах"));
@@ -87,6 +90,7 @@ public class UploudFilesTests {
     @Tag("TMOT-315")
     void UploadImages()
     {
+        webelements.mainLogo.click();
         webelements.menuCatalog.click();
         webelements.menuProductInformation.click();
         webelements.tagImages.click();
@@ -109,6 +113,7 @@ public class UploudFilesTests {
     @Tag("TMOT-316")
     void UploadDescriptions()
     {
+        webelements.mainLogo.click();
         webelements.menuCatalog.click();
         webelements.menuProductInformation.click();
         webelements.tagDescription.click();
@@ -130,6 +135,7 @@ public class UploudFilesTests {
     @Tag("TMOT-317")
     void UploadTechInformation()
     {
+        webelements.mainLogo.click();
         webelements.menuCatalog.click();
         webelements.menuProductInformation.click();
         webelements.tagTechInfo.click();
@@ -151,6 +157,7 @@ public class UploudFilesTests {
     @Tag("TMOT-318")
     void UploadPrices()
     {
+        webelements.mainLogo.click();
         webelements.menuCatalog.click();
         webelements.menuProductInformation.click();
         webelements.tagPrices.click();
@@ -172,6 +179,7 @@ public class UploudFilesTests {
     @Tag("TMOT-319")
     void UploadAnalogs()
     {
+        webelements.mainLogo.click();
         webelements.menuCatalog.click();
         webelements.menuProductInformation.click();
         webelements.tagAnalogs.click();
@@ -193,6 +201,7 @@ public class UploudFilesTests {
     @Tag("TMOT-320")
     void UploadKonstructor()
     {
+        webelements.mainLogo.click();
         webelements.menuCatalog.click();
         webelements.menuProductInformation.click();
         webelements.tagKonstructor.click();
@@ -214,6 +223,7 @@ public class UploudFilesTests {
     @Tag("TMOT-321")
     void UploadSametypes()
     {
+        webelements.mainLogo.click();
         webelements.menuCatalog.click();
         webelements.menuProductInformation.click();
         webelements.tagSametypes.click();
@@ -235,6 +245,7 @@ public class UploudFilesTests {
     @Tag("TMOT-322")
     void UploadGoodsStatus()
     {
+        webelements.mainLogo.click();
         webelements.menuLogistics.click();
         webelements.menuLogisticsData.click();
         webelements.title.shouldHave(text("Управление логистическими данными"));
@@ -255,6 +266,7 @@ public class UploudFilesTests {
     @Tag("TMOT-323")
     void UploadDeliveryTerms()
     {
+        webelements.mainLogo.click();
         webelements.menuLogistics.click();
         webelements.menuLogisticsData.click();
         webelements.tagDeliveryTerms.click();
@@ -276,6 +288,7 @@ public class UploudFilesTests {
     @Tag("TMOT-324")
     void UploadStorageAssortment()
     {
+        webelements.mainLogo.click();
         webelements.menuLogistics.click();
         webelements.menuLogisticsAssortment.click();
         webelements.title.shouldHave(text("Управление складским ассортиментом"));
