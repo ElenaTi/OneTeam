@@ -43,6 +43,6 @@ public class webelements {
     public static SelenideElement drawerTitle = $("[class*='Drawer_title']");
     public static SelenideElement uploadInput = $("input[id=files]");
     public static SelenideElement uploadDrawer = $(".ant-upload-drag");
-
     public static SelenideElement mainLogo = $("[class*='Menu_logo_container']");
+    public static SelenideElement buttonSendVendorForm = $(By.xpath("//button[contains(.,'Отправить заявку')]"));
 }
