@@ -28,6 +28,7 @@ public class webElementsVendorForm {
     public static SelenideElement factoAddress = $("#deFactoAddress");
     public static SelenideElement warehousesMainField = $("#warehouses_0");
     public static SelenideElement wareHousesMainFieldHelp = $("#warehouses_0_help");
+    public static SelenideElement addingWareHouses = $(By.xpath("//button[contains(.,'Добавить склад')]"));
     public static SelenideElement signTheContractNO = $("[value='Нет']");
     public static SelenideElement signTheContractYES = $("[value='Да']");
     public static SelenideElement signTheContractHelp = $("#signTheContract_help");

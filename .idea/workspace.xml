@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4940d5d9-c95e-4b06-a4e2-e339c3905889" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/VendorFormTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VendorFormTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/lib/webElements/webelements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/webElements/webelements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +47,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.VendorFormTests.CheckingLinkOnSamples">
+  <component name="RunManager" selected="JUnit.VendorFormTests">
     <configuration name="VendorFormTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
@@ -58,41 +57,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorFormTests.CheckingLinkOnSamples" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorFormTests.AddingAndDeletingWarehousesWithoutFilling" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorFormTests" />
-      <option name="METHOD_NAME" value="CheckingLinkOnSamples" />
+      <option name="METHOD_NAME" value="AddingAndDeletingWarehousesWithoutFilling" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorFormTests.SuccessSendVendorFormWithoutFiles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorFormTests.AddingWarehousesWithoutFilling" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorFormTests" />
-      <option name="METHOD_NAME" value="SuccessSendVendorFormWithoutFiles" />
+      <option name="METHOD_NAME" value="AddingWarehousesWithoutFilling" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorFormTests.VendorForm" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorFormTests.SuccessSendVendorFormWithFiles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorFormTests" />
-      <option name="METHOD_NAME" value="VendorForm" />
+      <option name="METHOD_NAME" value="SuccessSendVendorFormWithFiles" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorFormTests.VendorFormWithoutData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorFormTests.SuccessSendingChangingNameOrganization" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorFormTests" />
-      <option name="METHOD_NAME" value="VendorFormWithoutData" />
+      <option name="METHOD_NAME" value="SuccessSendingChangingNameOrganization" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -100,11 +99,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.VendorFormTests.CheckingLinkOnSamples" />
-        <item itemvalue="JUnit.VendorFormTests.SuccessSendVendorFormWithoutFiles" />
         <item itemvalue="JUnit.VendorFormTests" />
-        <item itemvalue="JUnit.VendorFormTests.VendorFormWithoutData" />
-        <item itemvalue="JUnit.VendorFormTests.VendorForm" />
+        <item itemvalue="JUnit.VendorFormTests.AddingAndDeletingWarehousesWithoutFilling" />
+        <item itemvalue="JUnit.VendorFormTests.AddingWarehousesWithoutFilling" />
+        <item itemvalue="JUnit.VendorFormTests.SuccessSendVendorFormWithFiles" />
+        <item itemvalue="JUnit.VendorFormTests.SuccessSendingChangingNameOrganization" />
       </list>
     </recent_temporary>
   </component>
