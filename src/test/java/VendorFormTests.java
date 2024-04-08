@@ -1,6 +1,7 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
+import lib.webElements.webElementsVendorForm;
 import lib.webElements.webelements;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -25,96 +26,84 @@ public class VendorFormTests {
     @DisplayName("Сабмит анкеты с незаполненными полями")
     @Tag("")
     void VendorFormWithoutData() {
+        webelements.mainLogo.click();
         webelements.menuVendorForm.click();
         webelements.title.shouldHave(text("Анкета поставщика"));
-        $(By.xpath("//h1/following::div")).shouldHave(text("При рассмотрении вашей анкеты компания ЭТМ может запросить документы для подтверждения указанной информации"));
+        webelements.subTitle.shouldHave(text("При рассмотрении вашей анкеты компания ЭТМ может запросить документы для подтверждения указанной информации"));
         webelements.alert.shouldHave(text("При рассмотрении вашей анкеты компания ЭТМ может запросить документы для подтверждения указанной информации"));
-        webelements.buttonSendVendorForm.click();
-        $("#orgCategory_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
-        $("#goodsCategory_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
-        $("#brands_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
-        $("#orgSite_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
-        $("#orgCatalogLink_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
-        $("#deJuroAddress_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
-        $("#warehouses_0_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
-        $("#signTheContract_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
-        $("#sum_help").shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorForm.buttonSendVendorForm.click();
+        webElementsVendorForm.orgCategoryHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorForm.goodsCategoryHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorForm.brandsHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorForm.orgSiteHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorForm.orgCatalogLinkHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorForm.juroAddressHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorForm.wareHousesMainFieldHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorForm.signTheContractHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorForm.sumOfSuppliesHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
     }
     @Test
-    @DisplayName("Отправка Анкеты только с обязательными полями")
+    @DisplayName("Отправка Анкеты только с обязательными полями выбор двух категорий товаров")
     @Tag("")
     void CheckingLinkOnSamples(){
-        Configuration.holdBrowserOpen = true;
+        webelements.mainLogo.click();
+        //Configuration.holdBrowserOpen = true;
         webelements.menuVendorForm.click();
-        //$(By.xpath("//a[@target='_blank' and text()='Договор поставщика']")).click();
         webelements.title.shouldHave(text("Анкета поставщика"));
-        $(By.xpath("//*[@id=\"root\"]/div/div/main/form/div[3]/div[2]/div/div/div[2]/div/div/div")).click();
-        $("#orgCategory").sendKeys(Keys.ARROW_DOWN);
-        $("#orgCategory").sendKeys(Keys.ARROW_DOWN);
-        $("#orgCategory").pressEnter();
-        $(By.xpath("//*[@id=\"root\"]/div/div/main/form/div[3]/div[3]/div/div/div[2]/div/div/div")).click();
-        $("#goodsCategory").sendKeys(Keys.ARROW_DOWN);
-        $("#goodsCategory").sendKeys(Keys.ARROW_DOWN);
-        $("#goodsCategory").pressEnter();
-        $("#goodsCategory").sendKeys(Keys.ARROW_DOWN);
-        $("#goodsCategory").sendKeys(Keys.ARROW_DOWN);
-        $("#goodsCategory").pressEnter();
-        $("#orgName").click();
-        $("#brands").click();
-        $("#brands").setValue("Бренд 1, Бренд 2, Бренд 3");
-        $("#orgSite").click();
-        $("#orgSite").setValue("idev.etm.ru");
-        $("#orgCatalogLink").click();
-        $("#orgCatalogLink").setValue("тест.рф");
-        $("#deJuroAddress").click();
-        $("#deJuroAddress").setValue("Санкт-Петербург, ул. Советская");
-        $("#warehouses_0").click();
-        $("#warehouses_0").setValue("Санкт-Петербург, Всеволожск");
-        $("[value='Нет']").click();
-        $("#sum").click();
-        $("#sum").setValue("1234567");
-        webelements.buttonSendVendorForm.click();
+        webElementsVendorForm.orgCategorySelect.click();
+        webElementsVendorForm.orgCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.orgCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.orgCategory.pressEnter();
+        webElementsVendorForm.goodsCategorySelect.click();
+        webElementsVendorForm.goodsCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.goodsCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.goodsCategory.pressEnter();
+        webElementsVendorForm.goodsCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.goodsCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.goodsCategory.pressEnter();
+        webElementsVendorForm.orgName.click();
+        webElementsVendorForm.brands.setValue("Бренд 1, Бренд 2, Бренд 3");
+        webElementsVendorForm.orgSite.setValue("idev.etm.ru");
+        webElementsVendorForm.orgCatalogLink.setValue("тест.рф");
+        webElementsVendorForm.juroAddress.setValue("Санкт-Петербург, ул. Советская");
+        webElementsVendorForm.warehousesMainField.setValue("Санкт-Петербург, Всеволожск");
+        webElementsVendorForm.signTheContractNO.click();
+        webElementsVendorForm.sumOfSupplies.setValue("1234567");
+        webElementsVendorForm.buttonSendVendorForm.click();
         webelements.alert.shouldHave(text("Данные успешно загружены"));
-        $(".ant-result-title").shouldHave(text("Анкета успешно отправлена на согласование."));
-        $(".ant-result-subtitle").shouldHave(text("Мы сообщим вам статус согласования после обработки анкеты."));
+        webElementsVendorForm.successResultTitle.shouldHave(text("Анкета успешно отправлена на согласование."));
+        webElementsVendorForm.successResultSubtitle.shouldHave(text("Мы сообщим вам статус согласования после обработки анкеты."));
 
     }
     @Test
     @DisplayName("Отправка анкеты без файлов")
     @Tag("")
     void SuccessSendVendorFormWithoutFiles(){
+        webelements.mainLogo.click();
         webelements.menuVendorForm.click();
         webelements.title.shouldHave(text("Анкета поставщика"));
-        $(By.xpath("//*[@id=\"root\"]/div/div/main/form/div[3]/div[2]/div/div/div[2]/div/div/div")).click();
-        $("#orgCategory").sendKeys(Keys.ARROW_DOWN);
-        $("#orgCategory").sendKeys(Keys.ARROW_DOWN);
-        $("#orgCategory").pressEnter();
-        $("#goodsExtraCategory").click();
-        $("#goodsExtraCategory").setValue("Товары");
-        $(By.xpath("//*[@id=\"root\"]/div/div/main/form/div[3]/div[3]/div/div/div[2]/div/div/div")).click();
-        $("#goodsCategory").sendKeys(Keys.ARROW_DOWN);
-        $("#goodsCategory").sendKeys(Keys.ARROW_DOWN);
-        $("#goodsCategory").pressEnter();
-        $("#orgName").click();
-        $("#brands").click();
-        $("#brands").setValue("Бренд 1, Бренд 2, Бренд 3");
-        $("#orgSite").click();
-        $("#orgSite").setValue("idev.etm.ru");
-        $("#orgCatalogLink").click();
-        $("#orgCatalogLink").setValue("тест.рф");
-        $("#deJuroAddress").click();
-        $("#deJuroAddress").setValue("Санкт-Петербург, ул. Советская");
-        $("#deFactoAddress").click();
-        $("#deFactoAddress").setValue("Санкт-Петербург, Невский пр.");
-        $("#warehouses_0").click();
-        $("#warehouses_0").setValue("Санкт-Петербург, Романовка");
-        $("[value='Да']").click();
-        $("#sum").click();
-        $("#sum").setValue("1234567");
-        webelements.buttonSendVendorForm.click();
+        webElementsVendorForm.orgCategorySelect.click();
+        webElementsVendorForm.orgCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.orgCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.orgCategory.pressEnter();
+        webElementsVendorForm.goodsExtraCategory.setValue("Товары");
+        webElementsVendorForm.goodsCategorySelect.click();
+        webElementsVendorForm.goodsCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.goodsCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.goodsCategory.pressEnter();
+        webElementsVendorForm.orgName.click();
+        webElementsVendorForm.brands.setValue("Бренд 1, Бренд 2, Бренд 3");
+        webElementsVendorForm.orgSite.setValue("idev.etm.ru");
+        webElementsVendorForm.orgCatalogLink.setValue("тест.рф");
+        webElementsVendorForm.juroAddress.setValue("Санкт-Петербург, ул. Советская");
+        webElementsVendorForm.factoAddress.setValue("Санкт-Петербург, Невский пр.");
+        webElementsVendorForm.warehousesMainField.setValue("Санкт-Петербург, Романовка");
+        webElementsVendorForm.signTheContractYES.click();
+        webElementsVendorForm.sumOfSupplies.setValue("1234567");
+        webElementsVendorForm.buttonSendVendorForm.click();
         webelements.alert.shouldHave(text("Данные успешно загружены"));
-        $(".ant-result-title").shouldHave(text("Анкета успешно отправлена на согласование."));
-        $(".ant-result-subtitle").shouldHave(text("Мы сообщим вам статус согласования после обработки анкеты."));
+        webElementsVendorForm.successResultTitle.shouldHave(text("Анкета успешно отправлена на согласование."));
+        webElementsVendorForm.successResultSubtitle.shouldHave(text("Мы сообщим вам статус согласования после обработки анкеты."));
     }
 
 }
