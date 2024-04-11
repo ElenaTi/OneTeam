@@ -33,7 +33,7 @@ public class LoginTests {
     void LoginUnvalidPassword() {
         //Configuration.holdBrowserOpen = true;
         open(loginURL);
-        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
         webelements.loginInput.setValue("51951tes");
         webelements.passwordInput.setValue("heph8888");
         webelements.buttonEnter.shouldHave((text("войти"))).click();
@@ -46,7 +46,7 @@ public class LoginTests {
     void LoginUnvalidLogin() {
         //Configuration.holdBrowserOpen = true;
         open(loginURL);
-        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
         webelements.loginInput.setValue("51951te");
         webelements.passwordInput.setValue("heph7146");
         webelements.buttonEnter.shouldHave((text("войти"))).click();
@@ -110,12 +110,12 @@ public class LoginTests {
         $("button[class*=ant-btn-primary]").shouldHave(text("Создать встречу"));
         webelements.menuCollapse.click();
         webelements.buttonLogout.click();
-        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
         webelements.loginInput.setValue("51951cka");
         webelements.passwordInput.setValue("lxca1500").pressEnter();
         $(By.xpath("//h1")).shouldHave(text("Ежедневник"));
         webelements.buttonLogout.click();
-        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
     }
 
     @Test
@@ -141,7 +141,7 @@ public class LoginTests {
         webelements.buttonLogout.shouldHave(text("Выйти"));
         webelements.menuCollapse.click();
         webelements.buttonLogout.click();
-        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
         webelements.loginInput.setValue("51951tee");
         webelements.passwordInput.setValue("swfl6157").pressEnter();
         $(By.xpath("//h1")).shouldHave(text("Аналитика"));
@@ -152,7 +152,7 @@ public class LoginTests {
         $(By.xpath("//h1/following::div")).shouldNotHave(text("Создать встречу"));
         webelements.menuCollapse.click();
         webelements.buttonLogout.click();
-        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
     }
 
     @Test
@@ -165,7 +165,7 @@ public class LoginTests {
         $(By.xpath("//h1")).shouldHave(text("Анкета поставщика"));
         webelements.menuCollapse.click();
         webelements.buttonLogout.click();
-        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
         webelements.loginInput.setValue("51951tes");
         webelements.passwordInput.setValue("heph7146").pressEnter();
         $(By.xpath("//h1")).shouldHave(text("Анкета поставщика"));
@@ -189,7 +189,7 @@ public class LoginTests {
         $("button[class*=ant-btn-primary]").shouldHave(text("Создать встречу"));
         webelements.menuCollapse.click();
         webelements.buttonLogout.click();
-        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
     }
 
     @Test
@@ -203,7 +203,7 @@ public class LoginTests {
         webelements.title.shouldHave(text("Договор поставщика"));
         webelements.menuCollapse.click();
         webelements.buttonLogout.click();
-        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
         webelements.loginInput.setValue("9215641te");
         webelements.passwordInput.setValue("goyz7736").pressEnter();
         webelements.title.shouldHave(text("Договор поставщика"));
@@ -214,7 +214,7 @@ public class LoginTests {
         webelements.buttonHelp.shouldHave(text("Помощь"));
         webelements.buttonLogout.shouldHave(text("Выйти"));
         webelements.buttonLogout.click();
-        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
         $("[aria-label='arrow-left']").click();
         webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
     }
@@ -234,7 +234,7 @@ public class LoginTests {
         webelements.menuContainer.find("[data-menu-id*=help]").shouldBe(visible);
         webelements.menuContainer.find("[aria-label=logout]").shouldBe(visible);
         webelements.buttonLogout.click();
-        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
         webelements.backFromLoginPage.click();
         webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         webelements.menuContainer.find("[data-menu-id*=catalog]").shouldNot(exist);
@@ -252,7 +252,7 @@ public class LoginTests {
         webelements.menuContainer.find("[data-menu-id*=help]").shouldBe(visible);
         webelements.menuContainer.find("[aria-label=logout]").shouldBe(visible);
         webelements.buttonLogout.click();
-        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
         webelements.backFromLoginPage.click();
         webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         webelements.menuContainer.find("[data-menu-id*=catalog]").shouldNot(exist);
@@ -271,7 +271,7 @@ public class LoginTests {
         webelements.menuContainer.find("[data-menu-id*=help]").shouldBe(visible);
         webelements.menuContainer.find("[aria-label=logout]").shouldBe(visible);
         webelements.buttonLogout.click();
-        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
         webelements.backFromLoginPage.click();
         webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         webelements.menuContainer.find("[data-menu-id*=catalog]").shouldNot(exist);

@@ -26,7 +26,7 @@ public class LoginPageObject {
     {
         String loginURL = "https://idev.etm.ru/oneteam/login";
         open(loginURL);
-        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
         webelements.loginInput.setValue(login);
         webelements.passwordInput.setValue(password).pressEnter();
     }

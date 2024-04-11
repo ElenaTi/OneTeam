@@ -29,6 +29,7 @@ public class webElementsVendorForm {
     public static SelenideElement warehousesMainField = $("#warehouses_0");
     public static SelenideElement wareHousesMainFieldHelp = $("#warehouses_0_help");
     public static SelenideElement addingWareHouses = $(By.xpath("//button[contains(.,'Добавить склад')]"));
+    public static SelenideElement deletingWareHouses = $(By.xpath("//textarea[@id='warehouses_1']/../../../../../following-sibling::button"));
     public static SelenideElement signTheContractNO = $("[value='Нет']");
     public static SelenideElement signTheContractYES = $("[value='Да']");
     public static SelenideElement signTheContractHelp = $("#signTheContract_help");
@@ -36,5 +37,6 @@ public class webElementsVendorForm {
     public static SelenideElement sumOfSuppliesHelp = $("#sum_help");
     public static SelenideElement successResultTitle = $(".ant-result-title");
     public static SelenideElement successResultSubtitle =$(".ant-result-subtitle");
+    public static SelenideElement fileUploadVendorForm = $("#files");
 
 }
