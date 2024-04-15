@@ -22,6 +22,7 @@ public class webelements {
     public static SelenideElement menuLogisticsData = $("[data-menu-id*='info']");
     public static SelenideElement menuLogisticsAssortment = $("[data-menu-id*='management']");
     public static SelenideElement menuVendorForm = $("[data-menu-id*='vendorForm']");
+    public static SelenideElement menuVendorContract = $("[data-menu-id*='vendorContract']");
     public static SelenideElement tagDeliveryTerms = $("[data-node-key='2']");
     public static SelenideElement backFromLoginPage = $("[aria-label=arrow-left]");
     public static SelenideElement buttonLogout = $("[data-menu-id*='logout']");

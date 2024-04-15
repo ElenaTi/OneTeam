@@ -33,6 +33,7 @@ public class webElementsVendorForm {
     public static SelenideElement signTheContractNO = $("[value='Нет']");
     public static SelenideElement signTheContractYES = $("[value='Да']");
     public static SelenideElement signTheContractHelp = $("#signTheContract_help");
+    public static SelenideElement uploadFilesHelp = $("#files_help");
     public static SelenideElement sumOfSupplies = $("#sum");
     public static SelenideElement sumOfSuppliesHelp = $("#sum_help");
     public static SelenideElement successResultTitle = $(".ant-result-title");
