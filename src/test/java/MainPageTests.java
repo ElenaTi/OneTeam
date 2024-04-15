@@ -76,7 +76,7 @@ public class MainPageTests {
     {
         open("https://idev.etm.ru/oneteam");
         $("[data-menu-id*='login']").click();
-        webelements.loginFormTitle.shouldHave(text("Вход в личный кабинет"));
+        webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
         webelements.backFromLoginPage.click();
         $(By.xpath("//h1")).shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
     }

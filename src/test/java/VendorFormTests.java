@@ -151,7 +151,6 @@ public class VendorFormTests {
     @DisplayName("Отправка анкеты с файлами")
     @Tag("TMOT-330")
     void SuccessSendVendorFormWithFiles() throws InterruptedException{
-        Configuration.holdBrowserOpen = true;
         webelements.mainLogo.click();
         webelements.menuVendorForm.click();
         webelements.title.shouldHave(text("Анкета поставщика"));

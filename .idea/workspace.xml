@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4940d5d9-c95e-4b06-a4e2-e339c3905889" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/VendorContractTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorContract.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MainPageTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MainPageTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/VendorFormTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VendorFormTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/lib/webElements/webelements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/webElements/webelements.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,42 +47,39 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.VendorFormTests">
-    <configuration name="VendorFormTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.LoginTests">
+    <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorFormTests" />
+      <option name="MAIN_CLASS_NAME" value="LoginTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorFormTests.AddingWarehousesWithFilling" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MainPageTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorFormTests" />
-      <option name="METHOD_NAME" value="AddingWarehousesWithFilling" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="MainPageTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorFormTests.AddingWarehousesWithoutFilling" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UploudFilesTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorFormTests" />
-      <option name="METHOD_NAME" value="AddingWarehousesWithoutFilling" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="UploudFilesTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorFormTests.SendVendorFormWithUnvalidFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorFormTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorFormTests" />
-      <option name="METHOD_NAME" value="SendVendorFormWithUnvalidFile" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -103,11 +96,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.LoginTests" />
+        <item itemvalue="JUnit.UploudFilesTests" />
+        <item itemvalue="JUnit.MainPageTests" />
         <item itemvalue="JUnit.VendorFormTests" />
         <item itemvalue="JUnit.VendorFormTests.SuccessSendVendorFormWithFiles" />
-        <item itemvalue="JUnit.VendorFormTests.SendVendorFormWithUnvalidFile" />
-        <item itemvalue="JUnit.VendorFormTests.AddingWarehousesWithFilling" />
-        <item itemvalue="JUnit.VendorFormTests.AddingWarehousesWithoutFilling" />
       </list>
     </recent_temporary>
   </component>
