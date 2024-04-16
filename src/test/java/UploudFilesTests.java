@@ -18,6 +18,7 @@ public class UploudFilesTests {
     @DisplayName("Авторизация")
     @Tag("TMOT-311")
     static void start() {
+        //Configuration.browser = "firefox";
         Configuration.browserSize = "1920x1280";
         lib.ui.LoginPageObject.Login("51951tes", "heph7146");
     }

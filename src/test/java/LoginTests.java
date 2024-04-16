@@ -24,6 +24,7 @@ public class LoginTests {
     @BeforeAll
     @DisplayName("Размер экрана 1920х1280")
     static void start() {
+        Configuration.browser = "firefox";
         Configuration.browserSize = "1920x1280";
     }
 

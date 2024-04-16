@@ -21,6 +21,7 @@ public class VendorFormTests {
     @DisplayName("Размер экрана 1920х1280")
     static void start() {
         Configuration.browserSize = "1920x1280";
+        //Configuration.browser = "firefox";
         lib.ui.LoginPageObject.Login("9215642te", "rikb0444");
     }
     @Test
