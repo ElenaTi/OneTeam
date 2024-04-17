@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4940d5d9-c95e-4b06-a4e2-e339c3905889" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/UploudFilesTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UploudFilesTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/VendorContractTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VendorContractTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/VendorFormTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VendorFormTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorContract.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,12 +47,32 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.VendorContractTests.ReturnToStep0FromStep1">
-    <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.VendorContractTests">
+    <configuration name="VendorContractTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LoginTests" />
+      <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VendorContractTests.FillingStep1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OneTeam" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
+      <option name="METHOD_NAME" value="FillingStep1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VendorContractTests.FillingStep1ReturnToStep0" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OneTeam" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
+      <option name="METHOD_NAME" value="FillingStep1ReturnToStep0" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -65,16 +82,6 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
       <option name="METHOD_NAME" value="ReturnToStep0FromStep1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="VendorContractTests.SubmitContractStep0" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OneTeam" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
-      <option name="METHOD_NAME" value="SubmitContractStep0" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -90,22 +97,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorFormTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OneTeam" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorFormTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.VendorContractTests" />
+        <item itemvalue="JUnit.VendorContractTests.FillingStep1ReturnToStep0" />
+        <item itemvalue="JUnit.VendorContractTests.FillingStep1" />
         <item itemvalue="JUnit.VendorContractTests.ReturnToStep0FromStep1" />
         <item itemvalue="JUnit.VendorContractTests.SubmitContractStep0WithotFilling" />
-        <item itemvalue="JUnit.VendorContractTests.SubmitContractStep0" />
-        <item itemvalue="JUnit.VendorFormTests" />
-        <item itemvalue="JUnit.LoginTests" />
       </list>
     </recent_temporary>
   </component>
