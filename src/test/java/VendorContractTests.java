@@ -231,7 +231,6 @@ public class VendorContractTests {
     @Tag("")
     @DisplayName("Сабмит Шага 2 без заполнения, переход на Шаг 1")
     void ReturnToStep1FromStep2() {
-        Configuration.holdBrowserOpen = true;
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
         webelements.title.shouldHave(text("Договор поставщика"));
@@ -239,14 +238,14 @@ public class VendorContractTests {
         webElementsVendorContract.radiobuttonStepONO.click();
         webElementsVendorContract.buttonSubmitStep0.click();
         webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
-        webElementsVendorContract.managementSelectStep1.click();
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.pressEnter();
         webElementsVendorContract.ogrnStep1.setValue("1234567890");
         webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
         webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
         webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
         webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
+        webElementsVendorContract.managementSelectStep1.click();
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.pressEnter();
         webElementsVendorContract.emailStep1.setValue("test@test");
         webElementsVendorContract.step1EmailHelp.shouldHave(text("Введен некорректный email"));
         webElementsVendorContract.emailStep1.setValue(".ru");
@@ -275,12 +274,12 @@ public class VendorContractTests {
         webElementsVendorContract.step1IsActive.shouldNot(exist);
         webElementsVendorContract.step2IsActive.should(exist);
         webElementsVendorContract.buttonSubmitStep2.click();
-        webElementsVendorContract.step2DefermentHelp1.shouldHave(text("Пожалуйста, заполните обязательное поле"));
-        webElementsVendorContract.step2DefermentHelp2.shouldHave(text("Может принимать только целое значение до 999"));
+        webElementsVendorContract.step2DefermentHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step2DefermentHelp.shouldHave(text("Может принимать только целое значение до 999"));
         webElementsVendorContract.step2ProductGroupHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
         webElementsVendorContract.step2NameOfProductHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
-        webElementsVendorContract.step2DiscountHelp1.shouldHave(text("Пожалуйста, заполните обязательное поле"));
-        webElementsVendorContract.step2DiscountHelp2.shouldHave(text("Может принимать значение от 0 до 100"));
+        webElementsVendorContract.step2DiscountHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step2DiscountHelp.shouldHave(text("Может принимать значение от 0 до 100"));
         webElementsVendorContract.buttonBackStep2.click();
         webElementsVendorContract.step1IsActive.should(exist);
         webElementsVendorContract.step1IsFinished.shouldNot(exist);
@@ -310,4 +309,67 @@ public class VendorContractTests {
         webElementsVendorContract.step2DiscountHelp2.shouldNot(exist);
 
         }
+
+
+    @Test
+    @Tag("")
+    @DisplayName("Заполнение и сабмит шага 2, переход на Шаг 3")
+    void FillingAndSubmitStep2() {
+        Configuration.holdBrowserOpen = true;
+        webelements.mainLogo.click();
+        webelements.menuVendorContract.click();
+        webelements.title.shouldHave(text("Договор поставщика"));
+        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
+        webElementsVendorContract.radiobuttonStepONO.click();
+        webElementsVendorContract.buttonSubmitStep0.click();
+        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
+        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
+        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
+        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
+        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
+        webElementsVendorContract.managementSelectStep1.click();
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.pressEnter();
+        webElementsVendorContract.ogrnStep1.setValue("1234567890");
+        webElementsVendorContract.emailStep1.setValue("test@test.ru");
+        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
+        webElementsVendorContract.factoAddressStep1.setValue("г. Санкт-Петербург, пр. Александровской фермы, дом 56, корпус АБВ, офис 678, кабинет 876");
+        webElementsVendorContract.rightToSignSelectStep1.click();
+        webElementsVendorContract.rightToSignListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.rightToSignListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.rightToSignListStep1.pressEnter();
+        webElementsVendorContract.rightToSignSelectStep1.shouldHave(text("ОГРНИП"));
+        webElementsVendorContract.rightToSignNumberStep1.setValue("23456_ABCDEFG/123");
+        webElementsVendorContract.rightToSignDateStep1.shouldNot(exist);
+        webElementsVendorContract.bikStep1.setValue("8765432");
+        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
+        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456qwerty");
+        webElementsVendorContract.currentAccountStep1.setValue("345678909876456wertyui");
+        webElementsVendorContract.buttonSubmitStep1.click();
+        webElementsVendorContract.step0IsFinished.should(exist);
+        webElementsVendorContract.step1IsFinished.should(exist);
+        webElementsVendorContract.step2IsActive.should(exist);
+        webElementsVendorContract.defermentStep2.setValue("10");
+        //webElementsVendorContract.step2DefermentHelp.shouldHave(text("Может принимать только целое значение до 999"));
+        webElementsVendorContract.groupStep2.setValue("Электрические товары");
+        webElementsVendorContract.nameStep2.setValue("Светильник потолочный 109768");
+        webElementsVendorContract.discountStep2.setValue("80");
+        webElementsVendorContract.questionStep2.click();
+        webElementsVendorContract.tooltipStep2.should(exist);
+        webElementsVendorContract.buttonSubmitStep2.click();
+        webElementsVendorContract.step0IsFinished.should(exist);
+        webElementsVendorContract.step1IsFinished.should(exist);
+        webElementsVendorContract.step2IsFinished.should(exist);
+        webElementsVendorContract.step3IsActive.should(exist);
+        webElementsVendorContract.sibtitleTable1Step3.shouldHave(text("Порядок формирования каталога продукции поставщика"));
+        webElementsVendorContract.buttonBackStep3.click();
+        webElementsVendorContract.defermentStep2.shouldHave(attribute("value","10"));
+        webElementsVendorContract.groupStep2.shouldHave(attribute("value","Электрические товары"));
+        webElementsVendorContract.nameStep2.shouldHave(attribute("value","Светильник потолочный 109768"));
+        webElementsVendorContract.discountStep2.shouldHave(attribute("value","80"));
+        webElementsVendorContract.step2IsFinished.shouldNot(exist);
+        webElementsVendorContract.step2IsActive.should(exist);
+        webElementsVendorContract.step3IsActive.shouldNot(exist);
+    }
 }

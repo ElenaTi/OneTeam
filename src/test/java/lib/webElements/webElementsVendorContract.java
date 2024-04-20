@@ -64,12 +64,26 @@ public class webElementsVendorContract {
     //Элементы Шага 2
     public static SelenideElement buttonSubmitStep2 = $(By.xpath("//button[contains(.,'Продолжить')]"));
     public static SelenideElement buttonBackStep2 = $(By.xpath("//button[contains(.,'Назад')]"));
+    public static SelenideElement defermentStep2 = $(By.xpath("//input[contains(@id,'deferment')]"));
+    public static SelenideElement groupStep2 = $(By.xpath("//input[contains(@id,'group')]"));
+    public static SelenideElement nameStep2 = $(By.xpath("//input[contains(@id,'name')]"));
+    public static SelenideElement discountStep2 = $(By.xpath("//input[contains(@id,'disk')]"));
+    public static SelenideElement questionStep2 = $(By.xpath("//div[@class='ant-input-number-group-addon']"));
+    public static SelenideElement tooltipStep2 = $(By.xpath("//div[@class='ant-input-number-group-addon']/div[@class='ant-tooltip-open']"));
+
+    ////div[@class='ant-input-number-group-addon']/div[@class='ant-tooltip-open']  тултип
     public static SelenideElement step2DefermentHelp1= $(By.xpath("//div[contains(@id,'deferment_help')]/div[1]"));
+    public static SelenideElement step2DefermentHelp= $(By.xpath("//div[contains(@id,'deferment_help')]"));
     public static SelenideElement step2DefermentHelp2= $(By.xpath("//div[contains(@id,'deferment_help')]/div[2]"));
     public static SelenideElement step2ProductGroupHelp = $(By.xpath("//div[contains(@id,'group_help')]"));
     public static SelenideElement step2NameOfProductHelp = $(By.xpath("//div[contains(@id,'name_help')]"));
+    public static SelenideElement step2DiscountHelp = $(By.xpath("//div[contains(@id,'disk_help')]"));
     public static SelenideElement step2DiscountHelp1 = $(By.xpath("//div[contains(@id,'disk_help')]/div[1]"));
     public static SelenideElement step2DiscountHelp2 = $(By.xpath("//div[contains(@id,'disk_help')]/div[2]"));
+    //Элементы Шага 3
+    public static SelenideElement sibtitleTable1Step3 = $(By.xpath("//div[contains(@class,'VendorContractForm_steps')]/following-sibling::div/div[1]"));
+    public static SelenideElement buttonSubmitStep3 = $(By.xpath("//button[contains(.,'Сгенерировать договор')]"));
+    public static SelenideElement buttonBackStep3 = $(By.xpath("//button[contains(.,'Назад')]"));
     //Элементы Шага 4
     public static SelenideElement step4subtitle1 = $(By.xpath("//h3[contains(., 'Договор')]"));
     public static SelenideElement step4unit1 = $(By.xpath("//h3[contains(., 'Договор')]/parent::span/parent::div/parent::div"));
@@ -97,6 +111,8 @@ public class webElementsVendorContract {
     public static SelenideElement step1IsFinished = $(By.xpath("//div[contains(@class,'ant-steps')]/div[1][contains(@class,'finish' )]/following-sibling::div[1][contains(@class,'finish' )]"));
     public static SelenideElement step1IsActive = $(By.xpath("//div[contains(@class,'ant-steps')]/div[1][contains(@class,'finish' )]/following-sibling::div[1][contains(@class,'active' )]"));
     public static SelenideElement step2IsActive =$(By.xpath("//div[contains(@class,'ant-steps')]/div[1][contains(@class,'finish' )]/following-sibling::div[1][contains(@class,'finish' )]/following-sibling::div[1][contains(@class,'active' )]"));
+    public static SelenideElement step2IsFinished = $(By.xpath("//div[contains(@class,'ant-steps')]/div[1][contains(@class,'finish' )]/following-sibling::div[1][contains(@class,'finish' )]/following-sibling::div[1][contains(@class,'finish' )]"));
+    public static SelenideElement step3IsActive =$(By.xpath("//div[contains(@class,'ant-steps')]/div[1][contains(@class,'finish' )]/following-sibling::div[1][contains(@class,'finish' )]/following-sibling::div[1][contains(@class,'finish' )]/following-sibling::div[1][contains(@class,'active' )]"));
     public static SelenideElement step4ActiveFromStep0 = $(By.xpath("//div[contains(@class,'ant-steps')]/div[1][contains(@class,'finish')]/following-sibling::div[1][contains(@class,'wait')]/following-sibling::div[1][contains(@class,'wait')]/following-sibling::div[1][contains(@class,'wait')]/following-sibling::div[1][contains(@class,'active')]"));
 
 
