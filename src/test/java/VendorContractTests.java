@@ -6,9 +6,14 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selenide.$;
 
 public class VendorContractTests {
         @BeforeAll
@@ -266,8 +271,8 @@ public class VendorContractTests {
         webElementsVendorContract.rightToSignDateStep1.shouldHave(attribute("value", fullDateTwoDaysAgo));
         webElementsVendorContract.bikStep1.setValue("8765432");
         webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
-        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
-        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
+        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456qwrty");
+        webElementsVendorContract.currentAccountStep1.setValue("345678909876456dfghj");
         webElementsVendorContract.buttonSubmitStep1.click();
         webElementsVendorContract.step0IsFinished.should(exist);
         webElementsVendorContract.step1IsFinished.should(exist);
@@ -301,13 +306,10 @@ public class VendorContractTests {
         webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
         webElementsVendorContract.currentAccountStep1.shouldHave(attribute("value","345678909876456"));
         webElementsVendorContract.buttonSubmitStep1.click();
-        webElementsVendorContract.step2DefermentHelp1.shouldNot(exist);
-        webElementsVendorContract.step2DefermentHelp2.shouldNot(exist);
+        webElementsVendorContract.step2DefermentHelp.shouldNot(exist);
         webElementsVendorContract.step2ProductGroupHelp.shouldNot(exist);
         webElementsVendorContract.step2NameOfProductHelp.shouldNot(exist);
-        webElementsVendorContract.step2DiscountHelp1.shouldNot(exist);
-        webElementsVendorContract.step2DiscountHelp2.shouldNot(exist);
-
+        webElementsVendorContract.step2DiscountHelp.shouldNot(exist);
         }
 
 
@@ -315,7 +317,6 @@ public class VendorContractTests {
     @Tag("")
     @DisplayName("Заполнение и сабмит шага 2, переход на Шаг 3")
     void FillingAndSubmitStep2() {
-        Configuration.holdBrowserOpen = true;
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
         webelements.title.shouldHave(text("Договор поставщика"));
@@ -344,17 +345,40 @@ public class VendorContractTests {
         webElementsVendorContract.rightToSignDateStep1.shouldNot(exist);
         webElementsVendorContract.bikStep1.setValue("8765432");
         webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
-        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456qwerty");
-        webElementsVendorContract.currentAccountStep1.setValue("345678909876456wertyui");
+        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
+        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
         webElementsVendorContract.buttonSubmitStep1.click();
         webElementsVendorContract.step0IsFinished.should(exist);
         webElementsVendorContract.step1IsFinished.should(exist);
         webElementsVendorContract.step2IsActive.should(exist);
-        webElementsVendorContract.defermentStep2.setValue("10");
-        //webElementsVendorContract.step2DefermentHelp.shouldHave(text("Может принимать только целое значение до 999"));
+        webElementsVendorContract.defermentStep2.setValue("0,1");
+        webElementsVendorContract.step2DefermentHelp.shouldHave(text("Может принимать только целое значение до 999"));
+        webElementsVendorContract.defermentStep2.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.defermentStep2.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.defermentStep2.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.step2DefermentHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step2DefermentHelp.shouldHave(text("Может принимать только целое значение до 999"));
+        webElementsVendorContract.defermentStep2.setValue("0.1");
+        webElementsVendorContract.step2DefermentHelp.shouldHave(text("Может принимать только целое значение до 999"));
+        webElementsVendorContract.defermentStep2.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.defermentStep2.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.defermentStep2.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.step2DefermentHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step2DefermentHelp.shouldHave(text("Может принимать только целое значение до 999"));
+        webElementsVendorContract.defermentStep2.setValue("1000");
+        webElementsVendorContract.step2DefermentHelp.shouldHave(text("Может принимать только целое значение до 999"));
+        webElementsVendorContract.defermentStep2.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.step2DefermentHelp.shouldNot(exist);
         webElementsVendorContract.groupStep2.setValue("Электрические товары");
         webElementsVendorContract.nameStep2.setValue("Светильник потолочный 109768");
-        webElementsVendorContract.discountStep2.setValue("80");
+        webElementsVendorContract.discountStep2.setValue("101");
+        webElementsVendorContract.step2DiscountHelp.shouldHave(text("Может принимать значение от 0 до 100"));
+        webElementsVendorContract.discountStep2.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.discountStep2.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.discountStep2.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.step2DiscountHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step2DiscountHelp.shouldHave(text("Может принимать значение от 0 до 100"));
+        webElementsVendorContract.discountStep2.setValue("10,1");
         webElementsVendorContract.questionStep2.click();
         webElementsVendorContract.tooltipStep2.should(exist);
         webElementsVendorContract.buttonSubmitStep2.click();
@@ -364,12 +388,361 @@ public class VendorContractTests {
         webElementsVendorContract.step3IsActive.should(exist);
         webElementsVendorContract.sibtitleTable1Step3.shouldHave(text("Порядок формирования каталога продукции поставщика"));
         webElementsVendorContract.buttonBackStep3.click();
-        webElementsVendorContract.defermentStep2.shouldHave(attribute("value","10"));
+        webElementsVendorContract.defermentStep2.shouldHave(attribute("value","100"));
         webElementsVendorContract.groupStep2.shouldHave(attribute("value","Электрические товары"));
         webElementsVendorContract.nameStep2.shouldHave(attribute("value","Светильник потолочный 109768"));
-        webElementsVendorContract.discountStep2.shouldHave(attribute("value","80"));
+        webElementsVendorContract.discountStep2.shouldHave(attribute("value","10.1"));
         webElementsVendorContract.step2IsFinished.shouldNot(exist);
         webElementsVendorContract.step2IsActive.should(exist);
         webElementsVendorContract.step3IsActive.shouldNot(exist);
     }
+
+    @Test
+    @Tag("")
+    @DisplayName("Добавление строки товаров на шаге 2")
+    void AddingLineForProductGroupStep2() {
+        webelements.mainLogo.click();
+        webelements.menuVendorContract.click();
+        webelements.title.shouldHave(text("Договор поставщика"));
+        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
+        webElementsVendorContract.radiobuttonStepONO.click();
+        webElementsVendorContract.buttonSubmitStep0.click();
+        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
+        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
+        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
+        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
+        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
+        webElementsVendorContract.managementSelectStep1.click();
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.pressEnter();
+        webElementsVendorContract.ogrnStep1.setValue("1234567890");
+        webElementsVendorContract.emailStep1.setValue("test@test.ru");
+        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
+        webElementsVendorContract.factoAddressStep1.setValue("г. Санкт-Петербург, пр. Александровской фермы, дом 56, корпус АБВ, офис 678, кабинет 876");
+        webElementsVendorContract.rightToSignSelectStep1.click();
+        webElementsVendorContract.rightToSignListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.rightToSignListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.rightToSignListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.rightToSignListStep1.pressEnter();
+        webElementsVendorContract.rightToSignSelectStep1.shouldHave(text("Листа записи"));
+        webElementsVendorContract.rightToSignNumberStep1.setValue("23456_ABCDEFG/123");
+        webElementsVendorContract.rightToSignDateStep1.shouldNot(exist);
+        webElementsVendorContract.bikStep1.setValue("8765432");
+        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
+        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
+        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
+        webElementsVendorContract.buttonSubmitStep1.click();
+        webElementsVendorContract.defermentStep2.setValue("20");
+        webElementsVendorContract.groupStep2.setValue("Товарная группа №5678");
+        webElementsVendorContract.nameStep2.setValue("Динное наименование товара номер 456EWj");
+        webElementsVendorContract.discountStep2.setValue("30");
+        webElementsVendorContract.buttonAddLineStep2.click();
+        webElementsVendorContract.buttonAddLineStep2.click();
+        webElementsVendorContract.buttonSubmitStep2.click();
+        webElementsVendorContract.step2ProductGroupHelpLine2.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step2NameOfProductHelpLine2.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step2DiscountHelpLine2.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step2DiscountHelpLine2.shouldHave(text("Может принимать значение от 0 до 100"));
+        webElementsVendorContract.step2ProductGroupHelpLine3.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step2NameOfProductHelpLine3.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step2DiscountHelpLine3.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step2DiscountHelpLine3.shouldHave(text("Может принимать значение от 0 до 100"));
+        webElementsVendorContract.buttonDeleteLine2Step2.click();
+        webElementsVendorContract.groupLine2Step2.setValue("Товарная группа номер 2");
+        webElementsVendorContract.nameLine2Step2.setValue("Наименование товара из товарной группы номер 2");
+        webElementsVendorContract.discountLine2Step2.setValue("0.9");
+        webElementsVendorContract.buttonSubmitStep2.click();
+        webElementsVendorContract.buttonBackStep3.click();
+        webElementsVendorContract.groupLine2Step2.shouldHave(attribute("value","Товарная группа номер 2"));
+        webElementsVendorContract.nameLine2Step2.shouldHave(attribute("value","Наименование товара из товарной группы номер 2"));
+        webElementsVendorContract.discountLine2Step2.shouldHave(attribute("value","0.9"));
+    }
+
+    @Test
+    @Tag("")
+    @DisplayName("Сабмит Шага 3 без заполнения")
+    void SubmitStep3WithoutFilling() {
+        webelements.mainLogo.click();
+        webelements.menuVendorContract.click();
+        webelements.title.shouldHave(text("Договор поставщика"));
+        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
+        webElementsVendorContract.radiobuttonStepONO.click();
+        webElementsVendorContract.buttonSubmitStep0.click();
+        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
+        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
+        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
+        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
+        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
+        webElementsVendorContract.managementSelectStep1.click();
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.pressEnter();
+        webElementsVendorContract.ogrnStep1.setValue("1234567890");
+        webElementsVendorContract.emailStep1.setValue("test@test.ru");
+        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
+        webElementsVendorContract.factoAddressStep1.setValue("г. Санкт-Петербург, пр. Александровской фермы, дом 56, корпус АБВ, офис 678, кабинет 876");
+        webElementsVendorContract.rightToSignSelectStep1.click();
+        webElementsVendorContract.rightToSignListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.rightToSignListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.rightToSignListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.rightToSignListStep1.pressEnter();
+        webElementsVendorContract.rightToSignSelectStep1.shouldHave(text("Листа записи"));
+        webElementsVendorContract.rightToSignNumberStep1.setValue("23456_ABCDEFG/123");
+        webElementsVendorContract.rightToSignDateStep1.shouldNot(exist);
+        webElementsVendorContract.bikStep1.setValue("8765432");
+        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
+        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
+        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
+        webElementsVendorContract.buttonSubmitStep1.click();
+        webElementsVendorContract.defermentStep2.setValue("20");
+        webElementsVendorContract.groupStep2.setValue("Товарная группа №5678");
+        webElementsVendorContract.nameStep2.setValue("Динное наименование товара номер 456EWj");
+        webElementsVendorContract.discountStep2.setValue("30");
+        webElementsVendorContract.buttonSubmitStep2.click();
+        webElementsVendorContract.buttonSubmitStep3.click();
+        webElementsVendorContract.step3ImageGoodsDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ConfiguratorDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3TechInfoDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3CurrentCertificatesDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ProductDescriptionDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3AdditionalImageGoodDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3VideoMaterialsDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ModelTechInfoDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ConstructorDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ProductAnaloguesDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3SimilarProductsDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3CharacteristicsDatabaseDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3FillingCatalogEmloyeesFIOHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3FillingCatalogEmloyeesPositionHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3FillingCatalogEmloyeesPhoneOrEmailHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ElectronicArrivalTransferHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ElectronicArrivalStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ElectronicArrivalLaunchDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ElectronicOrderTransferHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ElectronicOrderStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ElectronicOrderLaunchDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ConfirmOrderTransferHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ConfirmOrderStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ConfirmOrderLaunchDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3NomenclatureFileRemainsTransferHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3NomenclatureFileRemainsStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3NomenclatureFileRemainsLaunchDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3NomenclatureFilePriceTransferHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3NomenclatureFilePriceStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3NomenclatureFilePriceLaunchDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3EstimatedDeliveryTransferHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3EstimatedDeliveryStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3EstimatedDeliveryLaunchDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3SpecialConditionsTransferHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3SpecialConditionsStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3SpecialConditionsLaunchDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3NomenclatureFileCharacteristicsTransferHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3NomenclatureFileCharacteristicsStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3NomenclatureFileCharacteristicsLaunchDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesFIOHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesPositionHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesPhoneOrEmailHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+
+        webElementsVendorContract.step3UPDStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3UPDLaunchDateDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ActServicesStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ActServicesLaunchDateDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3UKDStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3UKDLaunchDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3AdditionalAgreementsStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3AdditionalAgreementsLaunchDateDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3SpecificationStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3SpecificationLaunchDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3PowersAttorneyStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3PowersAttorneyLaunchDateDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ActReconciliationStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ActReconciliationLaunchDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ActReportStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ActReportLaunchDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ActDiscrepancyStartDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3ActDiscrepancyLaunchDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3FillingUZEDOEmloyeesFIOHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3FillingUZEDOEmloyeesPositionHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3FillingUZEDOEmloyeesPhoneOrEmailHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+
+        webElementsVendorContract.step3startEndDatePublicationMaterialsHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3PublicationOfMaterialsEmloyeesFIOHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3PublicationOfMaterialsEmloyeesPositionHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step3PublicationOfMaterialsEmloyeesPhoneOrEmailHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.buttonBackStep3.click();
+        webElementsVendorContract.buttonSubmitStep2.click();
+        webElementsVendorContract.step3ImageGoodsDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ConfiguratorDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3TechInfoDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3CurrentCertificatesDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ProductDescriptionDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3AdditionalImageGoodDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3VideoMaterialsDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ModelTechInfoDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ConstructorDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ProductAnaloguesDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3SimilarProductsDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3CharacteristicsDatabaseDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3FillingCatalogEmloyeesFIOHelp.shouldNot(exist);
+        webElementsVendorContract.step3FillingCatalogEmloyeesPositionHelp.shouldNot(exist);
+        webElementsVendorContract.step3FillingCatalogEmloyeesPhoneOrEmailHelp.shouldNot(exist);
+        webElementsVendorContract.step3ElectronicArrivalTransferHelp.shouldNot(exist);
+        webElementsVendorContract.step3ElectronicArrivalStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ElectronicArrivalLaunchDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ElectronicOrderTransferHelp.shouldNot(exist);
+        webElementsVendorContract.step3ElectronicOrderStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ElectronicOrderLaunchDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ConfirmOrderTransferHelp.shouldNot(exist);
+        webElementsVendorContract.step3ConfirmOrderStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ConfirmOrderLaunchDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3NomenclatureFileRemainsTransferHelp.shouldNot(exist);
+        webElementsVendorContract.step3NomenclatureFileRemainsStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3NomenclatureFileRemainsLaunchDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3NomenclatureFilePriceTransferHelp.shouldNot(exist);
+        webElementsVendorContract.step3NomenclatureFilePriceStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3NomenclatureFilePriceLaunchDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3EstimatedDeliveryTransferHelp.shouldNot(exist);
+        webElementsVendorContract.step3EstimatedDeliveryStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3EstimatedDeliveryLaunchDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3SpecialConditionsTransferHelp.shouldNot(exist);
+        webElementsVendorContract.step3SpecialConditionsStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3SpecialConditionsLaunchDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3NomenclatureFileCharacteristicsTransferHelp.shouldNot(exist);
+        webElementsVendorContract.step3NomenclatureFileCharacteristicsStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3NomenclatureFileCharacteristicsLaunchDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesFIOHelp.shouldNot(exist);
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesPositionHelp.shouldNot(exist);
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesPhoneOrEmailHelp.shouldNot(exist);
+
+        webElementsVendorContract.step3UPDStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3UPDLaunchDateDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ActServicesStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ActServicesLaunchDateDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3UKDStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3UKDLaunchDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3AdditionalAgreementsStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3AdditionalAgreementsLaunchDateDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3SpecificationStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3SpecificationLaunchDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3PowersAttorneyStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3PowersAttorneyLaunchDateDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ActReconciliationStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ActReconciliationLaunchDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ActReportStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ActReportLaunchDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ActDiscrepancyStartDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3ActDiscrepancyLaunchDateHelp.shouldNot(exist);
+        webElementsVendorContract.step3FillingUZEDOEmloyeesFIOHelp.shouldNot(exist);
+        webElementsVendorContract.step3FillingUZEDOEmloyeesPositionHelp.shouldNot(exist);
+        webElementsVendorContract.step3FillingUZEDOEmloyeesPhoneOrEmailHelp.shouldNot(exist);
+
+        webElementsVendorContract.step3startEndDatePublicationMaterialsHelp.shouldNot(exist);
+        webElementsVendorContract.step3PublicationOfMaterialsEmloyeesFIOHelp.shouldNot(exist);
+        webElementsVendorContract.step3PublicationOfMaterialsEmloyeesPositionHelp.shouldNot(exist);
+        webElementsVendorContract.step3PublicationOfMaterialsEmloyeesPhoneOrEmailHelp.shouldNot(exist);
+    }
+
+
+    @Test
+    @Tag("")
+    @DisplayName("Заполнение Шага 3")
+    void FillingAndSubmitStep3() {
+        Configuration.holdBrowserOpen = true;
+        webelements.mainLogo.click();
+        webelements.menuVendorContract.click();
+        webelements.title.shouldHave(text("Договор поставщика"));
+        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
+        webElementsVendorContract.radiobuttonStepONO.click();
+        webElementsVendorContract.buttonSubmitStep0.click();
+        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
+        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
+        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
+        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
+        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
+        webElementsVendorContract.managementSelectStep1.click();
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.pressEnter();
+        webElementsVendorContract.ogrnStep1.setValue("1234567890");
+        webElementsVendorContract.emailStep1.setValue("test@test.ru");
+        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
+        webElementsVendorContract.checkboxAddressStep1.click();
+        webElementsVendorContract.factoAddressStep1.shouldHave(text("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890"));
+        webElementsVendorContract.rightToSignSelectStep1.click();
+        webElementsVendorContract.rightToSignListStep1.pressEnter();
+        webElementsVendorContract.rightToSignSelectStep1.shouldHave(text("Устава"));
+        webElementsVendorContract.rightToSignNumberStep1.shouldNot(exist);
+        webElementsVendorContract.rightToSignDateStep1.shouldNot(exist);
+        webElementsVendorContract.bikStep1.setValue("8765432");
+        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
+        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
+        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
+        webElementsVendorContract.buttonSubmitStep1.click();
+        webElementsVendorContract.defermentStep2.setValue("20");
+        webElementsVendorContract.groupStep2.setValue("Товарная группа №5678");
+        webElementsVendorContract.nameStep2.setValue("Длинное наименование товара номер 456EWj");
+        webElementsVendorContract.discountStep2.setValue("30");
+        webElementsVendorContract.buttonSubmitStep2.click();
+        webElementsVendorContract.imageGoodsDatePickerStep3.click();
+        webElementsVendorContract.pickerImageGoodsEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerImageGoodsChooseCatalogStep3.click();
+        String weekAfterToday = lib.ui.MainPageObject.GetFullDateWeekAfterToday();
+        webElementsVendorContract.imageGoodsDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.configuratorDatePickerStep3.click();
+        webElementsVendorContract.pickerConfiguratorEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerConfiguratorChooseCatalogStep3.click();
+        webElementsVendorContract.configuratorDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.techInfoDatePickerStep3.click();
+        webElementsVendorContract.pickerTechInfoEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerTechInfoChooseCatalogStep3.click();
+        webElementsVendorContract.techInfoDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.currentCertificatesPickerStep3.click();
+        webElementsVendorContract.pickerCurrentCertificatesEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerCurrentCertificatesChooseCatalogStep3.click();
+        webElementsVendorContract.currentCertificatesDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.productDescriptionPickerStep3.click();
+        webElementsVendorContract.pickerProductDescriptionEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerProductDescriptionChooseCatalogStep3.click();
+        webElementsVendorContract.productDescriptionDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.additionalImageGoodPickerStep3.click();
+        webElementsVendorContract.pickerAdditionalImageGoodEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerAdditionalImageGoodChooseCatalogStep3.click();
+        webElementsVendorContract.additionalImageGoodDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.videoMaterialsPickerStep3.click();
+        webElementsVendorContract.pickerVideoMaterialsEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerVideoMaterialsChooseCatalogStep3.click();
+        webElementsVendorContract.videoMaterialsDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.modelTechInfoPickerStep3.click();
+        webElementsVendorContract.pickerModelTechInfoEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerModelTechInfoChooseCatalogStep3.click();
+        webElementsVendorContract.modelTechInfoDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.constructorPickerStep3.click();
+        webElementsVendorContract.pickerConstructorEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerConstructorChooseCatalogStep3.click();
+        webElementsVendorContract.constructorDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.productAnaloguesPickerStep3.click();
+        webElementsVendorContract.pickerProductAnaloguesEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerProductAnaloguesChooseCatalogStep3.click();
+        webElementsVendorContract.productAnaloguesDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+
+        webElementsVendorContract.similarProductsPickerStep3.click();
+        webElementsVendorContract.pickerSimilarProductsEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerSimilarProductsChooseCatalogStep3.click();
+        webElementsVendorContract.similarProductsDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.characteristicsDatabasePickerStep3.click();
+        webElementsVendorContract.pickerCharacteristicsDatabaseEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerCharacteristicsDatabaseChooseCatalogStep3.click();
+        webElementsVendorContract.characteristicsDatabaseDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.step3FillingCatalogEmloyeesFIO.setValue("Кукушкина Мария Ивановна");
+        webElementsVendorContract.step3FillingCatalogEmloyeesPosition.setValue("сотрудник");
+        webElementsVendorContract.step3FillingCatalogEmloyeesPhoneOrEmail.setValue("89246875445, test@mail.ru");
+
+    }
+
+
 }

@@ -7,6 +7,7 @@
     <list default="true" id="4940d5d9-c95e-4b06-a4e2-e339c3905889" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/VendorContractTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VendorContractTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/lib/ui/MainPageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/ui/MainPageObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorContract.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,41 +58,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTests.FillingAndSubmitStep2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorContractTests.AddingLineForProductGroupStep2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
-      <option name="METHOD_NAME" value="FillingAndSubmitStep2" />
+      <option name="METHOD_NAME" value="AddingLineForProductGroupStep2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTests.ReturnToStep0FromStep4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorContractTests.FillingAndSubmitStep3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
-      <option name="METHOD_NAME" value="ReturnToStep0FromStep4" />
+      <option name="METHOD_NAME" value="FillingAndSubmitStep3" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTests.ReturnToStep1FromStep2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorContractTests.SubmitStep3WithoutFilling" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
-      <option name="METHOD_NAME" value="ReturnToStep1FromStep2" />
+      <option name="METHOD_NAME" value="SubmitStep3WithoutFilling" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTests.SubmitContractStep0WithotFilling" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorContractTests.Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
-      <option name="METHOD_NAME" value="SubmitContractStep0WithotFilling" />
+      <option name="METHOD_NAME" value="Test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -100,10 +101,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.VendorContractTests" />
-        <item itemvalue="JUnit.VendorContractTests.FillingAndSubmitStep2" />
-        <item itemvalue="JUnit.VendorContractTests.ReturnToStep1FromStep2" />
-        <item itemvalue="JUnit.VendorContractTests.ReturnToStep0FromStep4" />
-        <item itemvalue="JUnit.VendorContractTests.SubmitContractStep0WithotFilling" />
+        <item itemvalue="JUnit.VendorContractTests.FillingAndSubmitStep3" />
+        <item itemvalue="JUnit.VendorContractTests.Test" />
+        <item itemvalue="JUnit.VendorContractTests.SubmitStep3WithoutFilling" />
+        <item itemvalue="JUnit.VendorContractTests.AddingLineForProductGroupStep2" />
       </list>
     </recent_temporary>
   </component>
