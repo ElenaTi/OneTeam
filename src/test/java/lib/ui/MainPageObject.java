@@ -43,6 +43,13 @@ public class MainPageObject {
         }
         return String.valueOf(yesterday);
     }
+    public static String GetFullDateYesterdayForTitle(){
+        LocalDate currentDate = LocalDate.now();
+        LocalDate yesterday = currentDate.minusDays(1);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String fullDateYesterday = yesterday.format(formatter);
+        return fullDateYesterday;
+    }
 
     public static String getToday()
     {
@@ -57,7 +64,7 @@ public class MainPageObject {
         int weekAfterToday = dateWeekAfterToday.getDayOfMonth();
         int monthOfDayWeekAfterToday = dateWeekAfterToday.getMonthValue();
         if (dateWeekAfterToday.getMonthValue() != currentDate.getMonthValue()) {
-            $(By.xpath("//button[@class ='ant-picker-header-next-btn']")).click();
+            $(By.xpath("//textarea/following-sibling::div[last()]//div[contains(@class,'picker-date-panel')]//button[contains(@class,'picker-header-next')]")).click();
         }
         return String.valueOf(weekAfterToday);
     }
@@ -68,5 +75,11 @@ public class MainPageObject {
         String fullDateWeekAfterToday = weekAfterToday.format(formatter);
         return fullDateWeekAfterToday;
     }
-
+    public static String GetFullDateWeekAfterTodayForTitle(){
+        LocalDate currentDate = LocalDate.now();
+        LocalDate weekAfterToday = currentDate.plusDays(7);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String fullDateWeekAfterToday = weekAfterToday.format(formatter);
+        return fullDateWeekAfterToday;
+    }
 }

@@ -48,7 +48,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.VendorContractTests">
+  <component name="RunManager" selected="JUnit.VendorContractTests.FillingAndSubmitWithoutMethodOfTransmitionProductInfoStep3">
     <configuration name="VendorContractTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
@@ -58,21 +58,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTests.AddingLineForProductGroupStep2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OneTeam" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
-      <option name="METHOD_NAME" value="AddingLineForProductGroupStep2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="VendorContractTests.FillingAndSubmitStep3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
       <option name="METHOD_NAME" value="FillingAndSubmitStep3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VendorContractTests.FillingAndSubmitWithoutMethodOfTransmitionProductInfoStep3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OneTeam" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
+      <option name="METHOD_NAME" value="FillingAndSubmitWithoutMethodOfTransmitionProductInfoStep3" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -100,11 +100,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.VendorContractTests" />
-        <item itemvalue="JUnit.VendorContractTests.FillingAndSubmitStep3" />
-        <item itemvalue="JUnit.VendorContractTests.Test" />
+        <item itemvalue="JUnit.VendorContractTests.FillingAndSubmitWithoutMethodOfTransmitionProductInfoStep3" />
         <item itemvalue="JUnit.VendorContractTests.SubmitStep3WithoutFilling" />
-        <item itemvalue="JUnit.VendorContractTests.AddingLineForProductGroupStep2" />
+        <item itemvalue="JUnit.VendorContractTests.FillingAndSubmitStep3" />
+        <item itemvalue="JUnit.VendorContractTests" />
+        <item itemvalue="JUnit.VendorContractTests.Test" />
       </list>
     </recent_temporary>
   </component>

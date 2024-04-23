@@ -648,8 +648,8 @@ public class VendorContractTests {
 
     @Test
     @Tag("")
-    @DisplayName("Заполнение Шага 3")
-    void FillingAndSubmitStep3() {
+    @DisplayName("Заполнение Шага 3 без выбора способа передачи информации о товарах")
+    void FillingAndSubmitWithoutMethodOfTransmitionProductInfoStep3() {
         Configuration.holdBrowserOpen = true;
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
@@ -741,6 +741,135 @@ public class VendorContractTests {
         webElementsVendorContract.step3FillingCatalogEmloyeesFIO.setValue("Кукушкина Мария Ивановна");
         webElementsVendorContract.step3FillingCatalogEmloyeesPosition.setValue("сотрудник");
         webElementsVendorContract.step3FillingCatalogEmloyeesPhoneOrEmail.setValue("89246875445, test@mail.ru");
+
+        webElementsVendorContract.electronicArrivalTransferSelectStep3.click();
+        webElementsVendorContract.electronicArrivalTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.electronicArrivalTransferVariantStep3.click();
+        webElementsVendorContract.electronicArrivalStartDatePickerStep3.click();
+        webElementsVendorContract.pickerElectronicArrivalStartDateEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerElectronicArrivalStartDateChooseEDIStep3.click();
+        webElementsVendorContract.electronicArrivalStartDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.electronicArrivalLaunchDatePickerStep3.click();
+        webElementsVendorContract.pickerElectronicArrivalLaunchDateEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerElectronicArrivalLaunchDateChooseEDIStep3.click();
+        webElementsVendorContract.electronicArrivalLaunchDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+
+        webElementsVendorContract.electronicOrderTransferSelectStep3.click();
+        webElementsVendorContract.electronicOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.electronicOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.electronicOrderTransferVariantStep3.click();
+        webElementsVendorContract.electronicOrderStartDatePickerStep3.click();
+        webElementsVendorContract.pickerElectronicOrderStartDateEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerElectronicOrderStartDateChooseEDIStep3.click();
+        webElementsVendorContract.electronicOrderStartDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.electronicOrderLaunchDatePickerStep3.click();
+        webElementsVendorContract.pickerElectronicOrderLaunchDateEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerElectronicOrderLaunchDateChooseEDIStep3.click();
+        webElementsVendorContract.electronicOrderLaunchDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+
+        webElementsVendorContract.confirmOrderTransferSelectStep3.click();
+        webElementsVendorContract.confirmOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.confirmOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.confirmOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.confirmOrderTransferVariantStep3.click();
+        webElementsVendorContract.confirmOrderStartDatePickerStep3.click();
+        webElementsVendorContract.pickerConfirmOrderStartDateEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerConfirmOrderStartDateChooseEDIStep3.click();
+        webElementsVendorContract.confirmOrderStartDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.confirmOrderLaunchDatePickerStep3.click();
+        webElementsVendorContract.pickerConfirmOrderLaunchDateEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerConfirmOrderLaunchDateChooseEDIStep3.click();
+        webElementsVendorContract.confirmOrderLaunchDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+
+        webElementsVendorContract.nomenclatureFileRemainsTransferSelectStep3.click();
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferVariantStep3.click();
+        webElementsVendorContract.nomenclatureFileRemainsStartDatePickerStep3.click();
+        webElementsVendorContract.pickerNomenclatureFileRemainsStartDateEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerNomenclatureFileRemainsStartDateChooseEDIStep3.click();
+        webElementsVendorContract.nomenclatureFileRemainsStartDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.nomenclatureFileRemainsLaunchDatePickerStep3.click();
+        webElementsVendorContract.pickerNomenclatureFileRemainsLaunchDateEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerNomenclatureFileRemainsLaunchDateChooseEDIStep3.click();
+        webElementsVendorContract.nomenclatureFileRemainsLaunchDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+
+        webElementsVendorContract.nomenclatureFilePriceTransferSelectStep3.click();
+        webElementsVendorContract.nomenclatureFilePriceTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFilePriceTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFilePriceTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFilePriceTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFilePriceTransferVariantStep3.click();
+        webElementsVendorContract.nomenclatureFilePriceStartDatePickerStep3.click();
+        webElementsVendorContract.pickerNomenclatureFilePriceStartDateEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerNomenclatureFilePriceStartDateChooseEDIStep3.click();
+        webElementsVendorContract.nomenclatureFilePriceStartDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.nomenclatureFilePriceLaunchDatePickerStep3.click();
+        webElementsVendorContract.pickerNomenclatureFilePriceLaunchDateEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerNomenclatureFilePriceLaunchDateChooseEDIStep3.click();
+        webElementsVendorContract.nomenclatureFilePriceLaunchDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+
+        webElementsVendorContract.estimatedDeliveryTransferSelectStep3.click();
+        webElementsVendorContract.estimatedDeliveryTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.estimatedDeliveryTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.estimatedDeliveryTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.estimatedDeliveryTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.estimatedDeliveryTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.estimatedDeliveryTransferVariantStep3.click();
+        webElementsVendorContract.estimatedDeliveryStartDatePickerStep3.click();
+        webElementsVendorContract.pickerEstimatedDeliveryStartDateEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerEstimatedDeliveryStartDateChooseEDIStep3.click();
+        webElementsVendorContract.estimatedDeliveryStartDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.estimatedDeliveryLaunchDatePickerStep3.click();
+        webElementsVendorContract.pickerEstimatedDeliveryLaunchDateEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerEstimatedDeliveryLaunchDateChooseEDIStep3.click();
+        webElementsVendorContract.estimatedDeliveryLaunchDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+
+        webElementsVendorContract.specialConditionsTransferSelectStep3.click();
+        webElementsVendorContract.specialConditionsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.specialConditionsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.specialConditionsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.specialConditionsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.specialConditionsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.specialConditionsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.specialConditionsTransferVariantStep3.click();
+        webElementsVendorContract.specialConditionsStartDatePickerStep3.click();
+        webElementsVendorContract.pickerSpecialConditionsStartDateEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerSpecialConditionsStartDateChooseEDIStep3.click();
+        webElementsVendorContract.specialConditionsStartDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.specialConditionsLaunchDatePickerStep3.click();
+        webElementsVendorContract.pickerSpecialConditionsLaunchDateEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerSpecialConditionsLaunchDateChooseEDIStep3.click();
+        webElementsVendorContract.specialConditionsLaunchDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferSelectStep3.click();
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferVariantStep3.click();
+        webElementsVendorContract.nomenclatureFileCharacteristicsStartDatePickerStep3.click();
+        webElementsVendorContract.pickerNomenclatureFileCharacteristicsStartDateEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerNomenclatureFileCharacteristicsStartDateChooseEDIStep3.click();
+        webElementsVendorContract.nomenclatureFileCharacteristicsStartDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+        webElementsVendorContract.nomenclatureFileCharacteristicsLaunchDatePickerStep3.click();
+        webElementsVendorContract.pickerNomenclatureFileCharacteristicsLaunchDateEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerNomenclatureFileCharacteristicsLaunchDateChooseEDIStep3.click();
+        webElementsVendorContract.nomenclatureFileCharacteristicsLaunchDateInputStep3.shouldHave(attribute("value", weekAfterToday));
+
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesFIO.setValue("Сусликова Ольга Петровна");
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesPosition.setValue("бухгалтер");
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesPhoneOrEmail.setValue("987654345678, test@mail.ru");
+
+        webElementsVendorContract.updStartDateUZEDOPickerStep3.click();
+        webElementsVendorContract.pickerUPDStartDateUZEDOEnableStep3.shouldBe(enabled);
+        webElementsVendorContract.pickerUPDStartDateUZEDOStep3.click();
+        webElementsVendorContract.updStartDateUZEDODateInputStep3.shouldHave(attribute("value", weekAfterToday));
+
 
     }
 

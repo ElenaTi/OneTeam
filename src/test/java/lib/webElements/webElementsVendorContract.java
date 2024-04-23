@@ -3,6 +3,8 @@ package lib.webElements;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
+import java.time.LocalDate;
+
 import static com.codeborne.selenide.Selenide.$;
 
 public class webElementsVendorContract {
@@ -93,65 +95,79 @@ public class webElementsVendorContract {
       //таблица Наполнение каталога
 
     static String yesterday = lib.ui.MainPageObject.GetYesterday();
+    static String yesterdayForTitle = lib.ui.MainPageObject.GetFullDateYesterdayForTitle();
     static String weekAfterToday = lib.ui.MainPageObject.GetWeekAfterToday();
-    public static SelenideElement pickerImageGoodsEnableStep3 = $(By.xpath("//textarea/following-sibling::div[1]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+yesterday+")]"));
-    public static SelenideElement pickerImageGoodsChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[1]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+weekAfterToday+")]"));
+    static String weekAfterTodayForTitle = lib.ui.MainPageObject.GetFullDateWeekAfterTodayForTitle();
+    static String weekAfterTodayForXPath = "'"+weekAfterTodayForTitle+"'";
+    static String yesterdayForXPath = "'"+yesterdayForTitle+"'";
+    public static SelenideElement pickerImageGoodsEnableStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerImageGoodsChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+weekAfterTodayForXPath+"]"));
     public static SelenideElement imageGoodsDatePickerStep3 = $(By.xpath("//input[contains(@id,'productInfo_imageGood_date')]/parent::div/parent::div"));
     public static SelenideElement imageGoodsDateInputStep3 = $(By.xpath("//input[contains(@id,'productInfo_imageGood_date')]"));
     public static SelenideElement step3ImageGoodsDateHelp = $(By.xpath("//div[contains(@id,'imageGood_date_help')]"));
+
     public static SelenideElement configuratorDatePickerStep3 = $(By.xpath("//input[contains(@id,'productInfo_configurator_date')]/parent::div/parent::div"));
-    public static SelenideElement pickerConfiguratorEnableStep3 = $(By.xpath("//textarea/following-sibling::div[2]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+yesterday+")]"));
-    public static SelenideElement pickerConfiguratorChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[2]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+weekAfterToday+")]"));
+    public static SelenideElement pickerConfiguratorEnableStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerConfiguratorChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+weekAfterTodayForXPath+"]"));
     public static SelenideElement configuratorDateInputStep3 = $(By.xpath("//input[contains(@id,'productInfo_configurator_date')]"));
     public static SelenideElement step3ConfiguratorDateHelp = $(By.xpath("//div[contains(@id,'configurator_date_help')]"));
 
-    public static SelenideElement pickerTechInfoEnableStep3 = $(By.xpath("//textarea/following-sibling::div[3]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+yesterday+")]"));
-    public static SelenideElement pickerTechInfoChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[3]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+weekAfterToday+")]"));
+    public static SelenideElement pickerTechInfoEnableStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerTechInfoChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+weekAfterTodayForXPath+"]"));
     public static SelenideElement techInfoDateInputStep3 = $(By.xpath("//input[contains(@id,'productInfo_technicalInfo_date')]"));
     public static SelenideElement techInfoDatePickerStep3 = $(By.xpath("//input[contains(@id,'productInfo_technicalInfo_date')]/parent::div/parent::div"));
     public static SelenideElement step3TechInfoDateHelp = $(By.xpath("//div[contains(@id,'technicalInfo_date_help')]"));
-    public static SelenideElement pickerCurrentCertificatesEnableStep3 = $(By.xpath("//textarea/following-sibling::div[4]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+yesterday+")]"));
-    public static SelenideElement pickerCurrentCertificatesChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[4]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+weekAfterToday+")]"));
+
+    public static SelenideElement pickerCurrentCertificatesEnableStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerCurrentCertificatesChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+weekAfterTodayForXPath+"]"));
     public static SelenideElement currentCertificatesDateInputStep3 = $(By.xpath("//input[contains(@id,'productInfo_currentCertificates_date')]"));
     public static SelenideElement currentCertificatesPickerStep3 = $(By.xpath("//input[contains(@id,'productInfo_currentCertificates_date')]/parent::div/parent::div"));
     public static SelenideElement step3CurrentCertificatesDateHelp = $(By.xpath("//div[contains(@id,'currentCertificates_date_help')]"));
-    public static SelenideElement pickerProductDescriptionEnableStep3 = $(By.xpath("//textarea/following-sibling::div[5]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+yesterday+")]"));
-    public static SelenideElement pickerProductDescriptionChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[5]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+weekAfterToday+")]"));
+
+    public static SelenideElement pickerProductDescriptionEnableStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerProductDescriptionChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+weekAfterTodayForXPath+"]"));
     public static SelenideElement productDescriptionDateInputStep3 = $(By.xpath("//input[contains(@id,'productInfo_productDescription_date')]"));
     public static SelenideElement productDescriptionPickerStep3 = $(By.xpath("//input[contains(@id,'productInfo_productDescription_date')]/parent::div/parent::div"));
     public static SelenideElement step3ProductDescriptionDateHelp = $(By.xpath("//div[contains(@id,'productDescription_date_help')]"));
-    public static SelenideElement pickerAdditionalImageGoodEnableStep3 = $(By.xpath("//textarea/following-sibling::div[6]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+yesterday+")]"));
-    public static SelenideElement pickerAdditionalImageGoodChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[6]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+weekAfterToday+")]"));
+
+    public static SelenideElement pickerAdditionalImageGoodEnableStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerAdditionalImageGoodChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+weekAfterTodayForXPath+"]"));
     public static SelenideElement additionalImageGoodDateInputStep3 = $(By.xpath("//input[contains(@id,'productInfo_additionalImageGood_date')]"));
     public static SelenideElement additionalImageGoodPickerStep3 = $(By.xpath("//input[contains(@id,'productInfo_additionalImageGood_date')]/parent::div/parent::div"));
     public static SelenideElement step3AdditionalImageGoodDateHelp = $(By.xpath("//div[contains(@id,'additionalImageGood_date_help')]"));
-    public static SelenideElement pickerVideoMaterialsEnableStep3 = $(By.xpath("//textarea/following-sibling::div[7]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+yesterday+")]"));
-    public static SelenideElement pickerVideoMaterialsChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[7]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+weekAfterToday+")]"));
+
+    public static SelenideElement pickerVideoMaterialsEnableStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerVideoMaterialsChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+weekAfterTodayForXPath+"]"));
     public static SelenideElement videoMaterialsDateInputStep3 = $(By.xpath("//input[contains(@id,'productInfo_videoMaterials_date')]"));
     public static SelenideElement videoMaterialsPickerStep3 = $(By.xpath("//input[contains(@id,'productInfo_videoMaterials_date')]/parent::div/parent::div"));
     public static SelenideElement step3VideoMaterialsDateHelp = $(By.xpath("//div[contains(@id,'videoMaterials_date_help')]"));
-    public static SelenideElement pickerModelTechInfoEnableStep3 = $(By.xpath("//textarea/following-sibling::div[8]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+yesterday+")]"));
-    public static SelenideElement pickerModelTechInfoChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[8]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+weekAfterToday+")]"));
+
+    public static SelenideElement pickerModelTechInfoEnableStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerModelTechInfoChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+weekAfterTodayForXPath+"]"));
     public static SelenideElement modelTechInfoDateInputStep3 = $(By.xpath("//input[contains(@id,'productInfo_modelTechnicalInfo_date')]"));
     public static SelenideElement modelTechInfoPickerStep3 = $(By.xpath("//input[contains(@id,'productInfo_modelTechnicalInfo_date')]/parent::div/parent::div"));
     public static SelenideElement step3ModelTechInfoDateHelp = $(By.xpath("//div[contains(@id,'modelTechnicalInfo_date_help')]"));
-    public static SelenideElement pickerConstructorEnableStep3 = $(By.xpath("//textarea/following-sibling::div[9]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+yesterday+")]"));
-    public static SelenideElement pickerConstructorChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[9]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+weekAfterToday+")]"));
+
+    public static SelenideElement pickerConstructorEnableStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerConstructorChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+weekAfterTodayForXPath+"]"));
     public static SelenideElement constructorDateInputStep3 = $(By.xpath("//input[contains(@id,'productInfo_constructor_date')]"));
     public static SelenideElement constructorPickerStep3 = $(By.xpath("//input[contains(@id,'productInfo_constructor_date')]/parent::div/parent::div"));
     public static SelenideElement step3ConstructorDateHelp = $(By.xpath("//div[contains(@id,'constructor_date_help')]"));
-    public static SelenideElement pickerProductAnaloguesEnableStep3 = $(By.xpath("//textarea/following-sibling::div[10]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+yesterday+")]"));
-    public static SelenideElement pickerProductAnaloguesChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[10]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+weekAfterToday+")]"));
+
+    public static SelenideElement pickerProductAnaloguesEnableStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerProductAnaloguesChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+weekAfterTodayForXPath+"]"));
     public static SelenideElement productAnaloguesDateInputStep3 = $(By.xpath("//input[contains(@id,'productInfo_productAnalogues_date')]"));
     public static SelenideElement productAnaloguesPickerStep3 = $(By.xpath("//input[contains(@id,'productInfo_productAnalogues_date')]/parent::div/parent::div"));
     public static SelenideElement step3ProductAnaloguesDateHelp = $(By.xpath("//div[contains(@id,'productAnalogues_date_help')]"));
-    public static SelenideElement pickerSimilarProductsEnableStep3 = $(By.xpath("//textarea/following-sibling::div[11]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+yesterday+")]"));
-    public static SelenideElement pickerSimilarProductsChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[11]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+weekAfterToday+")]"));
+
+    public static SelenideElement pickerSimilarProductsEnableStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerSimilarProductsChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+weekAfterTodayForXPath+"]"));
     public static SelenideElement similarProductsDateInputStep3 = $(By.xpath("//input[contains(@id,'productInfo_similarProducts_date')]"));
     public static SelenideElement similarProductsPickerStep3 = $(By.xpath("//input[contains(@id,'productInfo_similarProducts_date')]/parent::div/parent::div"));
     public static SelenideElement step3SimilarProductsDateHelp = $(By.xpath("//div[contains(@id,'similarProducts_date_help')]"));
-    public static SelenideElement pickerCharacteristicsDatabaseEnableStep3 = $(By.xpath("//textarea/following-sibling::div[12]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+yesterday+")]"));
-    public static SelenideElement pickerCharacteristicsDatabaseChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[12]//table[contains(@class,'ant-picker-content')]/tbody//div[contains(.,"+weekAfterToday+")]"));
+
+    public static SelenideElement pickerCharacteristicsDatabaseEnableStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerCharacteristicsDatabaseChooseCatalogStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+weekAfterTodayForXPath+"]"));
     public static SelenideElement characteristicsDatabaseDateInputStep3 = $(By.xpath("//input[contains(@id,'productInfo_characteristicsDatabase_date')]"));
     public static SelenideElement characteristicsDatabasePickerStep3 = $(By.xpath("//input[contains(@id,'productInfo_characteristicsDatabase_date')]/parent::div/parent::div"));
     public static SelenideElement step3CharacteristicsDatabaseDateHelp = $(By.xpath("//div[contains(@id,'characteristicsDatabase_date_help')]"));
@@ -164,36 +180,142 @@ public class webElementsVendorContract {
     public static SelenideElement step3FillingCatalogEmloyeesPhoneOrEmailHelp = $(By.xpath("//h3[contains(.,'наполнение каталога')]/parent::div/following-sibling::div//div[contains(@id, 'phoneOrEmail_help')]"));
 
     //таблица EDI-обмен
+    public static SelenideElement electronicArrivalTransferSelectStep3 = $(By.xpath("//tr[contains(@data-row-key,'electronicArrival')]/td[2]//div[contains(@class,'ant-select-outlined')]"));
+    public static SelenideElement electronicArrivalTransferListStep3 = $(By.xpath("//input[contains(@id,'electronicExchange_listMessages_electronicArrival_transfer')]"));
+    public static SelenideElement electronicArrivalTransferVariantStep3 = $(By.xpath("//div[contains(@id,'electronicArrival_transfer_list')][@role='listbox']/following-sibling::div//div[@class='rc-virtual-list-holder-inner']/div[contains(@class,'item-option-active')]/div"));
     public static SelenideElement step3ElectronicArrivalTransferHelp = $(By.xpath("//div[contains(@id,'electronicArrival_transfer_help')]"));
+
+
+    public static SelenideElement pickerElectronicArrivalStartDateEnableStep3 = $(By.xpath("//div[contains(@id,'electronicArrival_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div//tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerElectronicArrivalStartDateChooseEDIStep3 = $(By.xpath("//div[contains(@id,'electronicArrival_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div//tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement electronicArrivalStartDateInputStep3 = $(By.xpath("//input[contains(@id,'electronicArrival_startDate')]"));
+    public static SelenideElement electronicArrivalStartDatePickerStep3 = $(By.xpath("//input[contains(@id,'electronicArrival_startDate')]/parent::div/parent::div"));
     public static SelenideElement step3ElectronicArrivalStartDateHelp = $(By.xpath("//div[contains(@id,'electronicArrival_startDate_help')]"));
+    public static SelenideElement pickerElectronicArrivalLaunchDateEnableStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerElectronicArrivalLaunchDateChooseEDIStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement electronicArrivalLaunchDateInputStep3 = $(By.xpath("//input[contains(@id,'electronicArrival_launchDate')]"));
+    public static SelenideElement electronicArrivalLaunchDatePickerStep3 = $(By.xpath("//input[contains(@id,'electronicArrival_launchDate')]/parent::div/parent::div"));
     public static SelenideElement step3ElectronicArrivalLaunchDateHelp = $(By.xpath("//div[contains(@id,'electronicArrival_launchDate_help')]"));
+
+    public static SelenideElement electronicOrderTransferSelectStep3 = $(By.xpath("//tr[contains(@data-row-key,'electronicOrder')]/td[2]//div[contains(@class,'ant-select-outlined')]"));
+    public static SelenideElement electronicOrderTransferListStep3 = $(By.xpath("//input[contains(@id,'electronicExchange_listMessages_electronicOrder_transfer')]"));
+    public static SelenideElement electronicOrderTransferVariantStep3 = $(By.xpath("//div[contains(@id,'electronicOrder_transfer_list')][@role='listbox']/following-sibling::div//div[@class='rc-virtual-list-holder-inner']/div[contains(@class,'item-option-active')]/div"));
     public static SelenideElement step3ElectronicOrderTransferHelp = $(By.xpath("//div[contains(@id,'electronicOrder_transfer_help')]"));
+    public static SelenideElement pickerElectronicOrderStartDateEnableStep3 = $(By.xpath("//div[contains(@id,'electronicOrder_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div//tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerElectronicOrderStartDateChooseEDIStep3 = $(By.xpath("//div[contains(@id,'electronicOrder_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div//tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement electronicOrderStartDateInputStep3 = $(By.xpath("//input[contains(@id,'electronicOrder_startDate')]"));
+    public static SelenideElement electronicOrderStartDatePickerStep3 = $(By.xpath("//input[contains(@id,'electronicOrder_startDate')]/parent::div/parent::div"));
     public static SelenideElement step3ElectronicOrderStartDateHelp = $(By.xpath("//div[contains(@id,'electronicOrder_startDate_help')]"));
+    public static SelenideElement pickerElectronicOrderLaunchDateEnableStep3 = $(By.xpath("//div[contains(@id,'electronicOrder_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div/following-sibling::div///tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerElectronicOrderLaunchDateChooseEDIStep3 = $(By.xpath("//div[contains(@id,'electronicOrder_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div/following-sibling::div//tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement electronicOrderLaunchDateInputStep3 = $(By.xpath("//input[contains(@id,'electronicOrder_launchDate')]"));
+    public static SelenideElement electronicOrderLaunchDatePickerStep3 = $(By.xpath("//input[contains(@id,'electronicOrder_launchDate')]/parent::div/parent::div"));
     public static SelenideElement step3ElectronicOrderLaunchDateHelp = $(By.xpath("//div[contains(@id,'electronicOrder_launchDate_help')]"));
+
+    public static SelenideElement confirmOrderTransferSelectStep3 = $(By.xpath("//tr[contains(@data-row-key,'confirmOrder')]/td[2]//div[contains(@class,'ant-select-outlined')]"));
+    public static SelenideElement confirmOrderTransferListStep3 = $(By.xpath("//input[contains(@id,'electronicExchange_listMessages_confirmOrder_transfer')]"));
+    public static SelenideElement confirmOrderTransferVariantStep3 = $(By.xpath("//div[contains(@id,'confirmOrder_transfer_list')][@role='listbox']/following-sibling::div//div[@class='rc-virtual-list-holder-inner']/div[contains(@class,'item-option-active')]/div"));
     public static SelenideElement step3ConfirmOrderTransferHelp = $(By.xpath("//div[contains(@id,'confirmOrder_transfer_help')]"));
+    public static SelenideElement pickerConfirmOrderStartDateEnableStep3 = $(By.xpath("//div[contains(@id,'confirmOrder_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div//tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerConfirmOrderStartDateChooseEDIStep3 = $(By.xpath("//div[contains(@id,'confirmOrder_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div//tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement confirmOrderStartDateInputStep3 = $(By.xpath("//input[contains(@id,'confirmOrder_startDate')]"));
+    public static SelenideElement confirmOrderStartDatePickerStep3 = $(By.xpath("//input[contains(@id,'confirmOrder_startDate')]/parent::div/parent::div"));
     public static SelenideElement step3ConfirmOrderStartDateHelp = $(By.xpath("//div[contains(@id,'confirmOrder_startDate_help')]"));
+    public static SelenideElement pickerConfirmOrderLaunchDateEnableStep3 = $(By.xpath("//div[contains(@id,'confirmOrder_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div/following-sibling::div//tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerConfirmOrderLaunchDateChooseEDIStep3 = $(By.xpath("//div[contains(@id,'confirmOrder_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div/following-sibling::div//tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement confirmOrderLaunchDateInputStep3 = $(By.xpath("//input[contains(@id,'confirmOrder_launchDate')]"));
+    public static SelenideElement confirmOrderLaunchDatePickerStep3 = $(By.xpath("//input[contains(@id,'confirmOrder_launchDate')]/parent::div/parent::div"));
     public static SelenideElement step3ConfirmOrderLaunchDateHelp = $(By.xpath("//div[contains(@id,'confirmOrder_launchDate_help')]"));
+
+    public static SelenideElement nomenclatureFileRemainsTransferSelectStep3 = $(By.xpath("//tr[contains(@data-row-key,'nomenclatureFileRemains')]/td[2]//div[contains(@class,'ant-select-outlined')]"));
+    public static SelenideElement nomenclatureFileRemainsTransferListStep3 = $(By.xpath("//input[contains(@id,'electronicExchange_listMessages_nomenclatureFileRemains_transfer')]"));
+    public static SelenideElement nomenclatureFileRemainsTransferVariantStep3 = $(By.xpath("//div[contains(@id,'nomenclatureFileRemains_transfer_list')][@role='listbox']/following-sibling::div//div[@class='rc-virtual-list-holder-inner']/div[contains(@class,'item-option-active')]/div"));
     public static SelenideElement step3NomenclatureFileRemainsTransferHelp = $(By.xpath("//div[contains(@id,'nomenclatureFileRemains_transfer_help')]"));
+    public static SelenideElement pickerNomenclatureFileRemainsStartDateEnableStep3 = $(By.xpath("//div[contains(@id,'nomenclatureFileRemains_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div//tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerNomenclatureFileRemainsStartDateChooseEDIStep3 = $(By.xpath("//div[contains(@id,'nomenclatureFileRemains_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div//tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement nomenclatureFileRemainsStartDateInputStep3 = $(By.xpath("//input[contains(@id,'nomenclatureFileRemains_startDate')]"));
+    public static SelenideElement nomenclatureFileRemainsStartDatePickerStep3 = $(By.xpath("//input[contains(@id,'nomenclatureFileRemains_startDate')]/parent::div/parent::div"));
     public static SelenideElement step3NomenclatureFileRemainsStartDateHelp = $(By.xpath("//div[contains(@id,'nomenclatureFileRemains_startDate_help')]"));
+    public static SelenideElement pickerNomenclatureFileRemainsLaunchDateEnableStep3 = $(By.xpath("//div[contains(@id,'nomenclatureFileRemains_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div/following-sibling::div//tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerNomenclatureFileRemainsLaunchDateChooseEDIStep3 = $(By.xpath("//div[contains(@id,'nomenclatureFileRemains_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div/following-sibling::div//tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement nomenclatureFileRemainsLaunchDateInputStep3 = $(By.xpath("//input[contains(@id,'nomenclatureFileRemains_launchDate')]"));
+    public static SelenideElement nomenclatureFileRemainsLaunchDatePickerStep3 = $(By.xpath("//input[contains(@id,'nomenclatureFileRemains_launchDate')]/parent::div/parent::div"));
     public static SelenideElement step3NomenclatureFileRemainsLaunchDateHelp = $(By.xpath("//div[contains(@id,'nomenclatureFileRemains_launchDate_help')]"));
+
+    public static SelenideElement nomenclatureFilePriceTransferSelectStep3 = $(By.xpath("//tr[contains(@data-row-key,'nomenclatureFilePrice')]/td[2]//div[contains(@class,'ant-select-outlined')]"));
+    public static SelenideElement nomenclatureFilePriceTransferListStep3 = $(By.xpath("//input[contains(@id,'electronicExchange_listMessages_nomenclatureFilePrice_transfer')]"));
+    public static SelenideElement nomenclatureFilePriceTransferVariantStep3 = $(By.xpath("//div[contains(@id,'nomenclatureFilePrice_transfer_list')][@role='listbox']/following-sibling::div//div[@class='rc-virtual-list-holder-inner']/div[contains(@class,'item-option-active')]/div"));
     public static SelenideElement step3NomenclatureFilePriceTransferHelp = $(By.xpath("//div[contains(@id,'nomenclatureFilePrice_transfer_help')]"));
+    public static SelenideElement pickerNomenclatureFilePriceStartDateEnableStep3 = $(By.xpath("//div[contains(@id,'nomenclatureFilePrice_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div//tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerNomenclatureFilePriceStartDateChooseEDIStep3 = $(By.xpath("//div[contains(@id,'nomenclatureFilePrice_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div//tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement nomenclatureFilePriceStartDateInputStep3 = $(By.xpath("//input[contains(@id,'nomenclatureFilePrice_startDate')]"));
+    public static SelenideElement nomenclatureFilePriceStartDatePickerStep3 = $(By.xpath("//input[contains(@id,'nomenclatureFilePrice_startDate')]/parent::div/parent::div"));
     public static SelenideElement step3NomenclatureFilePriceStartDateHelp = $(By.xpath("//div[contains(@id,'nomenclatureFilePrice_startDate_help')]"));
+    public static SelenideElement pickerNomenclatureFilePriceLaunchDateEnableStep3 = $(By.xpath("//div[contains(@id,'nomenclatureFilePrice_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div/following-sibling::div//tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerNomenclatureFilePriceLaunchDateChooseEDIStep3 = $(By.xpath("//div[contains(@id,'nomenclatureFilePrice_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div/following-sibling::div//tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement nomenclatureFilePriceLaunchDateInputStep3 = $(By.xpath("//input[contains(@id,'nomenclatureFilePrice_launchDate')]"));
+    public static SelenideElement nomenclatureFilePriceLaunchDatePickerStep3 = $(By.xpath("//input[contains(@id,'nomenclatureFilePrice_launchDate')]/parent::div/parent::div"));
     public static SelenideElement step3NomenclatureFilePriceLaunchDateHelp = $(By.xpath("//div[contains(@id,'nomenclatureFilePrice_launchDate_help')]"));
+
+    public static SelenideElement estimatedDeliveryTransferSelectStep3 = $(By.xpath("//tr[contains(@data-row-key,'estimatedDelivery')]/td[2]//div[contains(@class,'ant-select-outlined')]"));
+    public static SelenideElement estimatedDeliveryTransferListStep3 = $(By.xpath("//input[contains(@id,'electronicExchange_listMessages_estimatedDelivery_transfer')]"));
+    public static SelenideElement estimatedDeliveryTransferVariantStep3 = $(By.xpath("//div[contains(@id,'estimatedDelivery_transfer_list')][@role='listbox']/following-sibling::div//div[@class='rc-virtual-list-holder-inner']/div[contains(@class,'item-option-active')]/div"));
     public static SelenideElement step3EstimatedDeliveryTransferHelp = $(By.xpath("//div[contains(@id,'estimatedDelivery_transfer_help')]"));
+    public static SelenideElement pickerEstimatedDeliveryStartDateEnableStep3 = $(By.xpath("//div[contains(@id,'estimatedDelivery_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div//tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerEstimatedDeliveryStartDateChooseEDIStep3 = $(By.xpath("//div[contains(@id,'estimatedDelivery_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div//tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement estimatedDeliveryStartDateInputStep3 = $(By.xpath("//input[contains(@id,'estimatedDelivery_startDate')]"));
+    public static SelenideElement estimatedDeliveryStartDatePickerStep3 = $(By.xpath("//input[contains(@id,'estimatedDelivery_startDate')]/parent::div/parent::div"));
     public static SelenideElement step3EstimatedDeliveryStartDateHelp = $(By.xpath("//div[contains(@id,'estimatedDelivery_startDate_help')]"));
+    public static SelenideElement pickerEstimatedDeliveryLaunchDateEnableStep3 = $(By.xpath("//div[contains(@id,'estimatedDelivery_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div/following-sibling::div//tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerEstimatedDeliveryLaunchDateChooseEDIStep3 = $(By.xpath("//div[contains(@id,'estimatedDelivery_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div/following-sibling::div//tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement estimatedDeliveryLaunchDateInputStep3 = $(By.xpath("//input[contains(@id,'estimatedDelivery_launchDate')]"));
+    public static SelenideElement estimatedDeliveryLaunchDatePickerStep3 = $(By.xpath("//input[contains(@id,'estimatedDelivery_launchDate')]/parent::div/parent::div"));
     public static SelenideElement step3EstimatedDeliveryLaunchDateHelp = $(By.xpath("//div[contains(@id,'estimatedDelivery_launchDate_help')]"));
+
+    public static SelenideElement specialConditionsTransferSelectStep3 = $(By.xpath("//tr[contains(@data-row-key,'specialConditions')]/td[2]//div[contains(@class,'ant-select-outlined')]"));
+    public static SelenideElement specialConditionsTransferListStep3 = $(By.xpath("//input[contains(@id,'electronicExchange_listMessages_specialConditions_transfer')]"));
+    public static SelenideElement specialConditionsTransferVariantStep3 = $(By.xpath("//div[contains(@id,'specialConditions_transfer_list')][@role='listbox']/following-sibling::div//div[@class='rc-virtual-list-holder-inner']/div[contains(@class,'item-option-active')]/div"));
     public static SelenideElement step3SpecialConditionsTransferHelp = $(By.xpath("//div[contains(@id,'specialConditions_transfer_help')]"));
+    public static SelenideElement pickerSpecialConditionsStartDateEnableStep3 = $(By.xpath("//div[contains(@id,'specialConditions_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div//tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerSpecialConditionsStartDateChooseEDIStep3 = $(By.xpath("//div[contains(@id,'specialConditions_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div//tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement specialConditionsStartDateInputStep3 = $(By.xpath("//input[contains(@id,'specialConditions_startDate')]"));
+    public static SelenideElement specialConditionsStartDatePickerStep3 = $(By.xpath("//input[contains(@id,'specialConditions_startDate')]/parent::div/parent::div"));
     public static SelenideElement step3SpecialConditionsStartDateHelp = $(By.xpath("//div[contains(@id,'specialConditions_startDate_help')]"));
+    public static SelenideElement pickerSpecialConditionsLaunchDateEnableStep3 = $(By.xpath("//div[contains(@id,'specialConditions_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div/following-sibling::div//tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerSpecialConditionsLaunchDateChooseEDIStep3 = $(By.xpath("//div[contains(@id,'specialConditions_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div/following-sibling::div//tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement specialConditionsLaunchDateInputStep3 = $(By.xpath("//input[contains(@id,'specialConditions_launchDate')]"));
+    public static SelenideElement specialConditionsLaunchDatePickerStep3 = $(By.xpath("//input[contains(@id,'specialConditions_launchDate')]/parent::div/parent::div"));
     public static SelenideElement step3SpecialConditionsLaunchDateHelp = $(By.xpath("//div[contains(@id,'specialConditions_launchDate_help')]"));
+
+    public static SelenideElement nomenclatureFileCharacteristicsTransferSelectStep3 = $(By.xpath("//tr[contains(@data-row-key,'nomenclatureFileCharacteristics')]/td[2]//div[contains(@class,'ant-select-outlined')]"));
+    public static SelenideElement nomenclatureFileCharacteristicsTransferListStep3 = $(By.xpath("//input[contains(@id,'electronicExchange_listMessages_nomenclatureFileCharacteristics_transfer')]"));
+    public static SelenideElement nomenclatureFileCharacteristicsTransferVariantStep3 = $(By.xpath("//div[contains(@id,'nomenclatureFileCharacteristics_transfer_list')][@role='listbox']/following-sibling::div//div[@class='rc-virtual-list-holder-inner']/div[contains(@class,'item-option-active')]/div"));
     public static SelenideElement step3NomenclatureFileCharacteristicsTransferHelp = $(By.xpath("//div[contains(@id,'nomenclatureFileCharacteristics_transfer_help')]"));
+    public static SelenideElement pickerNomenclatureFileCharacteristicsStartDateEnableStep3 = $(By.xpath("//div[contains(@id,'nomenclatureFileCharacteristics_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div//tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerNomenclatureFileCharacteristicsStartDateChooseEDIStep3 = $(By.xpath("//div[contains(@id,'nomenclatureFileCharacteristics_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div//tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement nomenclatureFileCharacteristicsStartDateInputStep3 = $(By.xpath("//input[contains(@id,'nomenclatureFileCharacteristics_startDate')]"));
+    public static SelenideElement nomenclatureFileCharacteristicsStartDatePickerStep3 = $(By.xpath("//input[contains(@id,'nomenclatureFileCharacteristics_startDate')]/parent::div/parent::div"));
     public static SelenideElement step3NomenclatureFileCharacteristicsStartDateHelp = $(By.xpath("//div[contains(@id,'nomenclatureFileCharacteristics_startDate_help')]"));
+    public static SelenideElement pickerNomenclatureFileCharacteristicsLaunchDateEnableStep3 = $(By.xpath("//div[contains(@id,'nomenclatureFileCharacteristics_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div/following-sibling::div//tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerNomenclatureFileCharacteristicsLaunchDateChooseEDIStep3 = $(By.xpath("//div[contains(@id,'nomenclatureFileCharacteristics_transfer_list')][@role='listbox']/parent::div/parent::div/parent::div/following-sibling::div/following-sibling::div//tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement nomenclatureFileCharacteristicsLaunchDateInputStep3 = $(By.xpath("//input[contains(@id,'nomenclatureFileCharacteristics_launchDate')]"));
+    public static SelenideElement nomenclatureFileCharacteristicsLaunchDatePickerStep3 = $(By.xpath("//input[contains(@id,'nomenclatureFileCharacteristics_launchDate')]/parent::div/parent::div"));
     public static SelenideElement step3NomenclatureFileCharacteristicsLaunchDateHelp = $(By.xpath("//div[contains(@id,'nomenclatureFileCharacteristics_launchDate_help')]"));
 
+
+    public static SelenideElement step3FillingEDIExchangeEmloyeesFIO = $(By.xpath("//h3[contains(.,'EDI-обмен')]/parent::div/following-sibling::div//input[contains(@id,'fio')]"));
     public static SelenideElement step3FillingEDIExchangeEmloyeesFIOHelp = $(By.xpath("//h3[contains(.,'EDI-обмен')]/parent::div/following-sibling::div//div[contains(@id, 'fio_help')]"));
+    public static SelenideElement step3FillingEDIExchangeEmloyeesPosition = $(By.xpath("//h3[contains(.,'EDI-обмен')]/parent::div/following-sibling::div//input[contains(@id,'position')]"));
     public static SelenideElement step3FillingEDIExchangeEmloyeesPositionHelp = $(By.xpath("//h3[contains(.,'EDI-обмен')]/parent::div/following-sibling::div//div[contains(@id, 'position_help')]"));
+    public static SelenideElement step3FillingEDIExchangeEmloyeesPhoneOrEmail = $(By.xpath("//h3[contains(.,'EDI-обмен')]/parent::div/following-sibling::div//input[contains(@id,'phoneOrEmail')]"));
     public static SelenideElement step3FillingEDIExchangeEmloyeesPhoneOrEmailHelp = $(By.xpath("//h3[contains(.,'EDI-обмен')]/parent::div/following-sibling::div//div[contains(@id, 'phoneOrEmail_help')]"));
 
     //таблица организация ЮЗЭДО
+
+    public static SelenideElement pickerUPDStartDateUZEDOEnableStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+yesterdayForXPath+"]"));
+    public static SelenideElement pickerUPDStartDateUZEDOStep3 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+weekAfterTodayForXPath+"]"));
+    public static SelenideElement updStartDateUZEDODateInputStep3 = $(By.xpath("//input[contains(@id,'uzedoTerm_upd_startDate')]"));
+    public static SelenideElement updStartDateUZEDOPickerStep3 = $(By.xpath("//input[contains(@id,'uzedoTerm_upd_startDate')]/parent::div/parent::div"));
     public static SelenideElement step3UPDStartDateHelp = $(By.xpath("//div[contains(@id,'uzedoTerm_upd_startDate_help')]"));
     public static SelenideElement step3UPDLaunchDateDateHelp = $(By.xpath("//div[contains(@id,'uzedoTerm_upd_launchDate_help')]"));
     public static SelenideElement step3ActServicesStartDateHelp = $(By.xpath("//div[contains(@id,'uzedoTerm_actServices_startDate_help')]"));
