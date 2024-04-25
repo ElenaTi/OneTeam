@@ -48,51 +48,52 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.VendorContractTests.FillingAndSubmitWithoutMethodOfTransmitionProductInfoStep3">
-    <configuration name="VendorContractTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.VendorContractTests.SubmitStep4WithRequiredValidFiles">
+    <configuration name="VendorContractTests.FillingAndSubmitWithAddingAndFillingEmloyeesStep3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="VendorContractTests.FillingAndSubmitStep3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="OneTeam" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
-      <option name="METHOD_NAME" value="FillingAndSubmitStep3" />
+      <option name="METHOD_NAME" value="FillingAndSubmitWithAddingAndFillingEmloyeesStep3" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTests.FillingAndSubmitWithoutMethodOfTransmitionProductInfoStep3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorContractTests.FillingAndSubmitWithAddingEmloyeesBackToStep2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
-      <option name="METHOD_NAME" value="FillingAndSubmitWithoutMethodOfTransmitionProductInfoStep3" />
+      <option name="METHOD_NAME" value="FillingAndSubmitWithAddingEmloyeesBackToStep2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTests.SubmitStep3WithoutFilling" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorContractTests.FillingAndSubmitWithAddingEmloyeesStep3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
-      <option name="METHOD_NAME" value="SubmitStep3WithoutFilling" />
+      <option name="METHOD_NAME" value="FillingAndSubmitWithAddingEmloyeesStep3" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTests.Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorContractTests.SubmitStep4WithRequiredValidFiles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
-      <option name="METHOD_NAME" value="Test" />
+      <option name="METHOD_NAME" value="SubmitStep4WithRequiredValidFiles" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VendorContractTests.SubmitStep4WithoutFillingGoBackToStep0" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OneTeam" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
+      <option name="METHOD_NAME" value="SubmitStep4WithoutFillingGoBackToStep0" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -100,11 +101,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.VendorContractTests.FillingAndSubmitWithoutMethodOfTransmitionProductInfoStep3" />
-        <item itemvalue="JUnit.VendorContractTests.SubmitStep3WithoutFilling" />
-        <item itemvalue="JUnit.VendorContractTests.FillingAndSubmitStep3" />
-        <item itemvalue="JUnit.VendorContractTests" />
-        <item itemvalue="JUnit.VendorContractTests.Test" />
+        <item itemvalue="JUnit.VendorContractTests.SubmitStep4WithRequiredValidFiles" />
+        <item itemvalue="JUnit.VendorContractTests.SubmitStep4WithoutFillingGoBackToStep0" />
+        <item itemvalue="JUnit.VendorContractTests.FillingAndSubmitWithAddingAndFillingEmloyeesStep3" />
+        <item itemvalue="JUnit.VendorContractTests.FillingAndSubmitWithAddingEmloyeesBackToStep2" />
+        <item itemvalue="JUnit.VendorContractTests.FillingAndSubmitWithAddingEmloyeesStep3" />
       </list>
     </recent_temporary>
   </component>
