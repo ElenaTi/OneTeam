@@ -2166,7 +2166,6 @@ public class VendorContractTests {
     @Tag("")
     @DisplayName("Заполнение и сабмит Шага 4 только с обязательными валидными файлами")
     void SubmitStep4WithRequiredValidFiles() throws InterruptedException{
-        Configuration.holdBrowserOpen = true;
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
         webelements.title.shouldHave(text("Договор поставщика"));
@@ -2198,9 +2197,6 @@ public class VendorContractTests {
         webElementsVendorContract.nameStep2.setValue("Длинное наименование товара номер 456EWj");
         webElementsVendorContract.discountStep2.setValue("30");
         webElementsVendorContract.buttonSubmitStep2.click();
-
-        String weekAfterToday = lib.ui.MainPageObject.GetFullDateWeekAfterToday();
-        String monthAfterToday = lib.ui.MainPageObject.GetFullDateMonthAfterToday();
 
         selectEnabledDayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
         selectWeekAfterTodayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
@@ -2380,21 +2376,773 @@ public class VendorContractTests {
         webElementsVendorContract.step3PublicationMaterialsEmloyeesPhoneOrEmail.setValue("987654345678, test_test.test@mail.ru");
 
         webElementsVendorContract.buttonSubmitStep3.click();
-        webElementsVendorContract.step4IsActiveAfterStep3.should(exist);
+        webElementsVendorContract.step4IsActiveAfterStep3.shouldBe(visible,Duration.ofMillis(10000));
         webElementsVendorContract.step4unit1.shouldHave(text("Скачать договор для подписания"));
 
         webElementsVendorContract.uploadContractStep4.uploadFromClasspath("1.4mb.pdf");
         webElementsVendorContract.uploadRegulationsStep4.uploadFromClasspath(("JPG.jpg"));
         webElementsVendorContract.uploadProtocolStep4.uploadFromClasspath("PNG.png");
-        webElementsVendorContract.uploadTradeMarkStep4.uploadFromClasspath("4.83mb.pdf");
-        webElementsVendorContract.buttonBackStep4.click();
-        webElementsVendorContract.step3IsActive.should(exist);
-        webElementsVendorContract.buttonSubmitStep3.click();
+        webElementsVendorContract.uploadTradeMarkStep4.uploadFromClasspath("PDF.pdf");
+        Thread.sleep(2000);
         webElementsVendorContract.buttonSubmitStep4.click();
-        /*webElementsVendorContract.step5IsActiveAfterFillingStep3.shouldBe(visible, Duration.ofMillis(10000));
+        webElementsVendorContract.step5IsActiveAfterFillingStep3.shouldBe(visible, Duration.ofMillis(10000));
         webElementsVendorContract.successSendingContractTitle.shouldHave(text("Договор успешно отправлен на согласование."));
         webElementsVendorContract.successSendingContractSubtitle.shouldHave(text("Мы сообщим вам статус согласования договора после его рассмотрения."));
-        webelements.alert.shouldHave(text("Данные успешно загружены"));*/
+    }
+
+    @Test
+    @Tag("")
+    @DisplayName("Заполнение и сабмит Шага 4 с валидными файлами во всех юнитах")
+    void SubmitStep4WithAllValidFiles() throws InterruptedException{
+        webelements.mainLogo.click();
+        webelements.menuVendorContract.click();
+        webelements.title.shouldHave(text("Договор поставщика"));
+        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
+        webElementsVendorContract.radiobuttonStepONO.click();
+        webElementsVendorContract.buttonSubmitStep0.click();
+        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
+        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
+        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
+        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
+        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
+        webElementsVendorContract.managementSelectStep1.click();
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.pressEnter();
+        webElementsVendorContract.ogrnStep1.setValue("1234567890");
+        webElementsVendorContract.emailStep1.setValue("test@test.ru");
+        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
+        webElementsVendorContract.checkboxAddressStep1.click();
+        webElementsVendorContract.rightToSignSelectStep1.click();
+        webElementsVendorContract.rightToSignListStep1.pressEnter();
+        webElementsVendorContract.bikStep1.setValue("8765432");
+        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
+        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
+        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
+        webElementsVendorContract.buttonSubmitStep1.click();
+        webElementsVendorContract.defermentStep2.setValue("20");
+        webElementsVendorContract.groupStep2.setValue("Товарная группа №5678");
+        webElementsVendorContract.nameStep2.setValue("Длинное наименование товара номер 456EWj");
+        webElementsVendorContract.discountStep2.setValue("30");
+        webElementsVendorContract.buttonSubmitStep2.click();
+
+        selectEnabledDayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.configuratorDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.configuratorDatePickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.techInfoDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.techInfoDatePickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.currentCertificatesPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.currentCertificatesPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.productDescriptionPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.productDescriptionPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.additionalImageGoodPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.additionalImageGoodPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.videoMaterialsPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.videoMaterialsPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.modelTechInfoPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.modelTechInfoPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.constructorPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.constructorPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.productAnaloguesPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.productAnaloguesPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.similarProductsPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.similarProductsPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.characteristicsDatabasePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.characteristicsDatabasePickerStep3);
+
+        webElementsVendorContract.step3FillingCatalogEmloyeesFIO.setValue("Кукушкина Мария Ивановна");
+        webElementsVendorContract.step3FillingCatalogEmloyeesPosition.setValue("сотрудник");
+        webElementsVendorContract.step3FillingCatalogEmloyeesPhoneOrEmail.setValue("89246875445, test@mail.ru");
+
+        webElementsVendorContract.electronicArrivalTransferSelectStep3.click();
+        webElementsVendorContract.electronicArrivalTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.electronicArrivalTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.electronicArrivalStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.electronicArrivalStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.electronicArrivalLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.electronicArrivalLaunchDatePickerStep3);
+
+        webElementsVendorContract.electronicOrderTransferSelectStep3.click();
+        webElementsVendorContract.electronicOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.electronicOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.electronicOrderTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.electronicOrderStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.electronicOrderStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.electronicOrderLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.electronicOrderLaunchDatePickerStep3);
+
+        webElementsVendorContract.confirmOrderTransferSelectStep3.click();
+        webElementsVendorContract.confirmOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.confirmOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.confirmOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.confirmOrderTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.confirmOrderStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.confirmOrderStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.confirmOrderLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.confirmOrderLaunchDatePickerStep3);
+
+        webElementsVendorContract.nomenclatureFileRemainsTransferSelectStep3.click();
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFileRemainsStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.nomenclatureFileRemainsStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFileRemainsLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.nomenclatureFileRemainsLaunchDatePickerStep3);
+
+        webElementsVendorContract.nomenclatureFilePriceTransferSelectStep3.click();
+        webElementsVendorContract.nomenclatureFilePriceTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFilePriceTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFilePriceTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFilePriceStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.nomenclatureFilePriceStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFilePriceLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.nomenclatureFilePriceLaunchDatePickerStep3);
+
+        webElementsVendorContract.estimatedDeliveryTransferSelectStep3.click();
+        webElementsVendorContract.estimatedDeliveryTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.estimatedDeliveryTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.estimatedDeliveryTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.estimatedDeliveryStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.estimatedDeliveryStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.estimatedDeliveryLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.estimatedDeliveryLaunchDatePickerStep3);
+
+        webElementsVendorContract.specialConditionsTransferSelectStep3.click();
+        webElementsVendorContract.specialConditionsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.specialConditionsTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.specialConditionsStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.specialConditionsStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.specialConditionsLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.specialConditionsLaunchDatePickerStep3);
+
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferSelectStep3.click();
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFileCharacteristicsStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.nomenclatureFileCharacteristicsStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFileCharacteristicsLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.nomenclatureFileCharacteristicsLaunchDatePickerStep3);
+
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesFIO.setValue("Сусликова Ольга Петровна");
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesPosition.setValue("бухгалтер");
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesPhoneOrEmail.setValue("987654345678, test@mail.ru");
+
+        selectEnabledDayInCalendar(webElementsVendorContract.updStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.updStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.updLaunchDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.updLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.actServicesStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.actServicesStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.actServicesLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actServicesLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.ukdStartDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.ukdStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.ukdLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.ukdLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.additionalAgreementsStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.additionalAgreementsStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.additionalAgreementsLaunchDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.additionalAgreementsLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.specificationStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.specificationStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.specificationLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.specificationLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.powersAttorneyStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.powersAttorneyStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.powersAttorneyLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.powersAttorneyLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.actReconciliationStartDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actReconciliationStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.actReconciliationLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actReconciliationLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.actReportStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.actReportStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.actReportLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actReportLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.actDiscrepancyStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.actDiscrepancyStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.actDiscrepancyLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actDiscrepancyLaunchDateUZEDOPickerStep3);
+
+        webElementsVendorContract.step3FillingUZEDOEmloyeesFIO.setValue("Боброва Анна Викторовна");
+        webElementsVendorContract.step3FillingUZEDOEmloyeesPosition.setValue("Специалист всех специалистов");
+        webElementsVendorContract.step3FillingUZEDOEmloyeesPhoneOrEmail.setValue("987654345678, test_test.test@mail.ru");
+
+        selectEnabledDayInCalendar(webElementsVendorContract.startEndDatePublicationMaterialsPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.startEndDatePublicationMaterialsPickerStep3);
+
+        webElementsVendorContract.step3PublicationMaterialsEmloyeesFIO.setValue("Колобков Иван Иванович");
+        webElementsVendorContract.step3PublicationMaterialsEmloyeesPosition.setValue("Специалист всех специалистов");
+        webElementsVendorContract.step3PublicationMaterialsEmloyeesPhoneOrEmail.setValue("987654345678, test_test.test@mail.ru");
+
+        webElementsVendorContract.buttonSubmitStep3.click();
+        webElementsVendorContract.step4IsActiveAfterStep3.shouldBe(visible,Duration.ofMillis(10000));
+        webElementsVendorContract.step4unit1.shouldHave(text("Скачать договор для подписания"));
+
+        webElementsVendorContract.uploadContractStep4.uploadFromClasspath("1.4mb.pdf");
+        webElementsVendorContract.uploadRegulationsStep4.uploadFromClasspath(("JPG.jpg"));
+        webElementsVendorContract.uploadProtocolStep4.uploadFromClasspath("PNG.png");
+        webElementsVendorContract.uploadTradeMarkStep4.uploadFromClasspath("PDF.pdf");
+        webElementsVendorContract.uploadPowerOfAttorneyStep4.uploadFromClasspath("483kb.pdf");
+        webElementsVendorContract.uploadDeclarationStep4.uploadFromClasspath("PDF.pdf");
+        webElementsVendorContract.uploadExtraDocsStep4.uploadFromClasspath("PNG.png");
+        webElementsVendorContract.uploadExtraDocsStep4.uploadFromClasspath("DOC.doc");
+
+        Thread.sleep(2000);
+        webElementsVendorContract.buttonSubmitStep4.click();
+        webElementsVendorContract.step5IsActiveAfterFillingStep3.shouldBe(visible, Duration.ofMillis(10000));
+        webElementsVendorContract.successSendingContractTitle.shouldHave(text("Договор успешно отправлен на согласование."));
+        webElementsVendorContract.successSendingContractSubtitle.shouldHave(text("Мы сообщим вам статус согласования договора после его рассмотрения."));
+    }
+
+    @Test
+    @Tag("")
+    @DisplayName("Заполнение Шага 4 с невалидными файлами, замена их на валидные, сабмит")
+    void FillingStep4WithUnvalidFilesChangingToValid() throws InterruptedException{
+        webelements.mainLogo.click();
+        webelements.menuVendorContract.click();
+        webelements.title.shouldHave(text("Договор поставщика"));
+        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
+        webElementsVendorContract.radiobuttonStepONO.click();
+        webElementsVendorContract.buttonSubmitStep0.click();
+        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
+        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
+        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
+        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
+        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
+        webElementsVendorContract.managementSelectStep1.click();
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.pressEnter();
+        webElementsVendorContract.ogrnStep1.setValue("1234567890");
+        webElementsVendorContract.emailStep1.setValue("test@test.ru");
+        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
+        webElementsVendorContract.checkboxAddressStep1.click();
+        webElementsVendorContract.rightToSignSelectStep1.click();
+        webElementsVendorContract.rightToSignListStep1.pressEnter();
+        webElementsVendorContract.bikStep1.setValue("8765432");
+        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
+        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
+        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
+        webElementsVendorContract.buttonSubmitStep1.click();
+        webElementsVendorContract.defermentStep2.setValue("20");
+        webElementsVendorContract.groupStep2.setValue("Товарная группа №5678");
+        webElementsVendorContract.nameStep2.setValue("Длинное наименование товара номер 456EWj");
+        webElementsVendorContract.discountStep2.setValue("30");
+        webElementsVendorContract.buttonSubmitStep2.click();
+
+        selectEnabledDayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.configuratorDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.configuratorDatePickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.techInfoDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.techInfoDatePickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.currentCertificatesPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.currentCertificatesPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.productDescriptionPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.productDescriptionPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.additionalImageGoodPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.additionalImageGoodPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.videoMaterialsPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.videoMaterialsPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.modelTechInfoPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.modelTechInfoPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.constructorPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.constructorPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.productAnaloguesPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.productAnaloguesPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.similarProductsPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.similarProductsPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.characteristicsDatabasePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.characteristicsDatabasePickerStep3);
+
+        webElementsVendorContract.step3FillingCatalogEmloyeesFIO.setValue("Кукушкина Мария Ивановна");
+        webElementsVendorContract.step3FillingCatalogEmloyeesPosition.setValue("сотрудник");
+        webElementsVendorContract.step3FillingCatalogEmloyeesPhoneOrEmail.setValue("89246875445, test@mail.ru");
+
+        webElementsVendorContract.electronicArrivalTransferSelectStep3.click();
+        webElementsVendorContract.electronicArrivalTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.electronicArrivalTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.electronicArrivalStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.electronicArrivalStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.electronicArrivalLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.electronicArrivalLaunchDatePickerStep3);
+
+        webElementsVendorContract.electronicOrderTransferSelectStep3.click();
+        webElementsVendorContract.electronicOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.electronicOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.electronicOrderTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.electronicOrderStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.electronicOrderStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.electronicOrderLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.electronicOrderLaunchDatePickerStep3);
+
+        webElementsVendorContract.confirmOrderTransferSelectStep3.click();
+        webElementsVendorContract.confirmOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.confirmOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.confirmOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.confirmOrderTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.confirmOrderStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.confirmOrderStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.confirmOrderLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.confirmOrderLaunchDatePickerStep3);
+
+        webElementsVendorContract.nomenclatureFileRemainsTransferSelectStep3.click();
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFileRemainsStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.nomenclatureFileRemainsStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFileRemainsLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.nomenclatureFileRemainsLaunchDatePickerStep3);
+
+        webElementsVendorContract.nomenclatureFilePriceTransferSelectStep3.click();
+        webElementsVendorContract.nomenclatureFilePriceTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFilePriceTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFilePriceTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFilePriceStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.nomenclatureFilePriceStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFilePriceLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.nomenclatureFilePriceLaunchDatePickerStep3);
+
+        webElementsVendorContract.estimatedDeliveryTransferSelectStep3.click();
+        webElementsVendorContract.estimatedDeliveryTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.estimatedDeliveryTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.estimatedDeliveryTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.estimatedDeliveryStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.estimatedDeliveryStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.estimatedDeliveryLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.estimatedDeliveryLaunchDatePickerStep3);
+
+        webElementsVendorContract.specialConditionsTransferSelectStep3.click();
+        webElementsVendorContract.specialConditionsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.specialConditionsTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.specialConditionsStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.specialConditionsStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.specialConditionsLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.specialConditionsLaunchDatePickerStep3);
+
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferSelectStep3.click();
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFileCharacteristicsStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.nomenclatureFileCharacteristicsStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFileCharacteristicsLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.nomenclatureFileCharacteristicsLaunchDatePickerStep3);
+
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesFIO.setValue("Сусликова Ольга Петровна");
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesPosition.setValue("бухгалтер");
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesPhoneOrEmail.setValue("987654345678, test@mail.ru");
+
+        selectEnabledDayInCalendar(webElementsVendorContract.updStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.updStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.updLaunchDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.updLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.actServicesStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.actServicesStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.actServicesLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actServicesLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.ukdStartDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.ukdStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.ukdLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.ukdLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.additionalAgreementsStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.additionalAgreementsStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.additionalAgreementsLaunchDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.additionalAgreementsLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.specificationStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.specificationStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.specificationLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.specificationLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.powersAttorneyStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.powersAttorneyStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.powersAttorneyLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.powersAttorneyLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.actReconciliationStartDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actReconciliationStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.actReconciliationLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actReconciliationLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.actReportStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.actReportStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.actReportLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actReportLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.actDiscrepancyStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.actDiscrepancyStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.actDiscrepancyLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actDiscrepancyLaunchDateUZEDOPickerStep3);
+
+        webElementsVendorContract.step3FillingUZEDOEmloyeesFIO.setValue("Боброва Анна Викторовна");
+        webElementsVendorContract.step3FillingUZEDOEmloyeesPosition.setValue("Специалист всех специалистов");
+        webElementsVendorContract.step3FillingUZEDOEmloyeesPhoneOrEmail.setValue("987654345678, test_test.test@mail.ru");
+
+        selectEnabledDayInCalendar(webElementsVendorContract.startEndDatePublicationMaterialsPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.startEndDatePublicationMaterialsPickerStep3);
+
+        webElementsVendorContract.step3PublicationMaterialsEmloyeesFIO.setValue("Колобков Иван Иванович");
+        webElementsVendorContract.step3PublicationMaterialsEmloyeesPosition.setValue("Специалист всех специалистов");
+        webElementsVendorContract.step3PublicationMaterialsEmloyeesPhoneOrEmail.setValue("987654345678, test_test.test@mail.ru");
+
+        webElementsVendorContract.buttonSubmitStep3.click();
+        webElementsVendorContract.step4IsActiveAfterStep3.shouldBe(visible,Duration.ofMillis(10000));
+        webElementsVendorContract.step4unit1.shouldHave(text("Скачать договор для подписания"));
+
+        webElementsVendorContract.uploadContractStep4.uploadFromClasspath("DOC.doc");
+        webElementsVendorContract.uploadRegulationsStep4.uploadFromClasspath(("RAR.rar"));
+        webElementsVendorContract.uploadProtocolStep4.uploadFromClasspath("7Z.7z");
+        webElementsVendorContract.uploadTradeMarkStep4.uploadFromClasspath("DOC.doc");
+        webElementsVendorContract.uploadPowerOfAttorneyStep4.uploadFromClasspath("DOC.doc");
+        webElementsVendorContract.uploadDeclarationStep4.uploadFromClasspath("RAR.rar");
+        webElementsVendorContract.uploadExtraDocsStep4.uploadFromClasspath("RAR.rar");
+
+        webElementsVendorContract.uploadContractHelpStep4.shouldHave(text("Вы пытаетесь загрузить файл с недопустимым расширением, удалите его и загрузите файлы с расширением .pdf"));
+        webElementsVendorContract.uploadRegulationsHelpStep4.shouldHave(text("Вы пытаетесь загрузить файл с недопустимым расширением, удалите его и загрузите файлы с расширением .jpg, .png, .jpeg, .pdf"));
+        webElementsVendorContract.uploadProtocolHelpStep4.shouldHave(text("Вы пытаетесь загрузить файл с недопустимым расширением, удалите его и загрузите файлы с расширением .jpg, .png, .jpeg, .pdf"));
+        webElementsVendorContract.uploadTradeMarkHelpStep4.shouldHave(text("Вы пытаетесь загрузить файл с недопустимым расширением, удалите его и загрузите файлы с расширением .jpg, .png, .jpeg, .pdf"));
+        webElementsVendorContract.uploadPowerOfAttorneyHelpStep4.shouldHave(text("Вы пытаетесь загрузить файл с недопустимым расширением, удалите его и загрузите файлы с расширением .jpg, .png, .jpeg, .pdf"));
+        webElementsVendorContract.uploadDeclarationHelpStep4.shouldHave(text("Вы пытаетесь загрузить файл с недопустимым расширением, удалите его и загрузите файлы с расширением .jpg, .png, .jpeg, .pdf"));
+        webElementsVendorContract.uploadExtraDocsHelpStep4.shouldHave(text("Вы пытаетесь загрузить файл с недопустимым расширением, удалите его и загрузите файлы с расширением .jpg, .png, .jpeg, .pdf, .doc, .docx"));
+
+        Thread.sleep(2000);
+        webElementsVendorContract.buttonDeleteFileContractStep4.click();
+        webElementsVendorContract.uploadContractHelpStep4.shouldHave(text("Пожалуйста, загрузите обязательный документ"));
+        webElementsVendorContract.uploadContractStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.buttonDeleteFileRegulationsStep4.click();
+        webElementsVendorContract.uploadRegulationsHelpStep4.shouldHave(text("Пожалуйста, загрузите обязательный документ"));
+        webElementsVendorContract.uploadRegulationsStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.buttonDeleteFileProtocolStep4.click();
+        webElementsVendorContract.uploadProtocolHelpStep4.shouldHave(text("Пожалуйста, загрузите обязательный документ"));
+        webElementsVendorContract.uploadProtocolStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.buttonDeleteFileTradeMarkStep4.click();
+        webElementsVendorContract.uploadTradeMarkHelpStep4.shouldHave(text("Пожалуйста, загрузите обязательный документ"));
+        webElementsVendorContract.uploadTradeMarkStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.uploadContractHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadRegulationsHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadProtocolHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadTradeMarkHelpStep4.shouldNot(exist);
+
+        webElementsVendorContract.buttonDeleteFilePowerOfAttorneyStep4.click();
+        webElementsVendorContract.uploadPowerOfAttorneyHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadPowerOfAttorneyStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.buttonDeleteFileDeclarationStep4.click();
+        webElementsVendorContract.uploadDeclarationHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadDeclarationStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.buttonDeleteFileExtraDocsStep4.click();
+        webElementsVendorContract.uploadExtraDocsHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadExtraDocsStep4.uploadFromClasspath("DOC.doc");
+
+        Thread.sleep(2000);
+        webElementsVendorContract.buttonSubmitStep4.click();
+        webElementsVendorContract.step5IsActiveAfterFillingStep3.shouldBe(visible, Duration.ofMillis(10000));
+        webElementsVendorContract.successSendingContractTitle.shouldHave(text("Договор успешно отправлен на согласование."));
+        webElementsVendorContract.successSendingContractSubtitle.shouldHave(text("Мы сообщим вам статус согласования договора после его рассмотрения."));
+    }
+
+    @Test
+    @Tag("")
+    @DisplayName("Заполнение и сабмит Шага 4 со сбоем загрузки файла")
+    void SubmitStep4WithFailedDownloading() throws InterruptedException{
+            Configuration.holdBrowserOpen = true;
+        webelements.mainLogo.click();
+        webelements.menuVendorContract.click();
+        webelements.title.shouldHave(text("Договор поставщика"));
+        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
+        webElementsVendorContract.radiobuttonStepONO.click();
+        webElementsVendorContract.buttonSubmitStep0.click();
+        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
+        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
+        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
+        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
+        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
+        webElementsVendorContract.managementSelectStep1.click();
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.pressEnter();
+        webElementsVendorContract.ogrnStep1.setValue("1234567890");
+        webElementsVendorContract.emailStep1.setValue("test@test.ru");
+        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
+        webElementsVendorContract.checkboxAddressStep1.click();
+        webElementsVendorContract.rightToSignSelectStep1.click();
+        webElementsVendorContract.rightToSignListStep1.pressEnter();
+        webElementsVendorContract.bikStep1.setValue("8765432");
+        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
+        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
+        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
+        webElementsVendorContract.buttonSubmitStep1.click();
+        webElementsVendorContract.defermentStep2.setValue("20");
+        webElementsVendorContract.groupStep2.setValue("Товарная группа №5678");
+        webElementsVendorContract.nameStep2.setValue("Длинное наименование товара номер 456EWj");
+        webElementsVendorContract.discountStep2.setValue("30");
+        webElementsVendorContract.buttonSubmitStep2.click();
+
+        selectEnabledDayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.configuratorDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.configuratorDatePickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.techInfoDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.techInfoDatePickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.currentCertificatesPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.currentCertificatesPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.productDescriptionPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.productDescriptionPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.additionalImageGoodPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.additionalImageGoodPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.videoMaterialsPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.videoMaterialsPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.modelTechInfoPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.modelTechInfoPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.constructorPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.constructorPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.productAnaloguesPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.productAnaloguesPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.similarProductsPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.similarProductsPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.characteristicsDatabasePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.characteristicsDatabasePickerStep3);
+
+        webElementsVendorContract.step3FillingCatalogEmloyeesFIO.setValue("Кукушкина Мария Ивановна");
+        webElementsVendorContract.step3FillingCatalogEmloyeesPosition.setValue("сотрудник");
+        webElementsVendorContract.step3FillingCatalogEmloyeesPhoneOrEmail.setValue("89246875445, test@mail.ru");
+
+        webElementsVendorContract.electronicArrivalTransferSelectStep3.click();
+        webElementsVendorContract.electronicArrivalTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.electronicArrivalTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.electronicArrivalStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.electronicArrivalStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.electronicArrivalLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.electronicArrivalLaunchDatePickerStep3);
+
+        webElementsVendorContract.electronicOrderTransferSelectStep3.click();
+        webElementsVendorContract.electronicOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.electronicOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.electronicOrderTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.electronicOrderStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.electronicOrderStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.electronicOrderLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.electronicOrderLaunchDatePickerStep3);
+
+        webElementsVendorContract.confirmOrderTransferSelectStep3.click();
+        webElementsVendorContract.confirmOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.confirmOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.confirmOrderTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.confirmOrderStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.confirmOrderStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.confirmOrderLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.confirmOrderLaunchDatePickerStep3);
+
+        webElementsVendorContract.nomenclatureFileRemainsTransferSelectStep3.click();
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFileRemainsStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.nomenclatureFileRemainsStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFileRemainsLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.nomenclatureFileRemainsLaunchDatePickerStep3);
+
+        webElementsVendorContract.nomenclatureFilePriceTransferSelectStep3.click();
+        webElementsVendorContract.nomenclatureFilePriceTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFilePriceTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFilePriceTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFilePriceStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.nomenclatureFilePriceStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFilePriceLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.nomenclatureFilePriceLaunchDatePickerStep3);
+
+        webElementsVendorContract.estimatedDeliveryTransferSelectStep3.click();
+        webElementsVendorContract.estimatedDeliveryTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.estimatedDeliveryTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.estimatedDeliveryTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.estimatedDeliveryStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.estimatedDeliveryStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.estimatedDeliveryLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.estimatedDeliveryLaunchDatePickerStep3);
+
+        webElementsVendorContract.specialConditionsTransferSelectStep3.click();
+        webElementsVendorContract.specialConditionsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.specialConditionsTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.specialConditionsStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.specialConditionsStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.specialConditionsLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.specialConditionsLaunchDatePickerStep3);
+
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferSelectStep3.click();
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFileCharacteristicsStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.nomenclatureFileCharacteristicsStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFileCharacteristicsLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.nomenclatureFileCharacteristicsLaunchDatePickerStep3);
+
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesFIO.setValue("Сусликова Ольга Петровна");
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesPosition.setValue("бухгалтер");
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesPhoneOrEmail.setValue("987654345678, test@mail.ru");
+
+        selectEnabledDayInCalendar(webElementsVendorContract.updStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.updStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.updLaunchDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.updLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.actServicesStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.actServicesStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.actServicesLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actServicesLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.ukdStartDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.ukdStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.ukdLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.ukdLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.additionalAgreementsStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.additionalAgreementsStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.additionalAgreementsLaunchDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.additionalAgreementsLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.specificationStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.specificationStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.specificationLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.specificationLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.powersAttorneyStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.powersAttorneyStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.powersAttorneyLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.powersAttorneyLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.actReconciliationStartDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actReconciliationStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.actReconciliationLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actReconciliationLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.actReportStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.actReportStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.actReportLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actReportLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.actDiscrepancyStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.actDiscrepancyStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.actDiscrepancyLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actDiscrepancyLaunchDateUZEDOPickerStep3);
+
+        webElementsVendorContract.step3FillingUZEDOEmloyeesFIO.setValue("Боброва Анна Викторовна");
+        webElementsVendorContract.step3FillingUZEDOEmloyeesPosition.setValue("Специалист всех специалистов");
+        webElementsVendorContract.step3FillingUZEDOEmloyeesPhoneOrEmail.setValue("987654345678, test_test.test@mail.ru");
+
+        selectEnabledDayInCalendar(webElementsVendorContract.startEndDatePublicationMaterialsPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.startEndDatePublicationMaterialsPickerStep3);
+
+        webElementsVendorContract.step3PublicationMaterialsEmloyeesFIO.setValue("Колобков Иван Иванович");
+        webElementsVendorContract.step3PublicationMaterialsEmloyeesPosition.setValue("Специалист всех специалистов");
+        webElementsVendorContract.step3PublicationMaterialsEmloyeesPhoneOrEmail.setValue("987654345678, test_test.test@mail.ru");
+
+        webElementsVendorContract.buttonSubmitStep3.click();
+        webElementsVendorContract.step4IsActiveAfterStep3.shouldBe(visible,Duration.ofMillis(10000));
+        webElementsVendorContract.step4unit1.shouldHave(text("Скачать договор для подписания"));
+
+        webElementsVendorContract.uploadContractStep4.uploadFromClasspath("1.4mb.pdf");
+        webElementsVendorContract.uploadRegulationsStep4.uploadFromClasspath(("JPG.jpg"));
+        webElementsVendorContract.uploadProtocolStep4.uploadFromClasspath("PNG.png");
+        webElementsVendorContract.uploadTradeMarkStep4.uploadFromClasspath("PDF.pdf");
+        webElementsVendorContract.uploadPowerOfAttorneyStep4.uploadFromClasspath("483kb.pdf");
+        webElementsVendorContract.uploadDeclarationStep4.uploadFromClasspath("sample-50-MB.pdf");
+        webElementsVendorContract.uploadExtraDocsStep4.uploadFromClasspath("PNG.png");
+        webElementsVendorContract.uploadExtraDocsStep4.uploadFromClasspath("DOC.doc");
+
+        Thread.sleep(3000);
+        webElementsVendorContract.buttonSubmitStep4.click();
+        $("[role='dialog']").shouldBe(visible,Duration.ofMillis(180000));
+        $("[role='dialog']").shouldHave(text("Результаты загрузки"));
+        Thread.sleep(2000);
+        $(By.xpath("//div[@class='ant-modal-wrap']//button[@class='ant-modal-close']/span")).click();
+        Thread.sleep(1000);
+        webelements.title.shouldHave(text("Договор поставщика"));
+        webElementsVendorContract.step4IsActiveAfterStep3.should(exist);
+        webElementsVendorContract.buttonDeleteFileDeclarationStep4.click();
+        webElementsVendorContract.uploadDeclarationStep4.uploadFromClasspath("PNG.png");
+
+        Thread.sleep(2000);
+        webElementsVendorContract.buttonSubmitStep4.click();
+        webElementsVendorContract.step5IsActiveAfterFillingStep3.shouldBe(visible, Duration.ofMillis(10000));
+        webElementsVendorContract.successSendingContractTitle.shouldHave(text("Договор успешно отправлен на согласование."));
+        webElementsVendorContract.successSendingContractSubtitle.shouldHave(text("Мы сообщим вам статус согласования договора после его рассмотрения."));
 
     }
 

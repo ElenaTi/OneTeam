@@ -470,33 +470,43 @@ public class webElementsVendorContract {
     public static SelenideElement step4subtitle1 = $(By.xpath("//h3[contains(., 'Договор')]"));
     public static SelenideElement step4unit1 = $(By.xpath("//h3[contains(., 'Договор')]/parent::span/parent::div/parent::div"));
     public static SelenideElement uploadContractStep4 =$(By.xpath("//input[@id='uploadingDocuments_contract']"));
+    public static SelenideElement buttonDeleteFileContractStep4 =$(By.xpath("//input[@id='uploadingDocuments_contract']/parent::span/parent::div/following-sibling::div//button[@title='Удалить файл']"));
     public static SelenideElement uploadContractHelpStep4 = $("#uploadingDocuments_contract_help");
     public static SelenideElement step4subtitle2 = $(By.xpath("//h3[contains(., 'Устав')]"));
     public static SelenideElement step4unit2 = $(By.xpath("//h3[contains(., 'Устав')]/parent::span/parent::div/parent::div"));
     public static SelenideElement uploadRegulationsStep4 = $(By.xpath(" //input[@id='uploadingDocuments_regulations']"));
+    public static SelenideElement buttonDeleteFileRegulationsStep4 =$(By.xpath("//input[@id='uploadingDocuments_regulations']/parent::span/parent::div/following-sibling::div//button[@title='Удалить файл']"));
     public static SelenideElement uploadRegulationsHelpStep4 = $("#uploadingDocuments_regulations_help");
     public static SelenideElement step4subtitle3 = $(By.xpath("//h3[contains(., 'Протокол/решение о назначении генерального директора')]"));
     public static SelenideElement step4unit3 = $(By.xpath("//h3[contains(., 'Протокол/решение о назначении генерального директора')]/parent::span/parent::div/parent::div"));
     public static SelenideElement uploadProtocolStep4 = $(By.xpath("//input[@id='uploadingDocuments_protocol']"));
+    public static SelenideElement buttonDeleteFileProtocolStep4 =$(By.xpath("//input[@id='uploadingDocuments_protocol']/parent::span/parent::div/following-sibling::div//button[@title='Удалить файл']"));
     public static SelenideElement uploadProtocolHelpStep4 = $("#uploadingDocuments_protocol_help");
     public static SelenideElement step4subtitle4 = $(By.xpath("//h3[contains(., 'Документы на товарный знак')]"));
     public static SelenideElement step4unit4 = $(By.xpath("//h3[contains(., 'Документы на товарный знак')]/parent::span/parent::div/parent::div"));
     public static SelenideElement uploadTradeMarkStep4 = $(By.xpath("//input[@id='uploadingDocuments_tradeMark']"));
+    public static SelenideElement buttonDeleteFileTradeMarkStep4 =$(By.xpath("//input[@id='uploadingDocuments_tradeMark']/parent::span/parent::div/following-sibling::div//button[@title='Удалить файл']"));
     public static SelenideElement uploadTradeMarkHelpStep4 = $("#uploadingDocuments_tradeMark_help");
     public static SelenideElement step4subtitle5 = $(By.xpath("//h3[contains(., 'Копия доверенности')]"));
     public static SelenideElement step4unit5 = $(By.xpath("//h3[contains(., 'Копия доверенности')]/parent::span/parent::div/parent::div"));
     public static SelenideElement uploadPowerOfAttorneyStep4 = $(By.xpath(" //input[@id='uploadingDocuments_powerOfAttorney']"));
+    public static SelenideElement buttonDeleteFilePowerOfAttorneyStep4 =$(By.xpath("//input[@id='uploadingDocuments_powerOfAttorney']/parent::span/parent::div/following-sibling::div//button[@title='Удалить файл']"));
+    public static SelenideElement uploadPowerOfAttorneyHelpStep4 = $("#uploadingDocuments_powerOfAttorney_help");
     public static SelenideElement step4subtitle6 = $(By.xpath("//h3[contains(., 'Декларация по УСН')]"));
     public static SelenideElement step4unit6 = $(By.xpath("//h3[contains(., 'Декларация по УСН')]/parent::span/parent::div/parent::div"));
     public static SelenideElement uploadDeclarationStep4 = $(By.xpath(" //input[@id='uploadingDocuments_declaration']"));
+    public static SelenideElement buttonDeleteFileDeclarationStep4 =$(By.xpath("//input[@id='uploadingDocuments_declaration']/parent::span/parent::div/following-sibling::div//button[@title='Удалить файл']"));
+    public static SelenideElement uploadDeclarationHelpStep4 = $("#uploadingDocuments_declaration_help");
     public static SelenideElement step4subtitle7 = $(By.xpath("//h3[contains(., 'Дополнительные документы')]"));
     public static SelenideElement step4unit7 = $(By.xpath("//h3[contains(., 'Дополнительные документы')]/parent::span/parent::div/parent::div"));
     public static SelenideElement uploadExtraDocsStep4 = $(By.xpath(" //input[@id='uploadingDocuments_extraDocs']"));
+    public static SelenideElement buttonDeleteFileExtraDocsStep4 =$(By.xpath("//input[@id='uploadingDocuments_extraDocs']/parent::span/parent::div/following-sibling::div//button[@title='Удалить файл']"));
+    public static SelenideElement uploadExtraDocsHelpStep4 = $("#uploadingDocuments_extraDocs_help");
     public static SelenideElement buttonBackStep4 = $(By.xpath("//button[contains(.,'Назад')]"));
     public static SelenideElement buttonSubmitStep4 = $(By.xpath("//button[contains(.,'Отправить договор')]"));
 
     public static SelenideElement successSendingContractTitle =$(By.xpath("//div[@class='ant-result-title']"));
-    public static SelenideElement successSendingContractSubtitle =$(By.xpath("  //div[@class='ant-result-subtitle']']"));
+    public static SelenideElement successSendingContractSubtitle =$(By.xpath("  //div[@class='ant-result-subtitle']"));
 
     //Степпер
     public static SelenideElement step0IsFinished = $(By.xpath("//div[contains(@class,'ant-steps')]/div[1][contains(@class,'finish' )]"));
