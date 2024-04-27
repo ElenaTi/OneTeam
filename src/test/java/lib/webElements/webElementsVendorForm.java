@@ -39,5 +39,5 @@ public class webElementsVendorForm {
     public static SelenideElement successResultTitle = $(".ant-result-title");
     public static SelenideElement successResultSubtitle =$(".ant-result-subtitle");
     public static SelenideElement fileUploadVendorForm = $("#files");
-
+    public static SelenideElement fileUploadVendorFormHelp = $("#files_help");
 }

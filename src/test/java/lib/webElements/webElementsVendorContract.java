@@ -521,5 +521,5 @@ public class webElementsVendorContract {
     public static SelenideElement step5IsActiveAfterFillingStep3 =$(By.xpath("//div[contains(@class,'ant-steps')]/div[1][contains(@class,'finish' )]/following-sibling::div[1][contains(@class,'finish' )]/following-sibling::div[1][contains(@class,'finish' )]/following-sibling::div[1][contains(@class,'finish' )]/following-sibling::div[1][contains(@class,'finish' )]/following-sibling::div[1][contains(@class,'active' )]"));
     public static SelenideElement step4ActiveFromStep0 = $(By.xpath("//div[contains(@class,'ant-steps')]/div[1][contains(@class,'finish')]/following-sibling::div[1][contains(@class,'wait')]/following-sibling::div[1][contains(@class,'wait')]/following-sibling::div[1][contains(@class,'wait')]/following-sibling::div[1][contains(@class,'active')]"));
 
-
+    public static SelenideElement step5ActiveFromFillingStep4AfterStep0 = $(By.xpath("//div[contains(@class,'ant-steps')]/div[1][contains(@class,'finish')]/following-sibling::div[1][contains(@class,'wait')]/following-sibling::div[1][contains(@class,'wait')]/following-sibling::div[1][contains(@class,'wait')]/following-sibling::div[1][contains(@class,'finish' )]/following-sibling::div[1][contains(@class,'active')]"));
 }

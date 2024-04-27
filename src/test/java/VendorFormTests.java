@@ -14,6 +14,8 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+
+import java.io.File;
 import java.time.Duration;
 
 public class VendorFormTests {
@@ -315,4 +317,83 @@ public class VendorFormTests {
         webElementsVendorForm.successResultSubtitle.shouldHave(text("Мы сообщим вам статус согласования после обработки анкеты."));
     }
 
+    @Test
+    @DisplayName("Добавление в анкету невалидного файла -недопустимое расширение")
+    @Tag("TMOT-333")
+    void illingVendorFormWithUnvalidFileCDR(){
+        webelements.mainLogo.click();
+        webelements.menuVendorForm.click();
+        webelements.title.shouldHave(text("Анкета поставщика"));
+        webElementsVendorForm.orgCategorySelect.click();
+        webElementsVendorForm.orgCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.orgCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.orgCategory.pressEnter();
+        webElementsVendorForm.goodsExtraCategory.setValue("Товары");
+        webElementsVendorForm.goodsCategorySelect.click();
+        webElementsVendorForm.goodsCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.goodsCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.goodsCategory.pressEnter();
+        webElementsVendorForm.orgName.click();
+        webElementsVendorForm.brands.setValue("Бренд 1, Бренд 2, Бренд 3");
+        webElementsVendorForm.orgSite.setValue("idev.etm.ru");
+        webElementsVendorForm.orgCatalogLink.setValue("тест.рф");
+        webElementsVendorForm.juroAddress.setValue("Санкт-Петербург, ул. Советская, д.123, корпус 123, квартира 123");
+        webElementsVendorForm.factoAddress.setValue("Санкт-Петербург, Невский пр., д.123, корпус 123, квартира 123");
+        webElementsVendorForm.warehousesMainField.setValue("Санкт-Петербург, Романовка, ул. Московская");
+        webElementsVendorForm.addingWareHouses.click();
+        webElementsVendorForm.signTheContractNO.click();
+        webElementsVendorForm.sumOfSupplies.setValue("1234567");
+        $("[class*='FileInput_main_text']").shouldHave(text("Нажмите или перетащите файл в эту область, чтобы загрузить"));
+        $("[class*='FileInput_hint_text']").shouldHave(text(".pdf, .jpg, .png, .xlsx, .csv, .xls, .txt, .jpeg, .doc, .docx, .zip, .7z, .rar"));
+        webElementsVendorForm.fileUploadVendorForm.uploadFromClasspath("CDR.cdr");
+        $("#warehouses_1").setValue("Санкт-Петербург, Шушары, ул. Московская, склад №2");
+        webElementsVendorForm.buttonSendVendorForm.click();
+        webElementsVendorForm.fileUploadVendorFormHelp.shouldHave(text("Вы пытаетесь загрузить файл с недопустимым расширением, удалите его и загрузите файлы с расширением .pdf, .jpg, .png, .xlsx, .csv, .xls, .txt, .jpeg, .doc, .docx, .zip, .7z, .rar"));
+        $(By.xpath("//button[@title='Удалить файл']")).click();
+        webElementsVendorForm.fileUploadVendorForm.uploadFromClasspath("7Z.7z");
+        webElementsVendorForm.buttonSendVendorForm.click();
+        webelements.alert.shouldHave(text("Данные успешно загружены"));
+        webElementsVendorForm.successResultTitle.shouldHave(text("Анкета успешно отправлена на согласование."));
+        webElementsVendorForm.successResultSubtitle.shouldHave(text("Мы сообщим вам статус согласования после обработки анкеты."));
+    }
+
+    @Test
+    @DisplayName("Добавление в анкету невалидного файла - 100Мб")
+    @Tag("")
+    void FillingVendorFormWithUnvalidFile100Mb() throws InterruptedException{
+        webelements.mainLogo.click();
+        webelements.menuVendorForm.click();
+        webelements.title.shouldHave(text("Анкета поставщика"));
+        webElementsVendorForm.orgCategorySelect.click();
+        webElementsVendorForm.orgCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.orgCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.orgCategory.pressEnter();
+        webElementsVendorForm.goodsExtraCategory.setValue("Товары");
+        webElementsVendorForm.goodsCategorySelect.click();
+        webElementsVendorForm.goodsCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.goodsCategory.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorForm.goodsCategory.pressEnter();
+        webElementsVendorForm.orgName.click();
+        webElementsVendorForm.brands.setValue("Бренд 1, Бренд 2, Бренд 3");
+        webElementsVendorForm.orgSite.setValue("idev.etm.ru");
+        webElementsVendorForm.orgCatalogLink.setValue("тест.рф");
+        webElementsVendorForm.juroAddress.setValue("Санкт-Петербург, ул. Советская, д.123, корпус 123, квартира 123");
+        webElementsVendorForm.factoAddress.setValue("Санкт-Петербург, Невский пр., д.123, корпус 123, квартира 123");
+        webElementsVendorForm.warehousesMainField.setValue("Санкт-Петербург, Романовка, ул. Московская");
+        webElementsVendorForm.addingWareHouses.click();
+        webElementsVendorForm.signTheContractNO.click();
+        webElementsVendorForm.sumOfSupplies.setValue("1234567");
+        $("#warehouses_1").setValue("Санкт-Петербург, Шушары, ул. Московская, склад №2");
+        $("[class*='FileInput_main_text']").shouldHave(text("Нажмите или перетащите файл в эту область, чтобы загрузить"));
+        $("[class*='FileInput_hint_text']").shouldHave(text(".pdf, .jpg, .png, .xlsx, .csv, .xls, .txt, .jpeg, .doc, .docx, .zip, .7z, .rar"));
+        webElementsVendorForm.fileUploadVendorForm.uploadFile(new File("C:/Users/timofeeva_ese/myjava/BigFiles/100MB.pdf"));
+        //webElementsVendorForm.fileUploadVendorFormHelp.shouldHave(text("Максимальный размер файла превышен, удалите его и загрузите файл размером не более 100 Мб"));
+        Thread.sleep(2000);
+        $(By.xpath("//button[@title='Удалить файл']")).click();
+        webElementsVendorForm.fileUploadVendorForm.uploadFromClasspath("7Z.7z");
+        webElementsVendorForm.buttonSendVendorForm.click();
+        webelements.alert.shouldHave(text("Данные успешно загружены"));
+        webElementsVendorForm.successResultTitle.shouldHave(text("Анкета успешно отправлена на согласование."));
+        webElementsVendorForm.successResultSubtitle.shouldHave(text("Мы сообщим вам статус согласования после обработки анкеты."));
+    }
 }

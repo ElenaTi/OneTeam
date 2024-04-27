@@ -1,2 +1,4 @@
 # Project exclude paths
 /target/
+BigFiles/100Мб.csv
+BigFiles/100MB.pdf

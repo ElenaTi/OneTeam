@@ -11,6 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
+import java.io.File;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -19,35 +20,36 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class VendorContractTests {
-        @BeforeAll
-        @DisplayName("Размер экрана 1920х1280")
-        static void start() {
-            Configuration.browserSize = "1920x1280";
-            lib.ui.LoginPageObject.Login("9215642te", "rikb0444");
-        }
+    @BeforeAll
+    @DisplayName("Размер экрана 1920х1280")
+    static void start() {
+        Configuration.browserSize = "1920x1280";
+        lib.ui.LoginPageObject.Login("9215642te", "rikb0444");
+    }
 
     @Test
     @Tag("")
     @DisplayName("Сабмит Шага 0 без выбора чекбокса")
-    void SubmitContractStep0WithotFilling(){
+    void SubmitContractStep0WithotFilling() {
         //Configuration.holdBrowserOpen = true;
-            webelements.mainLogo.click();
-            webelements.menuVendorContract.click();
-            webelements.title.shouldHave(text("Договор поставщика"));
-            webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
-            webElementsVendorContract.subtitleVendorContract.shouldHave(text("Ознакомьтесь с шаблоном договора поставщика:"));
-            webElementsVendorContract.step0IsActive.should(exist);
-            webElementsVendorContract.step0IsFinished.shouldNot(exist);
-            webElementsVendorContract.labelRadiobuttonNO.shouldHave(text("У меня ещё нет договора, хочу перейти к заполнению данных для его генерации"));
-            webElementsVendorContract.labelRadiobuttonYes.shouldHave(text("У меня уже есть договор, хочу перейти сразу к загрузке уставных документов"));
-            //webElementsVendorContract.step2.classList.contains("ant-steps-item-finish");
-            webElementsVendorContract.buttonSubmitStep0.click();
-            webElementsVendorContract.radiobuttonStep0Help.shouldHave(text("Пожалуйста, заполните обязательное поле"));
-        }
+        webelements.mainLogo.click();
+        webelements.menuVendorContract.click();
+        webelements.title.shouldHave(text("Договор поставщика"));
+        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
+        webElementsVendorContract.subtitleVendorContract.shouldHave(text("Ознакомьтесь с шаблоном договора поставщика:"));
+        webElementsVendorContract.step0IsActive.should(exist);
+        webElementsVendorContract.step0IsFinished.shouldNot(exist);
+        webElementsVendorContract.labelRadiobuttonNO.shouldHave(text("У меня ещё нет договора, хочу перейти к заполнению данных для его генерации"));
+        webElementsVendorContract.labelRadiobuttonYes.shouldHave(text("У меня уже есть договор, хочу перейти сразу к загрузке уставных документов"));
+        //webElementsVendorContract.step2.classList.contains("ant-steps-item-finish");
+        webElementsVendorContract.buttonSubmitStep0.click();
+        webElementsVendorContract.radiobuttonStep0Help.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+    }
+
     @Test
     @Tag("")
     @DisplayName("Сабмит Шага 1 без заполнения, Возврат на Шаг 0")
-    void ReturnToStep0FromStep1(){
+    void ReturnToStep0FromStep1() {
         //Configuration.holdBrowserOpen = true;
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
@@ -101,6 +103,7 @@ public class VendorContractTests {
         webElementsVendorContract.step1CorrespondentAccountHelp.shouldNot(exist);
         webElementsVendorContract.step1CurrentAccountHelp.shouldNot(exist);
     }
+
     @Test
     @Tag("")
     @DisplayName("Переход с 0 на 4 Шаг, сабмит без заполнения, Возврат на Шаг 0")
@@ -220,21 +223,22 @@ public class VendorContractTests {
         webElementsVendorContract.selectedCheckbox.shouldHave(text("У меня ещё нет договора, хочу перейти к заполнению данных для его генерации"));
         webElementsVendorContract.buttonSubmitStep0.click();
         webElementsVendorContract.managementSelectStep1.shouldHave(text("ИП на упрощённой системе налогообложения (УСН))"));
-        webElementsVendorContract.ogrnStep1.shouldHave(attribute("value","9876543"));
-        webElementsVendorContract.fioSignatoryStep1.shouldHave(attribute("value","Петрова Петра Петровича"));
-        webElementsVendorContract.positionSignatoryStep1.shouldHave(attribute("value","Руководителя территориального отделения"));
-        webElementsVendorContract.fioPropsStep1.shouldHave(attribute("value","Петров П.П."));
-        webElementsVendorContract.positionPropsStep1.shouldHave(attribute("value","Руководитель территориального отделения"));
-        webElementsVendorContract.emailStep1.shouldHave(attribute("value","test@test.ru"));
+        webElementsVendorContract.ogrnStep1.shouldHave(attribute("value", "9876543"));
+        webElementsVendorContract.fioSignatoryStep1.shouldHave(attribute("value", "Петрова Петра Петровича"));
+        webElementsVendorContract.positionSignatoryStep1.shouldHave(attribute("value", "Руководителя территориального отделения"));
+        webElementsVendorContract.fioPropsStep1.shouldHave(attribute("value", "Петров П.П."));
+        webElementsVendorContract.positionPropsStep1.shouldHave(attribute("value", "Руководитель территориального отделения"));
+        webElementsVendorContract.emailStep1.shouldHave(attribute("value", "test@test.ru"));
         webElementsVendorContract.juroAddressStep1.shouldHave(text("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890"));
         webElementsVendorContract.factoAddressStep1.shouldHave(text("г. Санкт-Петербург, пр. Александровской фермы, дом 56, корпус АБВ, офис 678, кабинет 876"));
         webElementsVendorContract.rightToSignSelectStep1.shouldHave(text("Устава"));
         webElementsVendorContract.rightToSignNumberStep1.shouldNot(exist);
-        webElementsVendorContract.bikStep1.shouldHave(attribute("value","345678999999"));
-        webElementsVendorContract.nameBankStep1.shouldHave(attribute("value","Северо-Западный ПАО Сбербанк России 123456"));
-        webElementsVendorContract.correspondentAccountStep1.shouldHave(attribute("value","87654347"));
-        webElementsVendorContract.currentAccountStep1.shouldHave(attribute("value","345678909876"));
+        webElementsVendorContract.bikStep1.shouldHave(attribute("value", "345678999999"));
+        webElementsVendorContract.nameBankStep1.shouldHave(attribute("value", "Северо-Западный ПАО Сбербанк России 123456"));
+        webElementsVendorContract.correspondentAccountStep1.shouldHave(attribute("value", "87654347"));
+        webElementsVendorContract.currentAccountStep1.shouldHave(attribute("value", "345678909876"));
     }
+
     @Test
     @Tag("")
     @DisplayName("Сабмит Шага 2 без заполнения, переход на Шаг 1")
@@ -290,28 +294,28 @@ public class VendorContractTests {
         webElementsVendorContract.buttonBackStep2.click();
         webElementsVendorContract.step1IsActive.should(exist);
         webElementsVendorContract.step2IsActive.shouldNot(exist);
-        webElementsVendorContract.ogrnStep1.shouldHave(attribute("value","1234567890"));
-        webElementsVendorContract.fioSignatoryStep1.shouldHave(attribute("value","Сидорова Петра Сидоровича"));
-        webElementsVendorContract.positionSignatoryStep1.shouldHave(attribute("value","Начальника территориального отделения"));
-        webElementsVendorContract.fioPropsStep1.shouldHave(attribute("value","Сидоров П.С."));
-        webElementsVendorContract.positionPropsStep1.shouldHave(attribute("value","Начальник территориального отделения"));
-        webElementsVendorContract.emailStep1.shouldHave(attribute("value","test@test.ru"));
+        webElementsVendorContract.ogrnStep1.shouldHave(attribute("value", "1234567890"));
+        webElementsVendorContract.fioSignatoryStep1.shouldHave(attribute("value", "Сидорова Петра Сидоровича"));
+        webElementsVendorContract.positionSignatoryStep1.shouldHave(attribute("value", "Начальника территориального отделения"));
+        webElementsVendorContract.fioPropsStep1.shouldHave(attribute("value", "Сидоров П.С."));
+        webElementsVendorContract.positionPropsStep1.shouldHave(attribute("value", "Начальник территориального отделения"));
+        webElementsVendorContract.emailStep1.shouldHave(attribute("value", "test@test.ru"));
         webElementsVendorContract.juroAddressStep1.shouldHave(text("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890"));
         webElementsVendorContract.factoAddressStep1.shouldHave(text("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890"));
         webElementsVendorContract.checkboxAddressIsCheckedStep1.should(exist);
         webElementsVendorContract.rightToSignSelectStep1.shouldHave(text("Доверенности"));
-        webElementsVendorContract.rightToSignNumberStep1.shouldHave(attribute("value","23456_ABCDEFG/123"));
+        webElementsVendorContract.rightToSignNumberStep1.shouldHave(attribute("value", "23456_ABCDEFG/123"));
         webElementsVendorContract.rightToSignDateStep1.shouldHave(attribute("value", fullDateTwoDaysAgo));
-        webElementsVendorContract.bikStep1.shouldHave(attribute("value","8765432"));
-        webElementsVendorContract.nameBankStep1.shouldHave(attribute("value","Северо-Западный ПАО Сбербанк России 123456"));
+        webElementsVendorContract.bikStep1.shouldHave(attribute("value", "8765432"));
+        webElementsVendorContract.nameBankStep1.shouldHave(attribute("value", "Северо-Западный ПАО Сбербанк России 123456"));
         webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
-        webElementsVendorContract.currentAccountStep1.shouldHave(attribute("value","345678909876456"));
+        webElementsVendorContract.currentAccountStep1.shouldHave(attribute("value", "345678909876456"));
         webElementsVendorContract.buttonSubmitStep1.click();
         webElementsVendorContract.step2DefermentHelp.shouldNot(exist);
         webElementsVendorContract.step2ProductGroupHelp.shouldNot(exist);
         webElementsVendorContract.step2NameOfProductHelp.shouldNot(exist);
         webElementsVendorContract.step2DiscountHelp.shouldNot(exist);
-        }
+    }
 
 
     @Test
@@ -386,10 +390,10 @@ public class VendorContractTests {
         webElementsVendorContract.step3IsActive.should(exist);
         webElementsVendorContract.sibtitleTable1Step3.shouldHave(text("Порядок формирования каталога продукции поставщика"));
         webElementsVendorContract.buttonBackStep3.click();
-        webElementsVendorContract.defermentStep2.shouldHave(attribute("value","100"));
-        webElementsVendorContract.groupStep2.shouldHave(attribute("value","Электрические товары"));
-        webElementsVendorContract.nameStep2.shouldHave(attribute("value","Светильник потолочный 109768"));
-        webElementsVendorContract.discountStep2.shouldHave(attribute("value","10.1"));
+        webElementsVendorContract.defermentStep2.shouldHave(attribute("value", "100"));
+        webElementsVendorContract.groupStep2.shouldHave(attribute("value", "Электрические товары"));
+        webElementsVendorContract.nameStep2.shouldHave(attribute("value", "Светильник потолочный 109768"));
+        webElementsVendorContract.discountStep2.shouldHave(attribute("value", "10.1"));
         webElementsVendorContract.step2IsActive.should(exist);
         webElementsVendorContract.step3IsActive.shouldNot(exist);
     }
@@ -452,9 +456,9 @@ public class VendorContractTests {
         webElementsVendorContract.discountLine2Step2.setValue("0.9");
         webElementsVendorContract.buttonSubmitStep2.click();
         webElementsVendorContract.buttonBackStep3.click();
-        webElementsVendorContract.groupLine2Step2.shouldHave(attribute("value","Товарная группа номер 2"));
-        webElementsVendorContract.nameLine2Step2.shouldHave(attribute("value","Наименование товара из товарной группы номер 2"));
-        webElementsVendorContract.discountLine2Step2.shouldHave(attribute("value","0.9"));
+        webElementsVendorContract.groupLine2Step2.shouldHave(attribute("value", "Товарная группа номер 2"));
+        webElementsVendorContract.nameLine2Step2.shouldHave(attribute("value", "Наименование товара из товарной группы номер 2"));
+        webElementsVendorContract.discountLine2Step2.shouldHave(attribute("value", "0.9"));
     }
 
     @Test
@@ -2165,7 +2169,7 @@ public class VendorContractTests {
     @Test
     @Tag("")
     @DisplayName("Заполнение и сабмит Шага 4 только с обязательными валидными файлами")
-    void SubmitStep4WithRequiredValidFiles() throws InterruptedException{
+    void SubmitStep4WithRequiredValidFiles() throws InterruptedException {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
         webelements.title.shouldHave(text("Договор поставщика"));
@@ -2376,7 +2380,7 @@ public class VendorContractTests {
         webElementsVendorContract.step3PublicationMaterialsEmloyeesPhoneOrEmail.setValue("987654345678, test_test.test@mail.ru");
 
         webElementsVendorContract.buttonSubmitStep3.click();
-        webElementsVendorContract.step4IsActiveAfterStep3.shouldBe(visible,Duration.ofMillis(10000));
+        webElementsVendorContract.step4IsActiveAfterStep3.shouldBe(visible, Duration.ofMillis(10000));
         webElementsVendorContract.step4unit1.shouldHave(text("Скачать договор для подписания"));
 
         webElementsVendorContract.uploadContractStep4.uploadFromClasspath("1.4mb.pdf");
@@ -2393,7 +2397,7 @@ public class VendorContractTests {
     @Test
     @Tag("")
     @DisplayName("Заполнение и сабмит Шага 4 с валидными файлами во всех юнитах")
-    void SubmitStep4WithAllValidFiles() throws InterruptedException{
+    void SubmitStep4WithAllValidFiles() throws InterruptedException {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
         webelements.title.shouldHave(text("Договор поставщика"));
@@ -2604,7 +2608,7 @@ public class VendorContractTests {
         webElementsVendorContract.step3PublicationMaterialsEmloyeesPhoneOrEmail.setValue("987654345678, test_test.test@mail.ru");
 
         webElementsVendorContract.buttonSubmitStep3.click();
-        webElementsVendorContract.step4IsActiveAfterStep3.shouldBe(visible,Duration.ofMillis(10000));
+        webElementsVendorContract.step4IsActiveAfterStep3.shouldBe(visible, Duration.ofMillis(10000));
         webElementsVendorContract.step4unit1.shouldHave(text("Скачать договор для подписания"));
 
         webElementsVendorContract.uploadContractStep4.uploadFromClasspath("1.4mb.pdf");
@@ -2626,7 +2630,7 @@ public class VendorContractTests {
     @Test
     @Tag("")
     @DisplayName("Заполнение Шага 4 с невалидными файлами, замена их на валидные, сабмит")
-    void FillingStep4WithUnvalidFilesChangingToValid() throws InterruptedException{
+    void FillingStep4WithUnvalidFilesChangingToValid() throws InterruptedException {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
         webelements.title.shouldHave(text("Договор поставщика"));
@@ -2837,7 +2841,7 @@ public class VendorContractTests {
         webElementsVendorContract.step3PublicationMaterialsEmloyeesPhoneOrEmail.setValue("987654345678, test_test.test@mail.ru");
 
         webElementsVendorContract.buttonSubmitStep3.click();
-        webElementsVendorContract.step4IsActiveAfterStep3.shouldBe(visible,Duration.ofMillis(10000));
+        webElementsVendorContract.step4IsActiveAfterStep3.shouldBe(visible, Duration.ofMillis(10000));
         webElementsVendorContract.step4unit1.shouldHave(text("Скачать договор для подписания"));
 
         webElementsVendorContract.uploadContractStep4.uploadFromClasspath("DOC.doc");
@@ -2906,8 +2910,8 @@ public class VendorContractTests {
     @Test
     @Tag("")
     @DisplayName("Заполнение и сабмит Шага 4 со сбоем загрузки файла")
-    void SubmitStep4WithFailedDownloading() throws InterruptedException{
-            Configuration.holdBrowserOpen = true;
+    void SubmitStep4WithFailedDownloading() throws InterruptedException {
+        Configuration.holdBrowserOpen = true;
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
         webelements.title.shouldHave(text("Договор поставщика"));
@@ -3114,7 +3118,7 @@ public class VendorContractTests {
         webElementsVendorContract.step3PublicationMaterialsEmloyeesPhoneOrEmail.setValue("987654345678, test_test.test@mail.ru");
 
         webElementsVendorContract.buttonSubmitStep3.click();
-        webElementsVendorContract.step4IsActiveAfterStep3.shouldBe(visible,Duration.ofMillis(10000));
+        webElementsVendorContract.step4IsActiveAfterStep3.shouldBe(visible, Duration.ofMillis(10000));
         webElementsVendorContract.step4unit1.shouldHave(text("Скачать договор для подписания"));
 
         webElementsVendorContract.uploadContractStep4.uploadFromClasspath("1.4mb.pdf");
@@ -3128,7 +3132,7 @@ public class VendorContractTests {
 
         Thread.sleep(3000);
         webElementsVendorContract.buttonSubmitStep4.click();
-        $("[role='dialog']").shouldBe(visible,Duration.ofMillis(180000));
+        $("[role='dialog']").shouldBe(visible, Duration.ofMillis(180000));
         $("[role='dialog']").shouldHave(text("Результаты загрузки"));
         Thread.sleep(2000);
         $(By.xpath("//div[@class='ant-modal-wrap']//button[@class='ant-modal-close']/span")).click();
@@ -3143,8 +3147,376 @@ public class VendorContractTests {
         webElementsVendorContract.step5IsActiveAfterFillingStep3.shouldBe(visible, Duration.ofMillis(10000));
         webElementsVendorContract.successSendingContractTitle.shouldHave(text("Договор успешно отправлен на согласование."));
         webElementsVendorContract.successSendingContractSubtitle.shouldHave(text("Мы сообщим вам статус согласования договора после его рассмотрения."));
-
     }
+
+    @Test
+    @Tag("")
+    @DisplayName("Заполнение Шага 4 с невалидными файлами 100Mb, замена их на валидные")
+    void FillingStep4WithUnvalidFiles100MbChangingToValid() throws InterruptedException {
+        webelements.mainLogo.click();
+        webelements.menuVendorContract.click();
+        webelements.title.shouldHave(text("Договор поставщика"));
+        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
+        webElementsVendorContract.radiobuttonStepONO.click();
+        webElementsVendorContract.buttonSubmitStep0.click();
+        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
+        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
+        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
+        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
+        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
+        webElementsVendorContract.managementSelectStep1.click();
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.pressEnter();
+        webElementsVendorContract.ogrnStep1.setValue("1234567890");
+        webElementsVendorContract.emailStep1.setValue("test@test.ru");
+        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
+        webElementsVendorContract.checkboxAddressStep1.click();
+        webElementsVendorContract.rightToSignSelectStep1.click();
+        webElementsVendorContract.rightToSignListStep1.pressEnter();
+        webElementsVendorContract.bikStep1.setValue("8765432");
+        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
+        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
+        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
+        webElementsVendorContract.buttonSubmitStep1.click();
+        webElementsVendorContract.defermentStep2.setValue("20");
+        webElementsVendorContract.groupStep2.setValue("Товарная группа №5678");
+        webElementsVendorContract.nameStep2.setValue("Длинное наименование товара номер 456EWj");
+        webElementsVendorContract.discountStep2.setValue("30");
+        webElementsVendorContract.buttonSubmitStep2.click();
+
+        selectEnabledDayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.configuratorDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.configuratorDatePickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.techInfoDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.techInfoDatePickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.currentCertificatesPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.currentCertificatesPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.productDescriptionPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.productDescriptionPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.additionalImageGoodPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.additionalImageGoodPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.videoMaterialsPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.videoMaterialsPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.modelTechInfoPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.modelTechInfoPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.constructorPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.constructorPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.productAnaloguesPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.productAnaloguesPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.similarProductsPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.similarProductsPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.characteristicsDatabasePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.characteristicsDatabasePickerStep3);
+
+        webElementsVendorContract.step3FillingCatalogEmloyeesFIO.setValue("Кукушкина Мария Ивановна");
+        webElementsVendorContract.step3FillingCatalogEmloyeesPosition.setValue("сотрудник");
+        webElementsVendorContract.step3FillingCatalogEmloyeesPhoneOrEmail.setValue("89246875445, test@mail.ru");
+
+        webElementsVendorContract.electronicArrivalTransferSelectStep3.click();
+        webElementsVendorContract.electronicArrivalTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.electronicArrivalTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.electronicArrivalStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.electronicArrivalStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.electronicArrivalLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.electronicArrivalLaunchDatePickerStep3);
+
+        webElementsVendorContract.electronicOrderTransferSelectStep3.click();
+        webElementsVendorContract.electronicOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.electronicOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.electronicOrderTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.electronicOrderStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.electronicOrderStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.electronicOrderLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.electronicOrderLaunchDatePickerStep3);
+
+        webElementsVendorContract.confirmOrderTransferSelectStep3.click();
+        webElementsVendorContract.confirmOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.confirmOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.confirmOrderTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.confirmOrderTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.confirmOrderStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.confirmOrderStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.confirmOrderLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.confirmOrderLaunchDatePickerStep3);
+
+        webElementsVendorContract.nomenclatureFileRemainsTransferSelectStep3.click();
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileRemainsTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFileRemainsStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.nomenclatureFileRemainsStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFileRemainsLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.nomenclatureFileRemainsLaunchDatePickerStep3);
+
+        webElementsVendorContract.nomenclatureFilePriceTransferSelectStep3.click();
+        webElementsVendorContract.nomenclatureFilePriceTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFilePriceTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFilePriceTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFilePriceStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.nomenclatureFilePriceStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFilePriceLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.nomenclatureFilePriceLaunchDatePickerStep3);
+
+        webElementsVendorContract.estimatedDeliveryTransferSelectStep3.click();
+        webElementsVendorContract.estimatedDeliveryTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.estimatedDeliveryTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.estimatedDeliveryTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.estimatedDeliveryStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.estimatedDeliveryStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.estimatedDeliveryLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.estimatedDeliveryLaunchDatePickerStep3);
+
+        webElementsVendorContract.specialConditionsTransferSelectStep3.click();
+        webElementsVendorContract.specialConditionsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.specialConditionsTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.specialConditionsStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.specialConditionsStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.specialConditionsLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.specialConditionsLaunchDatePickerStep3);
+
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferSelectStep3.click();
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferListStep3.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.nomenclatureFileCharacteristicsTransferVariantStep3.click();
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFileCharacteristicsStartDatePickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.nomenclatureFileCharacteristicsStartDatePickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.nomenclatureFileCharacteristicsLaunchDatePickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.nomenclatureFileCharacteristicsLaunchDatePickerStep3);
+
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesFIO.setValue("Сусликова Ольга Петровна");
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesPosition.setValue("бухгалтер");
+        webElementsVendorContract.step3FillingEDIExchangeEmloyeesPhoneOrEmail.setValue("987654345678, test@mail.ru");
+
+        selectEnabledDayInCalendar(webElementsVendorContract.updStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.updStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.updLaunchDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.updLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.actServicesStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.actServicesStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.actServicesLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actServicesLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.ukdStartDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.ukdStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.ukdLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.ukdLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.additionalAgreementsStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.additionalAgreementsStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.additionalAgreementsLaunchDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.additionalAgreementsLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.specificationStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.specificationStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.specificationLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.specificationLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.powersAttorneyStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.powersAttorneyStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.powersAttorneyLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.powersAttorneyLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.actReconciliationStartDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actReconciliationStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.actReconciliationLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actReconciliationLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.actReportStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.actReportStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.actReportLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actReportLaunchDateUZEDOPickerStep3);
+
+        selectEnabledDayInCalendar(webElementsVendorContract.actDiscrepancyStartDateUZEDOPickerStep3);
+        selectWeekAfterTodayInCalendar(webElementsVendorContract.actDiscrepancyStartDateUZEDOPickerStep3);
+        selectEnabledDayInCalendar(webElementsVendorContract.actDiscrepancyLaunchDateUZEDOPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.actDiscrepancyLaunchDateUZEDOPickerStep3);
+
+        webElementsVendorContract.step3FillingUZEDOEmloyeesFIO.setValue("Боброва Анна Викторовна");
+        webElementsVendorContract.step3FillingUZEDOEmloyeesPosition.setValue("Специалист всех специалистов");
+        webElementsVendorContract.step3FillingUZEDOEmloyeesPhoneOrEmail.setValue("987654345678, test_test.test@mail.ru");
+
+        selectEnabledDayInCalendar(webElementsVendorContract.startEndDatePublicationMaterialsPickerStep3);
+        selectMonthAfterTodayInCalendar(webElementsVendorContract.startEndDatePublicationMaterialsPickerStep3);
+
+        webElementsVendorContract.step3PublicationMaterialsEmloyeesFIO.setValue("Колобков Иван Иванович");
+        webElementsVendorContract.step3PublicationMaterialsEmloyeesPosition.setValue("Специалист всех специалистов");
+        webElementsVendorContract.step3PublicationMaterialsEmloyeesPhoneOrEmail.setValue("987654345678, test_test.test@mail.ru");
+
+        webElementsVendorContract.buttonSubmitStep3.click();
+        webElementsVendorContract.step4IsActiveAfterStep3.shouldBe(visible, Duration.ofMillis(10000));
+        webElementsVendorContract.step4unit1.shouldHave(text("Скачать договор для подписания"));
+
+        webElementsVendorContract.uploadContractStep4.uploadFile(new File("C:/Users/timofeeva_ese/myjava/BigFiles/100MB.pdf"));
+        webElementsVendorContract.uploadRegulationsStep4.uploadFile(new File("C:/Users/timofeeva_ese/myjava/BigFiles/100MB.pdf"));
+        webElementsVendorContract.uploadProtocolStep4.uploadFile(new File("C:/Users/timofeeva_ese/myjava/BigFiles/100MB.pdf"));
+        webElementsVendorContract.uploadTradeMarkStep4.uploadFile(new File("C:/Users/timofeeva_ese/myjava/BigFiles/100MB.pdf"));
+        webElementsVendorContract.uploadPowerOfAttorneyStep4.uploadFile(new File("C:/Users/timofeeva_ese/myjava/BigFiles/100MB.pdf"));
+        webElementsVendorContract.uploadDeclarationStep4.uploadFile(new File("C:/Users/timofeeva_ese/myjava/BigFiles/100MB.pdf"));
+        webElementsVendorContract.uploadExtraDocsStep4.uploadFile(new File("C:/Users/timofeeva_ese/myjava/BigFiles/100MB.pdf"));
+
+        webElementsVendorContract.uploadContractHelpStep4.shouldHave(text("Максимальный размер файла превышен, удалите его и загрузите файл размером не более 100 Мб"));
+        webElementsVendorContract.uploadRegulationsHelpStep4.shouldHave(text("Максимальный размер файла превышен, удалите его и загрузите файл размером не более 100 Мб"));
+        webElementsVendorContract.uploadProtocolHelpStep4.shouldHave(text("Максимальный размер файла превышен, удалите его и загрузите файл размером не более 100 Мб"));
+        webElementsVendorContract.uploadTradeMarkHelpStep4.shouldHave(text("Максимальный размер файла превышен, удалите его и загрузите файл размером не более 100 Мб"));
+        webElementsVendorContract.uploadPowerOfAttorneyHelpStep4.shouldHave(text("Максимальный размер файла превышен, удалите его и загрузите файл размером не более 100 Мб"));
+        webElementsVendorContract.uploadDeclarationHelpStep4.shouldHave(text("Максимальный размер файла превышен, удалите его и загрузите файл размером не более 100 Мб"));
+        webElementsVendorContract.uploadExtraDocsHelpStep4.shouldHave(text("Максимальный размер файла превышен, удалите его и загрузите файл размером не более 100 Мб"));
+
+        Thread.sleep(2000);
+        webElementsVendorContract.buttonDeleteFileContractStep4.click();
+        webElementsVendorContract.uploadContractHelpStep4.shouldHave(text("Пожалуйста, загрузите обязательный документ"));
+        webElementsVendorContract.uploadContractStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.buttonDeleteFileRegulationsStep4.click();
+        webElementsVendorContract.uploadRegulationsHelpStep4.shouldHave(text("Пожалуйста, загрузите обязательный документ"));
+        webElementsVendorContract.uploadRegulationsStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.buttonDeleteFileProtocolStep4.click();
+        webElementsVendorContract.uploadProtocolHelpStep4.shouldHave(text("Пожалуйста, загрузите обязательный документ"));
+        webElementsVendorContract.uploadProtocolStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.buttonDeleteFileTradeMarkStep4.click();
+        webElementsVendorContract.uploadTradeMarkHelpStep4.shouldHave(text("Пожалуйста, загрузите обязательный документ"));
+        webElementsVendorContract.uploadTradeMarkStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.uploadContractHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadRegulationsHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadProtocolHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadTradeMarkHelpStep4.shouldNot(exist);
+
+        webElementsVendorContract.buttonDeleteFilePowerOfAttorneyStep4.click();
+        webElementsVendorContract.uploadPowerOfAttorneyHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadPowerOfAttorneyStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.buttonDeleteFileDeclarationStep4.click();
+        webElementsVendorContract.uploadDeclarationHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadDeclarationStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.buttonDeleteFileExtraDocsStep4.click();
+        webElementsVendorContract.uploadExtraDocsHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadExtraDocsStep4.uploadFromClasspath("DOC.doc");
+
+        Thread.sleep(2000);
+        webElementsVendorContract.buttonSubmitStep4.click();
+        webElementsVendorContract.step5IsActiveAfterFillingStep3.shouldBe(visible, Duration.ofMillis(10000));
+        webElementsVendorContract.successSendingContractTitle.shouldHave(text("Договор успешно отправлен на согласование."));
+        webElementsVendorContract.successSendingContractSubtitle.shouldHave(text("Мы сообщим вам статус согласования договора после его рассмотрения."));
+    }
+
+    @Test
+    @Tag("")
+    @DisplayName("Переход с 0 на 4 Шаг, прикрепление невалидных файлов, замена сабмит ")
+    void FillingUnvalidFilesChangingOnStep4Step0() throws InterruptedException {
+        Configuration.holdBrowserOpen = true;
+        webelements.mainLogo.click();
+        webelements.menuVendorContract.click();
+        webelements.title.shouldHave(text("Договор поставщика"));
+        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
+        webElementsVendorContract.radiobuttonStepOYes.click();
+        webElementsVendorContract.buttonSubmitStep0.click();
+        webElementsVendorContract.step0IsActive.shouldNot(exist);
+        webElementsVendorContract.step0IsFinished.should(exist);
+        webElementsVendorContract.step4ActiveFromStep0.should(exist);
+        webElementsVendorContract.subtitleVendorContract.shouldHave(text("Ознакомьтесь с шаблоном договора поставщика:"));
+        webElementsVendorContract.step4subtitle1.should(exist);
+        webElementsVendorContract.step4subtitle2.should(exist);
+        webElementsVendorContract.step4subtitle3.should(exist);
+        webElementsVendorContract.step4subtitle4.should(exist);
+        webElementsVendorContract.step4subtitle5.should(exist);
+        webElementsVendorContract.step4subtitle6.should(exist);
+        webElementsVendorContract.step4subtitle7.should(exist);
+
+        webElementsVendorContract.uploadContractStep4.uploadFromClasspath("DOC.doc");
+        webElementsVendorContract.uploadRegulationsStep4.uploadFromClasspath(("RAR.rar"));
+        webElementsVendorContract.uploadProtocolStep4.uploadFromClasspath("7Z.7z");
+        webElementsVendorContract.uploadTradeMarkStep4.uploadFromClasspath("DOC.doc");
+        webElementsVendorContract.uploadPowerOfAttorneyStep4.uploadFromClasspath("DOC.doc");
+        webElementsVendorContract.uploadDeclarationStep4.uploadFile(new File("C:/Users/timofeeva_ese/myjava/BigFiles/100Мб.csv"));
+        webElementsVendorContract.uploadExtraDocsStep4.uploadFromClasspath("RAR.rar");
+
+        webElementsVendorContract.uploadContractHelpStep4.shouldHave(text("Вы пытаетесь загрузить файл с недопустимым расширением, удалите его и загрузите файлы с расширением .pdf"));
+        webElementsVendorContract.uploadRegulationsHelpStep4.shouldHave(text("Вы пытаетесь загрузить файл с недопустимым расширением, удалите его и загрузите файлы с расширением .jpg, .png, .jpeg, .pdf"));
+        webElementsVendorContract.uploadProtocolHelpStep4.shouldHave(text("Вы пытаетесь загрузить файл с недопустимым расширением, удалите его и загрузите файлы с расширением .jpg, .png, .jpeg, .pdf"));
+        webElementsVendorContract.uploadTradeMarkHelpStep4.shouldHave(text("Вы пытаетесь загрузить файл с недопустимым расширением, удалите его и загрузите файлы с расширением .jpg, .png, .jpeg, .pdf"));
+        webElementsVendorContract.uploadPowerOfAttorneyHelpStep4.shouldHave(text("Вы пытаетесь загрузить файл с недопустимым расширением, удалите его и загрузите файлы с расширением .jpg, .png, .jpeg, .pdf"));
+        webElementsVendorContract.uploadDeclarationHelpStep4.shouldHave(text("Вы пытаетесь загрузить файл с недопустимым расширением, удалите его и загрузите файлы с расширением .jpg, .png, .jpeg, .pdf"));
+        webElementsVendorContract.uploadDeclarationHelpStep4.shouldHave(text("Максимальный размер файла превышен, удалите его и загрузите файл размером не более 100 Мб"));
+        webElementsVendorContract.uploadExtraDocsHelpStep4.shouldHave(text("Вы пытаетесь загрузить файл с недопустимым расширением, удалите его и загрузите файлы с расширением .jpg, .png, .jpeg, .pdf, .doc, .docx"));
+
+        Thread.sleep(2000);
+        webElementsVendorContract.buttonDeleteFileContractStep4.click();
+        webElementsVendorContract.uploadContractHelpStep4.shouldHave(text("Пожалуйста, загрузите обязательный документ"));
+        webElementsVendorContract.uploadContractStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.buttonDeleteFileRegulationsStep4.click();
+        webElementsVendorContract.uploadRegulationsHelpStep4.shouldHave(text("Пожалуйста, загрузите обязательный документ"));
+        webElementsVendorContract.uploadRegulationsStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.buttonDeleteFileProtocolStep4.click();
+        webElementsVendorContract.uploadProtocolHelpStep4.shouldHave(text("Пожалуйста, загрузите обязательный документ"));
+        webElementsVendorContract.uploadProtocolStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.buttonDeleteFileTradeMarkStep4.click();
+        webElementsVendorContract.uploadTradeMarkHelpStep4.shouldHave(text("Пожалуйста, загрузите обязательный документ"));
+        webElementsVendorContract.uploadTradeMarkStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.uploadContractHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadRegulationsHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadProtocolHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadTradeMarkHelpStep4.shouldNot(exist);
+
+        webElementsVendorContract.buttonDeleteFilePowerOfAttorneyStep4.click();
+        webElementsVendorContract.uploadPowerOfAttorneyHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadPowerOfAttorneyStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.buttonDeleteFileDeclarationStep4.click();
+        webElementsVendorContract.uploadDeclarationHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadDeclarationStep4.uploadFromClasspath("PDF.pdf");
+
+        Thread.sleep(1000);
+        webElementsVendorContract.buttonDeleteFileExtraDocsStep4.click();
+        webElementsVendorContract.uploadExtraDocsHelpStep4.shouldNot(exist);
+        webElementsVendorContract.uploadExtraDocsStep4.uploadFromClasspath("DOC.doc");
+
+        Thread.sleep(2000);
+        webElementsVendorContract.buttonSubmitStep4.click();
+        webElementsVendorContract.step5ActiveFromFillingStep4AfterStep0.shouldBe(visible, Duration.ofMillis(10000));
+        webElementsVendorContract.successSendingContractTitle.shouldHave(text("Договор успешно отправлен на согласование."));
+        webElementsVendorContract.successSendingContractSubtitle.shouldHave(text("Мы сообщим вам статус согласования договора после его рассмотрения."));
+    }
+
+
 
     static void selectMonthAfterTodayInCalendar(WebElement calendarElement){
         calendarElement.click();
