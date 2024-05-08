@@ -47,7 +47,6 @@ public class MainPageTests {
     @DisplayName("Переход ссылке YouTube")
     void GoByYoutubeLink()
     {
-        //Configuration.holdBrowserOpen = true;
         open("https://idev.etm.ru/oneteam");
         $(".Footer_social_media_icons__qTWJ8 :nth-child(3) .ant-btn-icon").click();
         switchTo().window(1);

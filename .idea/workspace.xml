@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4940d5d9-c95e-4b06-a4e2-e339c3905889" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MainPageTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MainPageTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/VendorContractTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VendorContractTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/VendorFormTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VendorFormTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorContract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,51 +48,51 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.VendorContractTests.FillingStep4WithUnvalidFiles100MbChangingToValid">
-    <configuration name="VendorContractTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.LoginTests">
+    <configuration name="LoginTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
+      <option name="MAIN_CLASS_NAME" value="LoginTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTests.FillingStep4WithUnvalidFiles100MbChangingToValid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginTests.LogiLimitedRightsDostuplkp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
-      <option name="METHOD_NAME" value="FillingStep4WithUnvalidFiles100MbChangingToValid" />
+      <option name="MAIN_CLASS_NAME" value="LoginTests" />
+      <option name="METHOD_NAME" value="LogiLimitedRightsDostuplkp" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTests.FillingStep4WithUnvalidFilesChangingToValid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginTests.LoginMarket" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
-      <option name="METHOD_NAME" value="FillingStep4WithUnvalidFilesChangingToValid" />
+      <option name="MAIN_CLASS_NAME" value="LoginTests" />
+      <option name="METHOD_NAME" value="LoginMarket" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTests.SubmitStep4WithAllValidFiles" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginTests.LoginWI" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
-      <option name="METHOD_NAME" value="SubmitStep4WithAllValidFiles" />
+      <option name="MAIN_CLASS_NAME" value="LoginTests" />
+      <option name="METHOD_NAME" value="LoginWI" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTests.SubmitStep4WithFailedDownloading" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorContractTests.ReturnToStep0FromStep1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorContractTests" />
-      <option name="METHOD_NAME" value="SubmitStep4WithFailedDownloading" />
+      <option name="METHOD_NAME" value="ReturnToStep0FromStep1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -100,11 +100,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.VendorContractTests.FillingStep4WithUnvalidFiles100MbChangingToValid" />
-        <item itemvalue="JUnit.VendorContractTests" />
-        <item itemvalue="JUnit.VendorContractTests.SubmitStep4WithFailedDownloading" />
-        <item itemvalue="JUnit.VendorContractTests.FillingStep4WithUnvalidFilesChangingToValid" />
-        <item itemvalue="JUnit.VendorContractTests.SubmitStep4WithAllValidFiles" />
+        <item itemvalue="JUnit.LoginTests" />
+        <item itemvalue="JUnit.LoginTests.LogiLimitedRightsDostuplkp" />
+        <item itemvalue="JUnit.LoginTests.LoginWI" />
+        <item itemvalue="JUnit.LoginTests.LoginMarket" />
+        <item itemvalue="JUnit.VendorContractTests.ReturnToStep0FromStep1" />
       </list>
     </recent_temporary>
   </component>

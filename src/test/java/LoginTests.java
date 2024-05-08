@@ -24,7 +24,7 @@ public class LoginTests {
     @BeforeAll
     @DisplayName("Размер экрана 1920х1280")
     static void start() {
-        Configuration.browser = "firefox";
+        //Configuration.browser = "firefox";
         Configuration.browserSize = "1920x1280";
     }
 
@@ -32,7 +32,6 @@ public class LoginTests {
     @DisplayName("Авторизация с Невалидным паролем")
     @Tag("TMOT-275")
     void LoginUnvalidPassword() {
-        //Configuration.holdBrowserOpen = true;
         open(loginURL);
         webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
         webelements.loginInput.setValue("51951tes");
@@ -45,7 +44,6 @@ public class LoginTests {
     @DisplayName("Авторизация с Невалидным логином")
     @Tag("TMOT-277")
     void LoginUnvalidLogin() {
-        //Configuration.holdBrowserOpen = true;
         open(loginURL);
         webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
         webelements.loginInput.setValue("51951te");
@@ -88,7 +86,6 @@ public class LoginTests {
     @DisplayName("Авторизация пользователя с dostuplkp=on с полным доступом")
     @Tag("TMOT-281")
     void LoginFullRightsDostuplkp() {
-        //Configuration.browser = "firefox";
         lib.ui.LoginPageObject.Login("51951cka", "lxca1500");
         webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         $("[data-menu-id*='orders']").click();
@@ -123,7 +120,6 @@ public class LoginTests {
     @DisplayName("Авторизация пользователя с dostuplkp=on с базовым доступом")
     @Tag("TMOT-282")
     void LogiLimitedRightsDostuplkp() {
-        //Configuration.browser = "firefox";
         lib.ui.LoginPageObject.Login("51951tee", "swfl6157");
         webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         $("[data-menu-id*='analytics']").click();
@@ -197,7 +193,6 @@ public class LoginTests {
     @DisplayName("Авторизация пользователя с limitedAccessOneTeam=on")
     @Tag("TMOT-284")
     void LoginLimitedAccessOneTeamON() {
-        //Configuration.holdBrowserOpen = true;
         lib.ui.LoginPageObject.Login("9215641te", "goyz7736");
         webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         $("[data-menu-id*='vendorContract']").click();
@@ -226,14 +221,13 @@ public class LoginTests {
     void LoginMarket()
     {
         lib.ui.LoginPageObject.Login("9119569663", "ntqz5730");
-        webelements.loginFormErrorMessage.shouldHave(text("Неверный логин или пароль"));
-        webelements.backFromLoginPage.click();
         webelements.title.shouldHave(text("Управляйте продажами – в одной команде с ЭТМ"));
         refresh();
-        $("[role='alert']").shouldHave(text("Доступ запрещен"));
         webelements.menuContainer.find("[data-menu-id*=catalog]").shouldBe(visible);
         webelements.menuContainer.find("[data-menu-id*=help]").shouldBe(visible);
         webelements.menuContainer.find("[aria-label=logout]").shouldBe(visible);
+        //refresh();
+        $("[role='alert']").shouldHave(text("Доступ запрещен"));
         webelements.buttonLogout.click();
         webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
         webelements.backFromLoginPage.click();
@@ -263,14 +257,12 @@ public class LoginTests {
     @Tag("TMOT-287")
     void LoginWI()
     {
-        lib.ui.LoginPageObject.Login("ayrapetova_ea_mopp", "suut6494");
-        webelements.loginFormErrorMessage.shouldHave(text("Неверный логин или пароль"));
-        webelements.backFromLoginPage.click();
-        refresh();
-        $("[role='alert']").shouldHave(text("Доступ запрещен"));
+        lib.ui.LoginPageObject.Login("timofeeva_ese", "1Aleshanov..");
         webelements.menuContainer.find("[data-menu-id*=catalog]").shouldBe(visible);
         webelements.menuContainer.find("[data-menu-id*=help]").shouldBe(visible);
         webelements.menuContainer.find("[aria-label=logout]").shouldBe(visible);
+        refresh();
+        $("[role='alert']").shouldHave(text("Доступ запрещен"));
         webelements.buttonLogout.click();
         webelements.loginFormTitle.shouldHave(text("Вход в iPRO OneTeam"));
         webelements.backFromLoginPage.click();

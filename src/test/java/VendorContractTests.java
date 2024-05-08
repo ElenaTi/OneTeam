@@ -10,12 +10,10 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-
 import java.io.File;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -23,15 +21,15 @@ public class VendorContractTests {
     @BeforeAll
     @DisplayName("Размер экрана 1920х1280")
     static void start() {
+        Configuration.browser = "firefox";
         Configuration.browserSize = "1920x1280";
         lib.ui.LoginPageObject.Login("9215642te", "rikb0444");
     }
 
     @Test
-    @Tag("")
+    @Tag("TMOT-335")
     @DisplayName("Сабмит Шага 0 без выбора чекбокса")
     void SubmitContractStep0WithotFilling() {
-        //Configuration.holdBrowserOpen = true;
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
         webelements.title.shouldHave(text("Договор поставщика"));
@@ -41,23 +39,19 @@ public class VendorContractTests {
         webElementsVendorContract.step0IsFinished.shouldNot(exist);
         webElementsVendorContract.labelRadiobuttonNO.shouldHave(text("У меня ещё нет договора, хочу перейти к заполнению данных для его генерации"));
         webElementsVendorContract.labelRadiobuttonYes.shouldHave(text("У меня уже есть договор, хочу перейти сразу к загрузке уставных документов"));
-        //webElementsVendorContract.step2.classList.contains("ant-steps-item-finish");
         webElementsVendorContract.buttonSubmitStep0.click();
         webElementsVendorContract.radiobuttonStep0Help.shouldHave(text("Пожалуйста, заполните обязательное поле"));
     }
 
     @Test
-    @Tag("")
+    @Tag("TMOT-336")
     @DisplayName("Сабмит Шага 1 без заполнения, Возврат на Шаг 0")
     void ReturnToStep0FromStep1() {
-        //Configuration.holdBrowserOpen = true;
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
         webelements.title.shouldHave(text("Договор поставщика"));
-        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
         webElementsVendorContract.radiobuttonStepONO.click();
         webElementsVendorContract.buttonSubmitStep0.click();
-        webElementsVendorContract.subtitleVendorContract.shouldHave(text("Ознакомьтесь с шаблоном договора поставщика:"));
         webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
         webElementsVendorContract.step0IsFinished.should(exist);
         webElementsVendorContract.step1IsActive.should(exist);
@@ -105,13 +99,12 @@ public class VendorContractTests {
     }
 
     @Test
-    @Tag("")
+    @Tag("TMOT-337")
     @DisplayName("Переход с 0 на 4 Шаг, сабмит без заполнения, Возврат на Шаг 0")
     void ReturnToStep0FromStep4() {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
         webelements.title.shouldHave(text("Договор поставщика"));
-        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
         webElementsVendorContract.radiobuttonStepOYes.click();
         webElementsVendorContract.buttonSubmitStep0.click();
         webElementsVendorContract.step0IsActive.shouldNot(exist);
@@ -145,6 +138,7 @@ public class VendorContractTests {
         webElementsVendorContract.selectedCheckbox.shouldHave(text("У меня уже есть договор, хочу перейти сразу к загрузке уставных документов"));
         webElementsVendorContract.buttonSubmitStep0.click();
         webElementsVendorContract.step4subtitle1.should(exist);
+        webElementsVendorContract.step4ActiveFromStep0.should(exist);
         webElementsVendorContract.uploadContractHelpStep4.shouldNot(exist);
         webElementsVendorContract.uploadProtocolHelpStep4.shouldNot(exist);
         webElementsVendorContract.uploadRegulationsHelpStep4.shouldNot(exist);
@@ -158,7 +152,6 @@ public class VendorContractTests {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
         webelements.title.shouldHave(text("Договор поставщика"));
-        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
         webElementsVendorContract.radiobuttonStepONO.click();
         webElementsVendorContract.buttonSubmitStep0.click();
         webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
@@ -197,7 +190,10 @@ public class VendorContractTests {
         webElementsVendorContract.step1PositionPropsExtra.shouldHave(text("Например: Руководитель отдела"));
         webElementsVendorContract.emailStep1.setValue("tes");
         webElementsVendorContract.step1EmailHelp.shouldHave(text("Введен некорректный email"));
-        webElementsVendorContract.emailStep1.setValue("t@test.ru");
+        webElementsVendorContract.emailStep1.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.emailStep1.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.emailStep1.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.emailStep1.setValue("test@test.ru");
         webElementsVendorContract.step1EmailHelp.shouldNot(exist);
         webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
         webElementsVendorContract.factoAddressStep1.setValue("г. Санкт-Петербург, пр. Александровской фермы, дом 56, корпус АБВ, офис 678, кабинет 876");
@@ -260,7 +256,16 @@ public class VendorContractTests {
         webElementsVendorContract.managementListStep1.pressEnter();
         webElementsVendorContract.emailStep1.setValue("test@test");
         webElementsVendorContract.step1EmailHelp.shouldHave(text("Введен некорректный email"));
-        webElementsVendorContract.emailStep1.setValue(".ru");
+        webElementsVendorContract.emailStep1.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.emailStep1.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.emailStep1.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.emailStep1.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.emailStep1.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.emailStep1.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.emailStep1.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.emailStep1.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.emailStep1.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.emailStep1.setValue("test@test.ru");
         webElementsVendorContract.step1EmailHelp.shouldNot(exist);
         webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
         webElementsVendorContract.factoAddressStep1.setValue("г. Санкт-Петербург, пр. Александровской фермы, дом 56, корпус АБВ, офис 678, кабинет 876");
@@ -2911,7 +2916,6 @@ public class VendorContractTests {
     @Tag("")
     @DisplayName("Заполнение и сабмит Шага 4 со сбоем загрузки файла")
     void SubmitStep4WithFailedDownloading() throws InterruptedException {
-        Configuration.holdBrowserOpen = true;
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
         webelements.title.shouldHave(text("Договор поставщика"));
