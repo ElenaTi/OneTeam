@@ -17,14 +17,14 @@ public class VendorContractTestsZeroFirstSteps {
     @DisplayName("Размер экрана 1920х1280")
     static void start() {
         //Configuration.browser = "firefox";
-        Configuration.browser = "edge";
+        //Configuration.browser = "edge";
         Configuration.browserSize = "1920x1280";
         lib.ui.LoginPageObject.Login("9215642te", "rikb0444");
     }
 
 
     @Test
-    @Tag("")
+    @Tag("TMOT-342")
     @DisplayName("Проверка отображения Шага 0")
     void CheckDisplayStep0() {
         webelements.mainLogo.click();
@@ -55,8 +55,8 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.radiobuttonStep0Help.shouldHave(text("Пожалуйста, заполните обязательное поле"));
     }
     @Test
-    @Tag("")
-    @DisplayName("Сабмит Шага 0, выбор Нет")
+    @Tag("TMOT-343")
+    @DisplayName("Сабмит Шага 0, выбор радиобаттона Нет")
     void SubmitContractStep0ChoiseNo() {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
@@ -67,8 +67,8 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.step1IsActive.should(exist);
     }
     @Test
-    @Tag("")
-    @DisplayName("Сабмит Шага 0, выбор Да")
+    @Tag("TMOT-344")
+    @DisplayName("Сабмит Шага 0, выбор радиобаттона Да")
     void SubmitContractStep0ChoiceYes() {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
@@ -80,8 +80,8 @@ public class VendorContractTestsZeroFirstSteps {
     }
 
     @Test
-    @Tag("")
-    @DisplayName("Выбор чекбокса, переход на другой раздел")
+    @Tag("TMOT-345")
+    @DisplayName("Проверка сброса радиобаттона на шаге 0 после перехода в другой раздел")
     void ChoiceRadiobuttonTransition() {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
@@ -92,8 +92,8 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.radiobuttonStep0Help.shouldHave(text("Пожалуйста, заполните обязательное поле"));
     }
     @Test
-    @Tag("")
-    @DisplayName("Отображение Шага 1")
+    @Tag("TMOT-346")
+    @DisplayName("Проверка отображения Шага 1")
     void DisplayStep1() {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
@@ -139,8 +139,8 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.buttonBackStep1.should(exist);
     }
     @Test
-    @Tag("")
-    @DisplayName("Чекбок выбран после возврата с шага 1 на шаг 0")
+    @Tag("TMOT-347")
+    @DisplayName("Радиобаттон Нет выбран после возврата с шага 1 на шаг 0")
     void CheckingCheckboxAfterReturnBackToStep0FromStep1() {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
@@ -149,10 +149,21 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.buttonBackStep1.click();
         webElementsVendorContract.selectedCheckbox.shouldHave(text("У меня ещё нет договора, хочу перейти к заполнению данных для его генерации"));
     }
+    @Test
+    @Tag("TMOT-348")
+    @DisplayName("Радиобаттон выбран после возврата с шага 4 на шаг 0")
+    void CheckingCheckboxAfterReturnBackToStep0FromStep4() {
+        webelements.mainLogo.click();
+        webelements.menuVendorContract.click();
+        webElementsVendorContract.radiobuttonStepOYes.click();
+        webElementsVendorContract.buttonSubmitStep0.click();
+        webElementsVendorContract.buttonBackStep4.click();
+        webElementsVendorContract.selectedCheckbox.shouldHave(text("У меня уже есть договор, хочу перейти сразу к загрузке уставных документов"));
+    }
 
     @Test
     @Tag("TMOT-336")
-    @DisplayName("Сабмит Шага 1 без заполнения, Возврат на Шаг 0")
+    @DisplayName("Сабмит Шага 1 без заполнения")
     void SubmitStep1WithoutFilling() {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
@@ -177,8 +188,8 @@ public class VendorContractTestsZeroFirstSteps {
     }
 
     @Test
-    @Tag("TMOT-336")
-    @DisplayName("Сабмит Шага 1 без заполнения, Возврат на Шаг 0")
+    @Tag("TMOT-349")
+    @DisplayName("Сброс ошибок валидации под полями шага 1 после перехода на шаг 0 и назад")
     void ReturnToStep0FromStep1() throws InterruptedException{
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
@@ -206,8 +217,8 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.step1CurrentAccountHelp.shouldNot(exist);
     }
     @Test
-    @Tag("")
-    @DisplayName("Проверка заполнения поля Email латиницей")
+    @Tag("TMOT-350")
+    @DisplayName("Проверка заполнения поля Email латиницей на Шаге 1 ")
     void CheckingInputEmailWithLatinitsaStep1() {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
@@ -234,7 +245,7 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.step1EmailHelp.shouldNot(exist);
     }
     @Test
-    @Tag("")
+    @Tag("TMOT-351")
     @DisplayName("Проверка заполнения поля Email кириллицей")
     void CheckingInputEmailWithKirillitsaStep1() {
         webelements.mainLogo.click();
@@ -259,8 +270,8 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.step1EmailHelp.shouldNot(exist);
     }
     @Test
-    @Tag("")
-    @DisplayName("Проверка поля Право подписи на основании")
+    @Tag("TMOT-352")
+    @DisplayName("Проверка состояний поля Право подписи на основании и зависимых полей")
     void CheckingRightToSign() {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
@@ -291,8 +302,8 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.rightToSignDateStep1.shouldNot(exist);
     }
     @Test
-    @Tag("")
-    @DisplayName("Активация Чекбокса без заполнения полей адресов, заполнение юр.адреса с активным")
+    @Tag("TMOT-353")
+    @DisplayName("Активация Чекбокса адресов без заполнения полей, заполнение юр.адреса с активным чекбоксом")
     void ActivateCheckboxAddressWithoutFillingStep1() {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
@@ -310,7 +321,7 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.factoAddressStep1.shouldHave(text("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890"));
     }
     @Test
-    @Tag("")
+    @Tag("TMOT-354")
     @DisplayName("Активация Чекбокса после заполнения фактического адреса")
     void TestCheckboxWithAddressesStep1() {
         webelements.mainLogo.click();
@@ -323,15 +334,14 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.factoAddressStep1.shouldHave(text("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890"));
     }
     @Test
-    @Tag("")
-    @DisplayName("Проверка поля БИК")
+    @Tag("TMOT-355")
+    @DisplayName("Проверка заполнения поля БИК")
     void CheckingInputBIKStep1() {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
         webElementsVendorContract.radiobuttonStepONO.click();
         webElementsVendorContract.buttonSubmitStep0.click();
         webElementsVendorContract.buttonSubmitStep1.click();
-        webElementsVendorContract.step1BIKHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
         webElementsVendorContract.bikStep1.setValue("ABCDEFG");
         webElementsVendorContract.step1BIKHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
         webElementsVendorContract.nameBankStep1.click();
@@ -347,13 +357,12 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.bikStep1.sendKeys(Keys.BACK_SPACE);
         webElementsVendorContract.bikStep1.sendKeys(Keys.BACK_SPACE);
         webElementsVendorContract.bikStep1.setValue("345678999999");
-        webElementsVendorContract.nameBankStep1.click();
         webElementsVendorContract.step1BIKHelp.shouldNot(exist);
         webElementsVendorContract.bikStep1.shouldHave(attribute("value", "345678999999"));
     }
     @Test
-    @Tag("")
-    @DisplayName("Проверка поля Корреспондентский счёт")
+    @Tag("TMOT-356")
+    @DisplayName("Проверка заполнения поля Корреспондентский счёт")
     void CheckingInputCorrespondentAccountStep1() {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
@@ -364,7 +373,7 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.step1CorrespondentAccountHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
         webElementsVendorContract.nameBankStep1.click();
         webElementsVendorContract.correspondentAccountStep1.shouldBe(empty);
-        webElementsVendorContract.correspondentAccountStep1.setValue("SDFGHJNB456789");
+        webElementsVendorContract.correspondentAccountStep1.setValue("SDFGHJNB456789%;");
         webElementsVendorContract.step1CorrespondentAccountHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
         webElementsVendorContract.nameBankStep1.click();
         webElementsVendorContract.correspondentAccountStep1.shouldBe(empty);
@@ -380,8 +389,8 @@ public class VendorContractTestsZeroFirstSteps {
 
     }
     @Test
-    @Tag("")
-    @DisplayName("Проверка поля Расчётный счёт")
+    @Tag("TMOT-357")
+    @DisplayName("Проверка заполнения поля Расчётный счёт")
     void CheckingInputCurrentAccountStep1() {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
@@ -392,7 +401,7 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.step1CurrentAccountHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
         webElementsVendorContract.nameBankStep1.click();
         webElementsVendorContract.currentAccountStep1.shouldBe(empty);
-        webElementsVendorContract.currentAccountStep1.setValue("ABC4567890EFG");
+        webElementsVendorContract.currentAccountStep1.setValue("ABC4567890EFG-+?");
         webElementsVendorContract.step1CurrentAccountHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
         webElementsVendorContract.nameBankStep1.click();
         webElementsVendorContract.currentAccountStep1.shouldBe(empty);
@@ -406,7 +415,7 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.step1CurrentAccountHelp.shouldNot(exist);
     }
     @Test
-    @Tag("")
+    @Tag("TMOT-358")
     @DisplayName("Сабмит Шага 1 без заполнения, заполнение")
     void FillingStep1AfterSubmit() {
         webelements.mainLogo.click();
@@ -430,9 +439,12 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.emailStep1.setValue("test@test.ru");
         webElementsVendorContract.step1EmailHelp.shouldNot(exist);
         webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
+        webElementsVendorContract.step1JuroAddressHelp.shouldNot(exist);
         webElementsVendorContract.factoAddressStep1.setValue("г. Санкт-Петербург, пр. Александровской фермы, дом 56, корпус АБВ, офис 678, кабинет 876");
+        webElementsVendorContract.step1FactoAddressHelp.shouldNot(exist);
         webElementsVendorContract.rightToSignSelectStep1.click();
         webElementsVendorContract.rightToSignListStep1.pressEnter();
+        webElementsVendorContract.step1RightToSignHelp.shouldNot(exist);
         webElementsVendorContract.bikStep1.setValue("345678999999");
         webElementsVendorContract.step1BIKHelp.shouldNot(exist);
         webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
@@ -443,8 +455,8 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.step1CurrentAccountHelp.shouldNot(exist);
     }
     @Test
-    @Tag("")
-    @DisplayName("Сабмит Шага 1 с заполнением, Возврат на Шаг 0")
+    @Tag("TMOT-338")
+    @DisplayName("Заполнение Шага 1, Возврат на Шаг 0")
     void FillingStep1ReturnToStep0() {
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
@@ -484,7 +496,7 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.currentAccountStep1.shouldHave(attribute("value", "345678909876"));
     }
     @Test
-    @Tag("")
+    @Tag("TMOT-359")
     @DisplayName("Сабмит заполненного Шага 1, возврат на него")
     void SubmitStep1ReturnBack() {
         webelements.mainLogo.click();
@@ -508,7 +520,7 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.correspondentAccountStep1.setValue("87654347");
         webElementsVendorContract.currentAccountStep1.setValue("345678909876");
         webElementsVendorContract.buttonSubmitStep1.click();
-        webElementsVendorContract.buttonBackStep3.click();
+        webElementsVendorContract.buttonBackStep2.click();
         webElementsVendorContract.managementSelectStep1.shouldHave(text("ИП на упрощённой системе налогообложения (УСН))"));
         webElementsVendorContract.ogrnStep1.shouldHave(attribute("value", "9876543"));
         webElementsVendorContract.fioSignatoryStep1.shouldHave(attribute("value", "Петрова Петра Петровича"));
@@ -523,5 +535,35 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.nameBankStep1.shouldHave(attribute("value", "Северо-Западный ПАО Сбербанк России 123456"));
         webElementsVendorContract.correspondentAccountStep1.shouldHave(attribute("value", "87654347"));
         webElementsVendorContract.currentAccountStep1.shouldHave(attribute("value", "345678909876"));
+    }
+
+    @Test
+    @Tag("TMOT-360")
+    @DisplayName("Заполнение Шага 1, переход в Анкету и назад")
+    void FillingStep1TransitionToVendorForm() {
+        webelements.mainLogo.click();
+        webelements.menuVendorContract.click();
+        webElementsVendorContract.radiobuttonStepONO.click();
+        webElementsVendorContract.buttonSubmitStep0.click();
+        webElementsVendorContract.managementSelectStep1.click();
+        webElementsVendorContract.managementListStep1.pressEnter();
+        webElementsVendorContract.ogrnStep1.setValue("9876543");
+        webElementsVendorContract.fioSignatoryStep1.setValue("Петрова Петра Петровича");
+        webElementsVendorContract.positionSignatoryStep1.setValue("Руководителя территориального отделения");
+        webElementsVendorContract.fioPropsStep1.setValue("Петров П.П.");
+        webElementsVendorContract.positionPropsStep1.setValue("Руководитель территориального отделения");
+        webElementsVendorContract.emailStep1.setValue("test@test.ru");
+        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
+        webElementsVendorContract.factoAddressStep1.setValue("г. Санкт-Петербург, пр. Александровской фермы, дом 56, корпус АБВ, офис 678, кабинет 876");
+        webElementsVendorContract.rightToSignSelectStep1.click();
+        webElementsVendorContract.rightToSignListStep1.pressEnter();
+        webElementsVendorContract.bikStep1.setValue("345678999999");
+        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
+        webElementsVendorContract.correspondentAccountStep1.setValue("87654347");
+        webElementsVendorContract.currentAccountStep1.setValue("345678909876");
+        webelements.menuVendorForm.click();
+        webelements.menuVendorContract.click();
+        webElementsVendorContract.buttonSubmitStep0.click();
+        webElementsVendorContract.radiobuttonStep0Help.shouldHave(text("Пожалуйста, заполните обязательное поле"));
     }
 }

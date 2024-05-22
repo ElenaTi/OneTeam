@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4940d5d9-c95e-4b06-a4e2-e339c3905889" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/VendorContractTestsZeroFirstSteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/VendorContractTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VendorContractTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorContract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/VendorContractTestsZeroFirstSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VendorContractTestsZeroFirstSteps.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +46,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.VendorContractTestsZeroFirstSteps">
+  <component name="RunManager" selected="JUnit.VendorContractTestsZeroFirstSteps.FillingStep1TransitionToVendorForm">
     <configuration name="VendorContractTestsZeroFirstSteps" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
@@ -58,41 +56,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTestsZeroFirstSteps.CheckingInputCorrespondentAccountStep1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorContractTestsZeroFirstSteps.CheckingCheckboxAfterReturnBackToStep0FromStep4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorContractTestsZeroFirstSteps" />
-      <option name="METHOD_NAME" value="CheckingInputCorrespondentAccountStep1" />
+      <option name="METHOD_NAME" value="CheckingCheckboxAfterReturnBackToStep0FromStep4" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTestsZeroFirstSteps.CheckingInputCurrentAccountStep1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorContractTestsZeroFirstSteps.CheckingInputBIKStep1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorContractTestsZeroFirstSteps" />
-      <option name="METHOD_NAME" value="CheckingInputCurrentAccountStep1" />
+      <option name="METHOD_NAME" value="CheckingInputBIKStep1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTestsZeroFirstSteps.ReturnToStep0FromStep1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorContractTestsZeroFirstSteps.ChoiceRadiobuttonTransition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorContractTestsZeroFirstSteps" />
-      <option name="METHOD_NAME" value="ReturnToStep0FromStep1" />
+      <option name="METHOD_NAME" value="ChoiceRadiobuttonTransition" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTestsZeroFirstSteps.SubmitStep1ReturnBack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorContractTestsZeroFirstSteps.FillingStep1TransitionToVendorForm" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="VendorContractTestsZeroFirstSteps" />
-      <option name="METHOD_NAME" value="SubmitStep1ReturnBack" />
+      <option name="METHOD_NAME" value="FillingStep1TransitionToVendorForm" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -100,11 +98,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.VendorContractTestsZeroFirstSteps.FillingStep1TransitionToVendorForm" />
+        <item itemvalue="JUnit.VendorContractTestsZeroFirstSteps.CheckingInputBIKStep1" />
+        <item itemvalue="JUnit.VendorContractTestsZeroFirstSteps.CheckingCheckboxAfterReturnBackToStep0FromStep4" />
+        <item itemvalue="JUnit.VendorContractTestsZeroFirstSteps.ChoiceRadiobuttonTransition" />
         <item itemvalue="JUnit.VendorContractTestsZeroFirstSteps" />
-        <item itemvalue="JUnit.VendorContractTestsZeroFirstSteps.SubmitStep1ReturnBack" />
-        <item itemvalue="JUnit.VendorContractTestsZeroFirstSteps.ReturnToStep0FromStep1" />
-        <item itemvalue="JUnit.VendorContractTestsZeroFirstSteps.CheckingInputCurrentAccountStep1" />
-        <item itemvalue="JUnit.VendorContractTestsZeroFirstSteps.CheckingInputCorrespondentAccountStep1" />
       </list>
     </recent_temporary>
   </component>
