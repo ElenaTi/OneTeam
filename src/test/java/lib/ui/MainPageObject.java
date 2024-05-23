@@ -23,6 +23,11 @@ public class MainPageObject {
         }
         return String.valueOf(twoDaysAgo);
     }
+    public static String GetDayToday(){
+        LocalDate currentDate = LocalDate.now();
+        int today = currentDate.getDayOfMonth();
+        return String.valueOf(today);
+    }
     public static String GetFullDateTwoDaysAgo(){
         LocalDate currentDate = LocalDate.now();
         LocalDate twoDaysAgo = currentDate.minusDays(2);
@@ -30,7 +35,14 @@ public class MainPageObject {
         String fullDateTwoDaysAgo = twoDaysAgo.format(formatter);
         return fullDateTwoDaysAgo;
     }
-    public static String GetYesterday() {
+    public static String GetFullDateYesterday(){
+        LocalDate currentDate = LocalDate.now();
+        LocalDate yesterday = currentDate.minusDays(1);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        String fullDateYesterday = yesterday.format(formatter);
+        return fullDateYesterday;
+    }
+    public static String GetDayYesterday() {
         LocalDate currentDate = LocalDate.now();
         int today = currentDate.getDayOfMonth();
         int yesterday;
@@ -50,12 +62,20 @@ public class MainPageObject {
         String fullDateYesterday = yesterday.format(formatter);
         return fullDateYesterday;
     }
+    public static String GetFullDateTwoDaysAgoForTitle(){
+        LocalDate currentDate = LocalDate.now();
+        LocalDate twoDaysAgo = currentDate.minusDays(2);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String fullDateTwoDaysAgoForTitle = twoDaysAgo.format(formatter);
+        return fullDateTwoDaysAgoForTitle;
+    }
 
-    public static String getToday()
+    public static String GetTodayForTitle()
     {
         LocalDate currentDate = LocalDate.now();
-        int today = currentDate.getDayOfMonth();
-        return  String.valueOf(today);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String fullDateToday = currentDate.format(formatter);
+        return  fullDateToday;
     }
 
     public static String GetFullDateWeekAfterToday(){

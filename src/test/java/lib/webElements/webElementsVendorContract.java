@@ -8,6 +8,16 @@ import java.time.LocalDate;
 import static com.codeborne.selenide.Selenide.$;
 
 public class webElementsVendorContract {
+    static String yesterdayForTitle = lib.ui.MainPageObject.GetFullDateYesterdayForTitle();
+    static String weekAfterTodayForTitle = lib.ui.MainPageObject.GetFullDateWeekAfterTodayForTitle();
+    static String monthAfterTodayForTitle = lib.ui.MainPageObject.GetFullDateMonthAfterTodayForTitle();
+    static String todayForTitle = lib.ui.MainPageObject.GetTodayForTitle();
+    static String twoDaysAgoForTitle = lib.ui.MainPageObject.GetFullDateTwoDaysAgoForTitle();
+    static String weekAfterTodayForXPath = "'"+weekAfterTodayForTitle+"'";
+    static String monthAfterTodayForXPath = "'"+monthAfterTodayForTitle+"'";
+    static String yesterdayForXPath = "'"+yesterdayForTitle+"'";
+    static String todayForXpath = "'"+todayForTitle+"'";
+    static String twoDaysAgoForXPath = "'"+twoDaysAgoForTitle+"'";
     //Элементы Шага 0
     public static SelenideElement radiobuttonStep0Help = $("#pathwise_radio_help");
     public static SelenideElement buttonSubmitStep0 = $(By.xpath("//button[contains(.,'Продолжить')]"));
@@ -70,7 +80,10 @@ public class webElementsVendorContract {
     public static SelenideElement step1RightToSignNumberHelp= $("#generateContract_agreement_number_help");
     public static SelenideElement rightToSignDateStep1= $("#generateContract_agreement_date");
     static String twoDaysAgo = lib.ui.MainPageObject.GetDayTwoDaysAgo();
-    public static SelenideElement rightToSignNumberOfDayStep1 = $(By.xpath("//tbody/tr//td[contains(.,"+twoDaysAgo+")]"));
+    public static SelenideElement rightToSignNumberOfDayStep1 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+twoDaysAgoForXPath+"]"));
+    static String today = lib.ui.MainPageObject.GetDayToday();
+    public static SelenideElement rightToSignNumberOfDayEnableStep1 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+todayForXpath+"]"));
+    public static SelenideElement rightToSignNumberOfDayYesterdayStep1 = $(By.xpath("//textarea/following-sibling::div[last()]//table[contains(@class,'ant-picker-content')]/tbody//td[@title="+yesterdayForXPath+"]"));
     public static SelenideElement bikTitleStep1 = $(By.xpath("//input[@id='generateContract_bankDetails_bik']/parent::div/parent::div/parent::div/parent::div/parent::div/preceding-sibling::div/label"));
     public static SelenideElement bikStep1= $("#generateContract_bankDetails_bik");
     public static SelenideElement step1BIKHelp= $("#generateContract_bankDetails_bik_help");
@@ -88,6 +101,11 @@ public class webElementsVendorContract {
     public static SelenideElement buttonBackStep2 = $(By.xpath("//button[contains(.,'Назад')]"));
     public static SelenideElement buttonAddLineStep2 = $(By.xpath("//button[contains(.,'Добавить строку')]"));
     public static SelenideElement defermentStep2 = $(By.xpath("//input[contains(@id,'deferment')]"));
+    public static SelenideElement defermentTitleStep2 = $(By.xpath("//input[@id='discountDeferment_defermentEntity_deferment']/parent::div/parent::div/parent::div/parent::div/parent::div/preceding-sibling::div/label"));
+    public static SelenideElement columnGroupTitleStep2 = $(By.xpath("//table//thead//th[1]"));
+    public static SelenideElement columnNameTitleStep2 = $(By.xpath("//table//thead//th[2]"));
+    public static SelenideElement columnDiscountTitleStep2 = $(By.xpath("//table//thead//th[3]"));
+    public static SelenideElement columnActionTitleStep2 = $(By.xpath("//table//thead//th[4]"));
     public static SelenideElement groupStep2 = $(By.xpath("//input[contains(@id,'group')]"));
     public static SelenideElement nameStep2 = $(By.xpath("//input[contains(@id,'name')]"));
     public static SelenideElement discountStep2 = $(By.xpath("//input[contains(@id,'disk')]"));
@@ -115,13 +133,6 @@ public class webElementsVendorContract {
       //таблица Наполнение каталога
 
     //static String yesterday = lib.ui.MainPageObject.GetYesterday();
-    static String yesterdayForTitle = lib.ui.MainPageObject.GetFullDateYesterdayForTitle();
-    static String weekAfterTodayForTitle = lib.ui.MainPageObject.GetFullDateWeekAfterTodayForTitle();
-    static String monthAfterTodayForTitle = lib.ui.MainPageObject.GetFullDateMonthAfterTodayForTitle();
-    static String weekAfterTodayForXPath = "'"+weekAfterTodayForTitle+"'";
-    static String monthAfterTodayForXPath = "'"+monthAfterTodayForTitle+"'";
-    static String yesterdayForXPath = "'"+yesterdayForTitle+"'";
-
 
     public static SelenideElement pickerButtonPreviousMonth = $(By.xpath("//textarea/following-sibling::div[last()]//div[contains(@class,'picker-date-panel')]//button[contains(@class,'picker-header-prev')]"));
     public static SelenideElement pickerButtonNextMonth =  $(By.xpath("//textarea/following-sibling::div[last()]//div[contains(@class,'picker-date-panel')]//button[contains(@class,'picker-header-next')]"));

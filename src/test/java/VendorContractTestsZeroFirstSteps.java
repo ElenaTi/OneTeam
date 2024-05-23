@@ -8,21 +8,19 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 import static com.codeborne.selenide.Condition.*;
 
 public class VendorContractTestsZeroFirstSteps {
-
     @BeforeAll
-    @DisplayName("Размер экрана 1920х1280")
+    @DisplayName("Размер экрана 1920х1280, Авторизация")
     static void start() {
         //Configuration.browser = "firefox";
         //Configuration.browser = "edge";
         Configuration.browserSize = "1920x1280";
         lib.ui.LoginPageObject.Login("9215642te", "rikb0444");
     }
-
-
     @Test
     @Tag("TMOT-342")
     @DisplayName("Проверка отображения Шага 0")
@@ -35,7 +33,6 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.labelRadiobuttonYes.shouldHave(text("У меня уже есть договор, хочу перейти сразу к загрузке уставных документов"));
         webElementsVendorContract.buttonSubmitStep0.should(exist);
     }
-
     @Test
     @Tag("TMOT-335")
     @DisplayName("Сабмит Шага 0 без выбора чекбокса")
@@ -69,7 +66,6 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.step0IsFinished.should(exist);
         webElementsVendorContract.step4ActiveFromStep0.should(exist);
     }
-
     @Test
     @Tag("TMOT-345")
     @DisplayName("Проверка сброса радиобаттона на шаге 0 после перехода в другой раздел")
@@ -149,6 +145,7 @@ public class VendorContractTestsZeroFirstSteps {
         lib.ui.VendorContractPageObgect.OpenVendorContractPage();
         lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
+        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         webElementsVendorContract.buttonSubmitStep1.click();
         webElementsVendorContract.step1ManagementHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
         webElementsVendorContract.step1OGRNHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
@@ -166,7 +163,6 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.step1CorrespondentAccountHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
         webElementsVendorContract.step1CurrentAccountHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
     }
-
     @Test
     @Tag("TMOT-349")
     @DisplayName("Сброс ошибок валидации под полями шага 1 после перехода на шаг 0 и назад")
@@ -276,6 +272,60 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.rightToSignSelectStep1.shouldHave(text("Листа записи"));
         webElementsVendorContract.rightToSignNumberStep1.should(exist);
         webElementsVendorContract.rightToSignDateStep1.shouldNot(exist);
+    }
+    @Test
+    @Tag("TMOT-362")
+    @DisplayName("Проверка состояний поля Номер при выборе в поле Право подписи Доверенности")
+    void CheckingDateWhenPowerOfAttorney(){
+        lib.ui.VendorContractPageObgect.OpenVendorContractPage();
+        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
+        lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
+        webElementsVendorContract.rightToSignSelectStep1.click();
+        webElementsVendorContract.rightToSignListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.rightToSignListStep1.pressEnter();
+        webElementsVendorContract.rightToSignSelectStep1.shouldHave(text("Доверенности"));
+        webElementsVendorContract.rightToSignNumberStep1.setValue("23456_ABCDEFG/123");
+        webElementsVendorContract.rightToSignDateStep1.click();
+        webElementsVendorContract.rightToSignNumberOfDayEnableStep1.shouldBe(enabled);
+        selectYesterdayInCalendarRightToSign(webElementsVendorContract.rightToSignNumberOfDayYesterdayStep1);
+        String fullDateYesterday = lib.ui.MainPageObject.GetFullDateYesterday();
+        webElementsVendorContract.rightToSignDateStep1.shouldHave(attribute("value", fullDateYesterday));
+        webElementsVendorContract.rightToSignDateStep1.click();
+        selectTwoDaysAgoInCalendarRightToSign(webElementsVendorContract.rightToSignNumberOfDayStep1);
+        String fullDateTwoDaysAgo = lib.ui.MainPageObject.GetFullDateTwoDaysAgo();
+        webElementsVendorContract.rightToSignDateStep1.shouldHave(attribute("value", fullDateTwoDaysAgo));
+    }
+    @Test
+    @Tag("TMOT-361")
+    @DisplayName("Проверка состояний поля Форма правления")
+    void CheckingFormOfGovernment() throws InterruptedException{
+        lib.ui.VendorContractPageObgect.OpenVendorContractPage();
+        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
+        lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
+        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
+        webElementsVendorContract.managementSelectStep1.click();
+        webElementsVendorContract.managementListStep1.pressEnter();
+        webElementsVendorContract.managementSelectStep1.shouldHave(text("ИП на упрощённой системе налогообложения (УСН))"));
+        webElementsVendorContract.managementSelectStep1.click();
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.pressEnter();
+        webElementsVendorContract.managementSelectStep1.shouldHave(text("ИП на общей системе налогообложения (ОСН))"));
+        webElementsVendorContract.managementSelectStep1.click();
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.pressEnter();
+        webElementsVendorContract.managementSelectStep1.shouldHave(text("ООО на упрощённой системе налогообложения (УСН))"));
+        webElementsVendorContract.managementSelectStep1.click();
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.pressEnter();
+        webElementsVendorContract.managementSelectStep1.shouldHave(text("ООО на общей системе налогообложения (ОСН))"));
+        webElementsVendorContract.managementSelectStep1.click();
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.pressEnter();
+        webElementsVendorContract.managementSelectStep1.shouldHave(text("АО"));
+        webElementsVendorContract.managementSelectStep1.click();
+        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
+        webElementsVendorContract.managementListStep1.pressEnter();
+        webElementsVendorContract.managementSelectStep1.shouldHave(text("ИП на упрощённой системе налогообложения (УСН))"));
     }
     @Test
     @Tag("TMOT-353")
@@ -462,7 +512,6 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.correspondentAccountStep1.shouldHave(attribute("value", "87654347"));
         webElementsVendorContract.currentAccountStep1.shouldHave(attribute("value", "345678909876"));
     }
-
     @Test
     @Tag("TMOT-360")
     @DisplayName("Заполнение Шага 1, переход в Анкету и назад")
@@ -476,5 +525,24 @@ public class VendorContractTestsZeroFirstSteps {
         webelements.menuVendorContract.click();
         webElementsVendorContract.buttonSubmitStep0.click();
         webElementsVendorContract.radiobuttonStep0Help.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+    }
+
+    static void selectYesterdayInCalendarRightToSign(WebElement calendarElement){
+        if (webElementsVendorContract.rightToSignNumberOfDayYesterdayStep1.exists())
+        {
+            webElementsVendorContract.rightToSignNumberOfDayYesterdayStep1.click();
+        }
+        else {webElementsVendorContract.pickerButtonPreviousMonth.click();
+            webElementsVendorContract.rightToSignNumberOfDayYesterdayStep1.click();
+        }
+    }
+    static void selectTwoDaysAgoInCalendarRightToSign(WebElement calendarElement){
+        if (webElementsVendorContract.rightToSignNumberOfDayStep1.exists())
+        {
+            webElementsVendorContract.rightToSignNumberOfDayStep1.click();
+        }
+        else {webElementsVendorContract.pickerButtonPreviousMonth.click();
+            webElementsVendorContract.rightToSignNumberOfDayStep1.click();
+        }
     }
 }

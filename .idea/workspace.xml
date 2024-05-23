@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4940d5d9-c95e-4b06-a4e2-e339c3905889" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/lib/ui/VendorContractPageObgect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/VendorContractTestsSecondStep.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/VendorContractTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VendorContractTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/VendorContractTestsZeroFirstSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/VendorContractTestsZeroFirstSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/lib/ui/LoginPageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/ui/LoginPageObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/lib/ui/MainPageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/ui/MainPageObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/lib/ui/VendorContractPageObgect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/ui/VendorContractPageObgect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/lib/webElements/webElementsVendorContract.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,51 +51,51 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.VendorContractTestsZeroFirstSteps">
-    <configuration name="VendorContractTestsZeroFirstSteps" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.VendorContractTestsSecondStep">
+    <configuration name="VendorContractTestsSecondStep" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorContractTestsZeroFirstSteps" />
+      <option name="MAIN_CLASS_NAME" value="VendorContractTestsSecondStep" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTestsZeroFirstSteps.CheckingCheckboxAfterReturnBackToStep0FromStep4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorContractTestsSecondStep.AddingLineForProductGroupWithFillingAndSubmit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorContractTestsZeroFirstSteps" />
-      <option name="METHOD_NAME" value="CheckingCheckboxAfterReturnBackToStep0FromStep4" />
+      <option name="MAIN_CLASS_NAME" value="VendorContractTestsSecondStep" />
+      <option name="METHOD_NAME" value="AddingLineForProductGroupWithFillingAndSubmit" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTestsZeroFirstSteps.DisplayStep1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorContractTestsSecondStep.AddingLineForProductGroupWithFillingComingToStep1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorContractTestsZeroFirstSteps" />
-      <option name="METHOD_NAME" value="DisplayStep1" />
+      <option name="MAIN_CLASS_NAME" value="VendorContractTestsSecondStep" />
+      <option name="METHOD_NAME" value="AddingLineForProductGroupWithFillingComingToStep1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTestsZeroFirstSteps.FillingStep1AfterSubmit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorContractTestsSecondStep.FillingContractOnStep2ComingToVendorForm" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorContractTestsZeroFirstSteps" />
-      <option name="METHOD_NAME" value="FillingStep1AfterSubmit" />
+      <option name="MAIN_CLASS_NAME" value="VendorContractTestsSecondStep" />
+      <option name="METHOD_NAME" value="FillingContractOnStep2ComingToVendorForm" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VendorContractTestsZeroFirstSteps.FillingStep1ReturnToStep0" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="VendorContractTestsSecondStep.FillingStep2GoToStep1ComingBack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OneTeam" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="VendorContractTestsZeroFirstSteps" />
-      <option name="METHOD_NAME" value="FillingStep1ReturnToStep0" />
+      <option name="MAIN_CLASS_NAME" value="VendorContractTestsSecondStep" />
+      <option name="METHOD_NAME" value="FillingStep2GoToStep1ComingBack" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -102,11 +103,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.VendorContractTestsZeroFirstSteps" />
-        <item itemvalue="JUnit.VendorContractTestsZeroFirstSteps.FillingStep1ReturnToStep0" />
-        <item itemvalue="JUnit.VendorContractTestsZeroFirstSteps.FillingStep1AfterSubmit" />
-        <item itemvalue="JUnit.VendorContractTestsZeroFirstSteps.CheckingCheckboxAfterReturnBackToStep0FromStep4" />
-        <item itemvalue="JUnit.VendorContractTestsZeroFirstSteps.DisplayStep1" />
+        <item itemvalue="JUnit.VendorContractTestsSecondStep" />
+        <item itemvalue="JUnit.VendorContractTestsSecondStep.AddingLineForProductGroupWithFillingAndSubmit" />
+        <item itemvalue="JUnit.VendorContractTestsSecondStep.FillingContractOnStep2ComingToVendorForm" />
+        <item itemvalue="JUnit.VendorContractTestsSecondStep.AddingLineForProductGroupWithFillingComingToStep1" />
+        <item itemvalue="JUnit.VendorContractTestsSecondStep.FillingStep2GoToStep1ComingBack" />
       </list>
     </recent_temporary>
   </component>
