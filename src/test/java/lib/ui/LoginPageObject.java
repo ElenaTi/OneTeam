@@ -30,4 +30,5 @@ public class LoginPageObject {
         webelements.loginInput.setValue(login);
         webelements.passwordInput.setValue(password).pressEnter();
     }
+    
 }

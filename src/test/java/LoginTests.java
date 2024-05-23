@@ -4,7 +4,6 @@ import static com.codeborne.selenide.Selenide.open;
 import com.codeborne.selenide.Configuration;
 import lib.webElements.webelements;
 import static com.codeborne.selenide.Condition.visible;
-
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.*;

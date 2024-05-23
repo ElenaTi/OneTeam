@@ -88,6 +88,4 @@ public class MainPageObject {
         String fullDateMonthAfterToday = monthAfterToday.format(formatter);
         return fullDateMonthAfterToday;
     }
-
-
 }
