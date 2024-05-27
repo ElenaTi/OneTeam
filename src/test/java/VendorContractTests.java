@@ -21,7 +21,8 @@ public class VendorContractTests {
     @BeforeAll
     @DisplayName("Размер экрана 1920х1280, Авторизация")
     static void start() {
-        Configuration.browser = "firefox";
+        //Configuration.browser = "firefox";
+        //Configuration.browser = "edge";
         Configuration.browserSize = "1920x1280";
         lib.ui.LoginPageObject.Login("9215642te", "rikb0444");
     }

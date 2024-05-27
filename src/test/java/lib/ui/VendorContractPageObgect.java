@@ -24,10 +24,26 @@ public class VendorContractPageObgect {
     public static void SubmitStep0ToStep1(){
         webElementsVendorContract.radiobuttonStepONO.click();
         webElementsVendorContract.buttonSubmitStep0.click();
+        webelements.title.shouldHave(text("Договор поставщика"));
+        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
+        webElementsVendorContract.subtitleVendorContract.shouldHave(text("Ознакомьтесь с шаблоном договора поставщика:"));
+        webElementsVendorContract.linksToTemplateContract.shouldHave(text("Договор поставщика"));
+        webElementsVendorContract.linksToTemplateRules.shouldHave(text("Общие правила взаимодействия"));
+        webElementsVendorContract.linksToTemplateApplication1.shouldHave(text("Приложение 1 Протокол согласования скидок и отсрочки"));
+        webElementsVendorContract.linksToTemplateApplication2.shouldHave(text("Приложение 2 Соглашение об ИВП"));
+        webElementsVendorContract.linksToTemplateAgreementOneTeam.shouldHave(text("Соглашение об использовании сервиса iPRO OneTeam"));
     }
     public static void SubmitStep0ToStep4(){
         webElementsVendorContract.radiobuttonStepOYes.click();
         webElementsVendorContract.buttonSubmitStep0.click();
+        webelements.title.shouldHave(text("Договор поставщика"));
+        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
+        webElementsVendorContract.subtitleVendorContract.shouldHave(text("Ознакомьтесь с шаблоном договора поставщика:"));
+        webElementsVendorContract.linksToTemplateContract.shouldHave(text("Договор поставщика"));
+        webElementsVendorContract.linksToTemplateRules.shouldHave(text("Общие правила взаимодействия"));
+        webElementsVendorContract.linksToTemplateApplication1.shouldHave(text("Приложение 1 Протокол согласования скидок и отсрочки"));
+        webElementsVendorContract.linksToTemplateApplication2.shouldHave(text("Приложение 2 Соглашение об ИВП"));
+        webElementsVendorContract.linksToTemplateAgreementOneTeam.shouldHave(text("Соглашение об использовании сервиса iPRO OneTeam"));
     }
     public static void FillingStep1(){
         webElementsVendorContract.ogrnStep1.setValue("9876543");

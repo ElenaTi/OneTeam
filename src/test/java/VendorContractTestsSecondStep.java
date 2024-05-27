@@ -22,18 +22,14 @@ public class VendorContractTestsSecondStep {
     }
 
     @Test
-    @Tag("")
+    @Tag("TMOT-363")
     @DisplayName("Проверка отображения Шага 2")
     void CheckDisplayStep2() {
         lib.ui.VendorContractPageObgect.OpenVendorContractPage();
         lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.FillingStep1();
-        webElementsVendorContract.buttonSubmitStep1.click();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
-        webElementsVendorContract.step0IsFinished.should(exist);
-        webElementsVendorContract.step1IsActive.shouldNot(exist);
+        lib.ui.VendorContractPageObgect.SubmitStep1();
         webElementsVendorContract.step2IsActive.should(exist);
         webElementsVendorContract.defermentTitleStep2.shouldHave(attribute("title", "Отсрочка платежа не менее (30/45/90/120) дней"));
         webElementsVendorContract.columnGroupTitleStep2.shouldHave(text("Товарная группа"));
@@ -47,16 +43,14 @@ public class VendorContractTestsSecondStep {
         webElementsVendorContract.buttonSubmitStep2.should(exist);
     }
     @Test
-    @Tag("")
+    @Tag("TMOT-364")
     @DisplayName("Сабмит Шага 2 без заполнения")
     void SubmitSte2WithoutFilling() {
         lib.ui.VendorContractPageObgect.OpenVendorContractPage();
         lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.FillingStep1();
         lib.ui.VendorContractPageObgect.SubmitStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         webElementsVendorContract.buttonSubmitStep2.click();
         webElementsVendorContract.step2DefermentHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
         webElementsVendorContract.step2DefermentHelp.shouldHave(text("Может принимать только целое значение до 999"));
@@ -67,7 +61,7 @@ public class VendorContractTestsSecondStep {
     }
     @Test
     @Tag("")
-    @DisplayName("Сабмит Шага 2 без заполнения, переход на Шаг 1")
+    @DisplayName("Проверка отсутствия валидационных сообщений после перехода на Шаг 1 и назад на Шаг 2")
     void ReturnToStep1FromStep2()throws InterruptedException {
         lib.ui.VendorContractPageObgect.OpenVendorContractPage();
         lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
@@ -75,7 +69,6 @@ public class VendorContractTestsSecondStep {
         lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.FillingStep1();
         lib.ui.VendorContractPageObgect.SubmitStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         webElementsVendorContract.buttonSubmitStep2.click();
         Thread.sleep(50);
         webElementsVendorContract.buttonBackStep2.click();
@@ -88,16 +81,13 @@ public class VendorContractTestsSecondStep {
     }
 
     @Test
-    @Tag("")
+    @Tag("TMOT-366")
     @DisplayName("Проверка заполнения поля Отсрочка платежа")
     void CheckInputDeferment() {
         lib.ui.VendorContractPageObgect.OpenVendorContractPage();
         lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.FillingStep1();
-        lib.ui.VendorContractPageObgect.SubmitStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.SubmitStep1();
         webElementsVendorContract.defermentStep2.setValue("0,1");
         webElementsVendorContract.step2DefermentHelp.shouldHave(text("Может принимать только целое значение до 999"));
@@ -113,13 +103,18 @@ public class VendorContractTestsSecondStep {
         webElementsVendorContract.defermentStep2.sendKeys(Keys.BACK_SPACE);
         webElementsVendorContract.step2DefermentHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
         webElementsVendorContract.step2DefermentHelp.shouldHave(text("Может принимать только целое значение до 999"));
+        webElementsVendorContract.defermentStep2.setValue("на");
+        webElementsVendorContract.step2DefermentHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
+        webElementsVendorContract.step2DefermentHelp.shouldHave(text("Может принимать только целое значение до 999"));
+        webElementsVendorContract.defermentStep2.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.defermentStep2.sendKeys(Keys.BACK_SPACE);
         webElementsVendorContract.defermentStep2.setValue("1000");
         webElementsVendorContract.step2DefermentHelp.shouldHave(text("Может принимать только целое значение до 999"));
         webElementsVendorContract.defermentStep2.sendKeys(Keys.BACK_SPACE);
         webElementsVendorContract.step2DefermentHelp.shouldNot(exist);
     }
     @Test
-    @Tag("")
+    @Tag("TMOT-367")
     @DisplayName("Проверка заполнения поля Скидка")
     void heckInputDiscount() {
         lib.ui.VendorContractPageObgect.OpenVendorContractPage();
@@ -128,8 +123,7 @@ public class VendorContractTestsSecondStep {
         lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.FillingStep1();
         lib.ui.VendorContractPageObgect.SubmitStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
-        lib.ui.VendorContractPageObgect.SubmitStep1();
+        webElementsVendorContract.buttonSubmitStep2.click();
         webElementsVendorContract.discountStep2.setValue("101");
         webElementsVendorContract.step2DiscountHelp.shouldHave(text("Может принимать значение от 0 до 100"));
         webElementsVendorContract.discountStep2.sendKeys(Keys.BACK_SPACE);
@@ -141,6 +135,11 @@ public class VendorContractTestsSecondStep {
         webElementsVendorContract.defermentStep2.click();
         webElementsVendorContract.step2DiscountHelp.shouldHave(text("Может принимать значение от 0 до 100"));
         webElementsVendorContract.discountStep2.shouldHave(attribute("value", "-9"));
+        webElementsVendorContract.discountStep2.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.discountStep2.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.discountStep2.setValue("yf");
+        webElementsVendorContract.defermentStep2.click();
+        webElementsVendorContract.step2DiscountHelp.shouldHave(text("Может принимать значение от 0 до 100"));
         webElementsVendorContract.discountStep2.sendKeys(Keys.BACK_SPACE);
         webElementsVendorContract.discountStep2.sendKeys(Keys.BACK_SPACE);
         webElementsVendorContract.discountStep2.setValue("9,9");
@@ -156,8 +155,8 @@ public class VendorContractTestsSecondStep {
         webElementsVendorContract.step2DiscountHelp.shouldNot(exist);
     }
     @Test
-    @Tag("")
-    @DisplayName("Заполнение и сабмит шага 2, переход на Шаг 3")
+    @Tag("TMOT-368")
+    @DisplayName("Заполнение поле и сабмит шага 2, переход на Шаг 3")
     void FillingAndSubmitStep2() {
         lib.ui.VendorContractPageObgect.OpenVendorContractPage();
         lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
@@ -166,25 +165,24 @@ public class VendorContractTestsSecondStep {
         lib.ui.VendorContractPageObgect.FillingStep1();
         lib.ui.VendorContractPageObgect.SubmitStep1();
         lib.ui.VendorContractPageObgect.SubmitStep1();
+        webElementsVendorContract.buttonSubmitStep2.click();
         webElementsVendorContract.defermentStep2.setValue("102");
         webElementsVendorContract.groupStep2.setValue("Электрические товары");
         webElementsVendorContract.nameStep2.setValue("Светильник потолочный 109768");
         webElementsVendorContract.discountStep2.setValue("10,1");
         webElementsVendorContract.buttonSubmitStep2.click();
-        webElementsVendorContract.step0IsFinished.should(exist);
         webElementsVendorContract.step3IsActive.should(exist);
+        webElementsVendorContract.sibtitleTable1Step3.shouldHave(text("Порядок формирования каталога продукции поставщика"));
     }
     @Test
     @Tag("")
-    @DisplayName("Заполнение и сабмит шага 2, возврат назад")
+    @DisplayName("Проверка сохранения данных после сабмита Шага 2 и возврата на него")
     void SubmitStep2ComingBack() {
         lib.ui.VendorContractPageObgect.OpenVendorContractPage();
         lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.FillingStep1();
         lib.ui.VendorContractPageObgect.SubmitStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.SubmitStep1();
         lib.ui.VendorContractPageObgect.FillingStep2();
         lib.ui.VendorContractPageObgect.SubmitStep2();
@@ -204,10 +202,8 @@ public class VendorContractTestsSecondStep {
         lib.ui.VendorContractPageObgect.OpenVendorContractPage();
         lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.FillingStep1();
         lib.ui.VendorContractPageObgect.SubmitStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.SubmitStep1();
         lib.ui.VendorContractPageObgect.FillingStep2();
         webElementsVendorContract.buttonBackStep2.click();
@@ -224,10 +220,8 @@ public class VendorContractTestsSecondStep {
         lib.ui.VendorContractPageObgect.OpenVendorContractPage();
         lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.FillingStep1();
         lib.ui.VendorContractPageObgect.SubmitStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         webElementsVendorContract.buttonAddLineStep2.click();
         webElementsVendorContract.buttonAddLineStep2.click();
         webElementsVendorContract.groupLine2Step2.should(exist);
@@ -255,10 +249,8 @@ public class VendorContractTestsSecondStep {
         lib.ui.VendorContractPageObgect.OpenVendorContractPage();
         lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.FillingStep1();
         lib.ui.VendorContractPageObgect.SubmitStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         webElementsVendorContract.buttonAddLineStep2.click();
         webElementsVendorContract.buttonAddLineStep2.click();
         webElementsVendorContract.buttonSubmitStep2.click();
@@ -278,10 +270,8 @@ public class VendorContractTestsSecondStep {
         lib.ui.VendorContractPageObgect.OpenVendorContractPage();
         lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.FillingStep1();
         lib.ui.VendorContractPageObgect.SubmitStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         webElementsVendorContract.buttonAddLineStep2.click();
         webElementsVendorContract.buttonSubmitStep2.click();
         webElementsVendorContract.step2ProductGroupHelpLine2.shouldHave(text("Пожалуйста, заполните обязательное поле"));
@@ -302,10 +292,8 @@ public class VendorContractTestsSecondStep {
         lib.ui.VendorContractPageObgect.OpenVendorContractPage();
         lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.FillingStep1();
         lib.ui.VendorContractPageObgect.SubmitStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.FillingStep2();
         webElementsVendorContract.buttonAddLineStep2.click();
         lib.ui.VendorContractPageObgect.FillingLine2OnStep2();
@@ -322,10 +310,8 @@ public class VendorContractTestsSecondStep {
         lib.ui.VendorContractPageObgect.OpenVendorContractPage();
         lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.FillingStep1();
         lib.ui.VendorContractPageObgect.SubmitStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         webElementsVendorContract.buttonAddLineStep2.click();
         lib.ui.VendorContractPageObgect.FillingStep2();
         lib.ui.VendorContractPageObgect.FillingLine2OnStep2();
@@ -347,10 +333,8 @@ public class VendorContractTestsSecondStep {
         lib.ui.VendorContractPageObgect.OpenVendorContractPage();
         lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         lib.ui.VendorContractPageObgect.FillingStep1();
         lib.ui.VendorContractPageObgect.SubmitStep1();
-        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         webElementsVendorContract.buttonAddLineStep2.click();
         lib.ui.VendorContractPageObgect.FillingStep2();
         lib.ui.VendorContractPageObgect.FillingLine2OnStep2();
