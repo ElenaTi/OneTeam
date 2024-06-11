@@ -21,6 +21,21 @@ public class VendorContractTestsZeroFirstSteps {
         Configuration.browserSize = "1920x1280";
         lib.ui.LoginPageObject.Login("9215642te", "rikb0444");
     }
+
+    @Test
+    @Tag("")
+    @DisplayName("Проверка отображения хедера Контракта")
+    void CheckVendorContractHeader() {
+        lib.ui.VendorContractPageObgect.OpenVendorContractPage();
+        webelements.title.shouldHave(text("Договор поставщика"));
+        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
+        webElementsVendorContract.subtitleVendorContract.shouldHave(text("Ознакомьтесь с шаблоном договора поставщика:"));
+        webElementsVendorContract.linksToTemplateContract.shouldHave(text("Договор поставщика"));
+        webElementsVendorContract.linksToTemplateRules.shouldHave(text("Общие правила взаимодействия"));
+        webElementsVendorContract.linksToTemplateApplication1.shouldHave(text("Приложение 1 Протокол согласования скидок и отсрочки"));
+        webElementsVendorContract.linksToTemplateApplication2.shouldHave(text("Приложение 2 Соглашение об ИВП"));
+        webElementsVendorContract.linksToTemplateAgreementOneTeam.shouldHave(text("Соглашение об использовании сервиса iPRO OneTeam"));
+    }
     @Test
     @Tag("TMOT-342")
     @DisplayName("Проверка отображения Шага 0")
@@ -374,14 +389,19 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.nameBankStep1.click();
         webElementsVendorContract.bikStep1.shouldBe(empty);
         webElementsVendorContract.bikStep1.setValue("34-=");
-        webElementsVendorContract.step1BIKHelp.shouldNot(exist);
+        webElementsVendorContract.step1BIKHelp.shouldHave(text("Неверный формат, БИК состоит из девяти цифр"));
         webElementsVendorContract.nameBankStep1.click();
         webElementsVendorContract.bikStep1.shouldHave(attribute("value", "34"));
         webElementsVendorContract.bikStep1.sendKeys(Keys.BACK_SPACE);
         webElementsVendorContract.bikStep1.sendKeys(Keys.BACK_SPACE);
         webElementsVendorContract.bikStep1.setValue("345678999999");
-        webElementsVendorContract.step1BIKHelp.shouldNot(exist);
+        webElementsVendorContract.step1BIKHelp.shouldHave(text("Неверный формат, БИК состоит из девяти цифр"));
         webElementsVendorContract.bikStep1.shouldHave(attribute("value", "345678999999"));
+        webElementsVendorContract.bikStep1.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.bikStep1.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.bikStep1.sendKeys(Keys.BACK_SPACE);
+        webElementsVendorContract.step1BIKHelp.shouldNot(exist);
+        webElementsVendorContract.bikStep1.shouldHave(attribute("value", "345678999"));
     }
     @Test
     @Tag("TMOT-356")
@@ -400,15 +420,17 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.nameBankStep1.click();
         webElementsVendorContract.correspondentAccountStep1.shouldBe(empty);
         webElementsVendorContract.correspondentAccountStep1.setValue("8-+");
-        webElementsVendorContract.step1CorrespondentAccountHelp.shouldNot(exist);
         webElementsVendorContract.nameBankStep1.click();
+        webElementsVendorContract.step1CorrespondentAccountHelp.shouldHave(text("Неверный формат, кор.счёт состоит из двадцати цифр"));
         webElementsVendorContract.correspondentAccountStep1.shouldHave(attribute("value", "8"));
         webElementsVendorContract.correspondentAccountStep1.sendKeys(Keys.BACK_SPACE);
         webElementsVendorContract.step1CorrespondentAccountHelp.should(exist);
-        webElementsVendorContract.correspondentAccountStep1.setValue("87654347");
+        webElementsVendorContract.correspondentAccountStep1.setValue("123456789123456789129");
+        webElementsVendorContract.step1CorrespondentAccountHelp.shouldHave(text("Неверный формат, кор.счёт состоит из двадцати цифр"));
+        webElementsVendorContract.correspondentAccountStep1.shouldHave(attribute("value", "123456789123456789129"));
+        webElementsVendorContract.correspondentAccountStep1.sendKeys(Keys.BACK_SPACE);
         webElementsVendorContract.step1CorrespondentAccountHelp.shouldNot(exist);
-        webElementsVendorContract.correspondentAccountStep1.shouldHave(attribute("value", "87654347"));
-
+        webElementsVendorContract.correspondentAccountStep1.shouldHave(attribute("value", "12345678912345678912"));
     }
     @Test
     @Tag("TMOT-357")
@@ -427,13 +449,17 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.nameBankStep1.click();
         webElementsVendorContract.currentAccountStep1.shouldBe(empty);
         webElementsVendorContract.currentAccountStep1.setValue("2@)-");
-        webElementsVendorContract.step1CurrentAccountHelp.shouldNot(exist);
         webElementsVendorContract.nameBankStep1.click();
+        webElementsVendorContract.step1CurrentAccountHelp.shouldHave(text("Неверный формат, расчётный счёт состоит из двадцати цифр"));
         webElementsVendorContract.currentAccountStep1.shouldHave(attribute("value", "2"));
         webElementsVendorContract.currentAccountStep1.sendKeys(Keys.BACK_SPACE);
         webElementsVendorContract.step1CurrentAccountHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
-        webElementsVendorContract.currentAccountStep1.setValue("345678909876");
+        webElementsVendorContract.currentAccountStep1.setValue("912345678912345678912");
+        webElementsVendorContract.step1CurrentAccountHelp.shouldHave(text("Неверный формат, расчётный счёт состоит из двадцати цифр"));
+        webElementsVendorContract.currentAccountStep1.shouldHave(attribute("value", "912 34 567 8 9123 45678912"));
+        webElementsVendorContract.currentAccountStep1.sendKeys(Keys.BACK_SPACE);
         webElementsVendorContract.step1CurrentAccountHelp.shouldNot(exist);
+        webElementsVendorContract.currentAccountStep1.shouldHave(attribute("value", "912 34 567 8 9123 4567891"));
     }
     @Test
     @Tag("TMOT-358")
@@ -481,10 +507,10 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.juroAddressStep1.shouldHave(text("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890"));
         webElementsVendorContract.factoAddressStep1.shouldHave(text("г. Санкт-Петербург, пр. Александровской фермы, дом 56, корпус АБВ, офис 678, кабинет 876"));
         webElementsVendorContract.rightToSignSelectStep1.shouldHave(text("Устава"));
-        webElementsVendorContract.bikStep1.shouldHave(attribute("value", "345678999999"));
+        webElementsVendorContract.bikStep1.shouldHave(attribute("value", "345678999"));
         webElementsVendorContract.nameBankStep1.shouldHave(attribute("value", "Северо-Западный ПАО Сбербанк России 123456"));
-        webElementsVendorContract.correspondentAccountStep1.shouldHave(attribute("value", "87654347"));
-        webElementsVendorContract.currentAccountStep1.shouldHave(attribute("value", "345678909876"));
+        webElementsVendorContract.correspondentAccountStep1.shouldHave(attribute("value", "12345678912345678912"));
+        webElementsVendorContract.currentAccountStep1.shouldHave(attribute("value", "123 45 678 9 1234 5678912"));
     }
     @Test
     @Tag("TMOT-359")
@@ -507,10 +533,10 @@ public class VendorContractTestsZeroFirstSteps {
         webElementsVendorContract.juroAddressStep1.shouldHave(text("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890"));
         webElementsVendorContract.factoAddressStep1.shouldHave(text("г. Санкт-Петербург, пр. Александровской фермы, дом 56, корпус АБВ, офис 678, кабинет 876"));
         webElementsVendorContract.rightToSignSelectStep1.shouldHave(text("Устава"));
-        webElementsVendorContract.bikStep1.shouldHave(attribute("value", "345678999999"));
+        webElementsVendorContract.bikStep1.shouldHave(attribute("value", "345678999"));
         webElementsVendorContract.nameBankStep1.shouldHave(attribute("value", "Северо-Западный ПАО Сбербанк России 123456"));
-        webElementsVendorContract.correspondentAccountStep1.shouldHave(attribute("value", "87654347"));
-        webElementsVendorContract.currentAccountStep1.shouldHave(attribute("value", "345678909876"));
+        webElementsVendorContract.correspondentAccountStep1.shouldHave(attribute("value", "12345678912345678912"));
+        webElementsVendorContract.currentAccountStep1.shouldHave(attribute("value", "123 45 678 9 1234 5678912"));
     }
     @Test
     @Tag("TMOT-360")

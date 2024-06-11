@@ -23,7 +23,7 @@ public class webelements {
     public static SelenideElement menuLogisticsAssortment = $("[data-menu-id*='management']");
     public static SelenideElement menuVendorForm = $("[data-menu-id*='vendorForm']");
     public static SelenideElement menuVendorContract = $("[data-menu-id*='vendorContract']");
-    public static SelenideElement tagDeliveryTerms = $("[data-node-key='2']");
+    public static SelenideElement tagDeliveryTerms = $("[data-node-key='term']");
     public static SelenideElement backFromLoginPage = $("[aria-label=arrow-left]");
     public static SelenideElement buttonLogout = $("[data-menu-id*='logout']");
     public static SelenideElement loginFormTitle = $(".LoginForm_title__R4WVI ");
@@ -32,19 +32,20 @@ public class webelements {
     public static SelenideElement title = $(By.xpath("//h1"));
     public static SelenideElement subTitle = $(By.xpath("//h1/following::div"));
     public static SelenideElement alert = $("div[role='alert']");
-    public static SelenideElement tagSerts = $("[data-node-key='2']");
-    public static SelenideElement tagImages = $("[data-node-key='3']");
-    public static SelenideElement tagDescription = $("[data-node-key='4']");
-    public static SelenideElement tagTechInfo = $("[data-node-key='5']");
+    public static SelenideElement tagSerts = $("[data-node-key='certificates']");
+    public static SelenideElement tagImages = $("[data-node-key='images']");
+    public static SelenideElement tagDescription = $("[data-node-key='description']");
+    public static SelenideElement tagTechInfo = $("[data-node-key='techInfo']");
     public static SelenideElement tagPrices = $("[data-node-key='6']");
-    public static SelenideElement tagAnalogs = $("[data-node-key='7']");
-    public static SelenideElement tagKonstructor = $("[data-node-key='8']");
-    public static SelenideElement tagSametypes = $("[data-node-key='9']");
+    public static SelenideElement tagAnalogs = $("[data-node-key='analog']");
+    public static SelenideElement tagKonstructor = $("[data-node-key='constructor']");
+    public static SelenideElement tagSametypes = $("[data-node-key='sametype']");
     public static SelenideElement uploadSample = $("[aria-label = 'upload']");
     public static SelenideElement drawerTitle = $("[class*='Drawer_title']");
     public static SelenideElement uploadInput = $("input[id=files]");
     public static SelenideElement uploadDrawer = $(".ant-upload-drag");
     public static SelenideElement mainLogo = $("[class*='Menu_logo_container']");
 
+    public static SelenideElement notification = $(By.xpath("//div[contains(@data-testid='notification')]"));
 
 }

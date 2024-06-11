@@ -1464,7 +1464,7 @@ public class VendorContractTests {
     @Test
     @Tag("")
     @DisplayName("Сабмит Шага 4 без заполнения, возврат Назад на шаг 0")
-    void SubmitStep4WithoutFillingGoBackToStep0() {
+    void SubmitStep4WithoutFillingGoBackToStep0() throws InterruptedException{
         webelements.mainLogo.click();
         webelements.menuVendorContract.click();
         webelements.title.shouldHave(text("Договор поставщика"));
@@ -1752,6 +1752,7 @@ public class VendorContractTests {
         webElementsVendorContract.buttonBackStep4.click();
         webElementsVendorContract.step3IsActive.should(exist);
         webElementsVendorContract.buttonBackStep3.click();
+        Thread.sleep(300);
         webElementsVendorContract.step2IsActive.should(exist);
         webElementsVendorContract.buttonBackStep2.click();
         webElementsVendorContract.step1IsActive.should(exist);

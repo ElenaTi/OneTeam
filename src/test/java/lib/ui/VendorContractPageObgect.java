@@ -58,10 +58,10 @@ public class VendorContractPageObgect {
         webElementsVendorContract.factoAddressStep1.setValue("г. Санкт-Петербург, пр. Александровской фермы, дом 56, корпус АБВ, офис 678, кабинет 876");
         webElementsVendorContract.rightToSignSelectStep1.click();
         webElementsVendorContract.rightToSignListStep1.pressEnter();
-        webElementsVendorContract.bikStep1.setValue("345678999999");
+        webElementsVendorContract.bikStep1.setValue("345678999");
         webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
-        webElementsVendorContract.correspondentAccountStep1.setValue("87654347");
-        webElementsVendorContract.currentAccountStep1.setValue("345678909876");
+        webElementsVendorContract.correspondentAccountStep1.setValue("12345678912345678912");
+        webElementsVendorContract.currentAccountStep1.setValue("12345678912345678912");
     }
     public static void SubmitStep1(){
         webElementsVendorContract.buttonSubmitStep1.click();

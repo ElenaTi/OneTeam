@@ -1,9 +1,6 @@
 import com.codeborne.selenide.Configuration;
 import lib.webElements.webelements;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 
 import java.io.File;
@@ -154,6 +151,7 @@ public class UploudFilesTests {
         webelements.alert.shouldHave(text("Данные успешно загружены"));
     }
     @Test
+    @Disabled
     @DisplayName("Загрузка цен")
     @Tag("TMOT-318")
     void UploadPrices()

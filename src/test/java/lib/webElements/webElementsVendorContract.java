@@ -554,8 +554,8 @@ public class webElementsVendorContract {
 
     public static SelenideElement step5ActiveFromFillingStep4AfterStep0 = $(By.xpath("//div[contains(@class,'ant-steps')]/div[1][contains(@class,'finish')]/following-sibling::div[1][contains(@class,'wait')]/following-sibling::div[1][contains(@class,'wait')]/following-sibling::div[1][contains(@class,'wait')]/following-sibling::div[1][contains(@class,'finish' )]/following-sibling::div[1][contains(@class,'active')]"));
     public static SelenideElement linksToTemplateContract = $(By.xpath("//div[contains(@class,'ant-steps-horizontal')]/preceding-sibling::div[contains(@class,'ant-space-gap-col-small')]/div[1]"));
-    public static SelenideElement linksToTemplateRules = $(By.xpath("//div[contains(@class,'ant-steps-horizontal')]/preceding-sibling::div[contains(@class,'ant-space-gap-col-small')]/div[2]"));
-    public static SelenideElement linksToTemplateApplication1 = $(By.xpath("//div[contains(@class,'ant-steps-horizontal')]/preceding-sibling::div[contains(@class,'ant-space-gap-col-small')]/div[3]"));
-    public static SelenideElement linksToTemplateApplication2 = $(By.xpath("//div[contains(@class,'ant-steps-horizontal')]/preceding-sibling::div[contains(@class,'ant-space-gap-col-small')]/div[4]"));
+    public static SelenideElement linksToTemplateRules = $(By.xpath("//div[contains(@class,'ant-steps-horizontal')]/preceding-sibling::div[contains(@class,'ant-space-gap-col-small')]/div[4]"));
+    public static SelenideElement linksToTemplateApplication1 = $(By.xpath("//div[contains(@class,'ant-steps-horizontal')]/preceding-sibling::div[contains(@class,'ant-space-gap-col-small')]/div[2]"));
+    public static SelenideElement linksToTemplateApplication2 = $(By.xpath("//div[contains(@class,'ant-steps-horizontal')]/preceding-sibling::div[contains(@class,'ant-space-gap-col-small')]/div[3]"));
     public static SelenideElement linksToTemplateAgreementOneTeam = $(By.xpath("//div[contains(@class,'ant-steps-horizontal')]/preceding-sibling::div[contains(@class,'ant-space-gap-col-small')]/div[5]"));
 }

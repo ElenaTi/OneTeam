@@ -33,8 +33,7 @@ public class VendorFormTests {
         webelements.mainLogo.click();
         webelements.menuVendorForm.click();
         webelements.title.shouldHave(text("Анкета поставщика"));
-        webelements.subTitle.shouldHave(text("При рассмотрении вашей анкеты компания ЭТМ может запросить документы для подтверждения указанной информации"));
-        webelements.alert.shouldHave(text("При рассмотрении вашей анкеты компания ЭТМ может запросить документы для подтверждения указанной информации"));
+        webelements.alert.shouldHave(text("Мы можем запросить документы для подтверждения указанной информации"));
         webElementsVendorForm.buttonSendVendorForm.click();
         webElementsVendorForm.orgCategoryHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
         webElementsVendorForm.goodsCategoryHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
@@ -320,7 +319,7 @@ public class VendorFormTests {
     @Test
     @DisplayName("Добавление в анкету невалидного файла -недопустимое расширение")
     @Tag("TMOT-333")
-    void illingVendorFormWithUnvalidFileCDR(){
+    void illingVendorFormWithUnvalidFileCDR()throws InterruptedException{
         webelements.mainLogo.click();
         webelements.menuVendorForm.click();
         webelements.title.shouldHave(text("Анкета поставщика"));
@@ -349,6 +348,7 @@ public class VendorFormTests {
         $("#warehouses_1").setValue("Санкт-Петербург, Шушары, ул. Московская, склад №2");
         webElementsVendorForm.buttonSendVendorForm.click();
         webElementsVendorForm.fileUploadVendorFormHelp.shouldHave(text("Вы пытаетесь загрузить файл с недопустимым расширением, удалите его и загрузите файлы с расширением .pdf, .jpg, .png, .xlsx, .csv, .xls, .txt, .jpeg, .doc, .docx, .zip, .7z, .rar"));
+       Thread.sleep(400);
         $(By.xpath("//button[@title='Удалить файл']")).click();
         webElementsVendorForm.fileUploadVendorForm.uploadFromClasspath("7Z.7z");
         webElementsVendorForm.buttonSendVendorForm.click();
@@ -387,8 +387,8 @@ public class VendorFormTests {
         $("[class*='FileInput_main_text']").shouldHave(text("Нажмите или перетащите файл в эту область, чтобы загрузить"));
         $("[class*='FileInput_hint_text']").shouldHave(text(".pdf, .jpg, .png, .xlsx, .csv, .xls, .txt, .jpeg, .doc, .docx, .zip, .7z, .rar"));
         webElementsVendorForm.fileUploadVendorForm.uploadFile(new File("C:/Users/timofeeva_ese/myjava/BigFiles/100MB.pdf"));
-        //webElementsVendorForm.fileUploadVendorFormHelp.shouldHave(text("Максимальный размер файла превышен, удалите его и загрузите файл размером не более 100 Мб"));
         Thread.sleep(2000);
+        webElementsVendorForm.fileUploadVendorFormHelp.shouldHave(text("Максимальный размер файла превышен, удалите его и загрузите файл размером не более 100 Мб"));
         $(By.xpath("//button[@title='Удалить файл']")).click();
         webElementsVendorForm.fileUploadVendorForm.uploadFromClasspath("7Z.7z");
         webElementsVendorForm.buttonSendVendorForm.click();

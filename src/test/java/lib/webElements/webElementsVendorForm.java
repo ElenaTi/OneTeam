@@ -29,9 +29,9 @@ public class webElementsVendorForm {
     public static SelenideElement warehousesMainField = $("#warehouses_0");
     public static SelenideElement wareHousesMainFieldHelp = $("#warehouses_0_help");
     public static SelenideElement addingWareHouses = $(By.xpath("//button[contains(.,'Добавить склад')]"));
-    public static SelenideElement deletingWareHouses = $(By.xpath("//textarea[@id='warehouses_1']/../../../../../following-sibling::button"));
-    public static SelenideElement signTheContractNO = $("[value='Нет']");
-    public static SelenideElement signTheContractYES = $("[value='Да']");
+    public static SelenideElement deletingWareHouses = $(By.xpath("//input[@id='warehouses_1']/parent::div/parent::div/parent::div/parent::div/parent::div/following-sibling::button"));
+    public static SelenideElement signTheContractNO = $("[value='Хочу внести изменения в условия договора']");
+    public static SelenideElement signTheContractYES = $("[value='Готов подписать договор на указанных в нём условиях']");
     public static SelenideElement signTheContractHelp = $("#signTheContract_help");
     public static SelenideElement uploadFilesHelp = $("#files_help");
     public static SelenideElement sumOfSupplies = $("#sum");
@@ -40,4 +40,5 @@ public class webElementsVendorForm {
     public static SelenideElement successResultSubtitle =$(".ant-result-subtitle");
     public static SelenideElement fileUploadVendorForm = $("#files");
     public static SelenideElement fileUploadVendorFormHelp = $("#files_help");
+
 }
