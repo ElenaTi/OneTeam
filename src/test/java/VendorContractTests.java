@@ -30,13 +30,10 @@ public class VendorContractTests {
     @Tag("TMOT-337")
     @DisplayName("Переход с 0 на 4 Шаг, сабмит без заполнения, Возврат на Шаг 0")
     void ReturnToStep0FromStep4() {
-        webelements.mainLogo.click();
-        webelements.menuVendorContract.click();
-        webelements.title.shouldHave(text("Договор поставщика"));
+        lib.ui.VendorContractPageObgect.OpenVendorContractPage();
+        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
         webElementsVendorContract.radiobuttonStepOYes.click();
         webElementsVendorContract.buttonSubmitStep0.click();
-        webElementsVendorContract.step0IsActive.shouldNot(exist);
-        webElementsVendorContract.step0IsFinished.should(exist);
         webElementsVendorContract.step4ActiveFromStep0.should(exist);
         webElementsVendorContract.subtitleVendorContract.shouldHave(text("Ознакомьтесь с шаблоном договора поставщика:"));
         webElementsVendorContract.step4unit1.shouldNotHave(text("Скачать договор для подписания"));
@@ -78,44 +75,13 @@ public class VendorContractTests {
     @Tag("")
     @DisplayName("Сабмит Шага 3 без заполнения")
     void SubmitStep3WithoutFilling() {
-        webelements.mainLogo.click();
-        webelements.menuVendorContract.click();
-        webelements.title.shouldHave(text("Договор поставщика"));
-        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
-        webElementsVendorContract.radiobuttonStepONO.click();
-        webElementsVendorContract.buttonSubmitStep0.click();
-        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
-        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
-        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
-        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
-        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
-        webElementsVendorContract.managementSelectStep1.click();
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.pressEnter();
-        webElementsVendorContract.ogrnStep1.setValue("1234567890");
-        webElementsVendorContract.emailStep1.setValue("test@test.ru");
-        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
-        webElementsVendorContract.factoAddressStep1.setValue("г. Санкт-Петербург, пр. Александровской фермы, дом 56, корпус АБВ, офис 678, кабинет 876");
-        webElementsVendorContract.rightToSignSelectStep1.click();
-        webElementsVendorContract.rightToSignListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.rightToSignListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.rightToSignListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.rightToSignListStep1.pressEnter();
-        webElementsVendorContract.rightToSignSelectStep1.shouldHave(text("Листа записи"));
-        webElementsVendorContract.rightToSignNumberStep1.setValue("23456_ABCDEFG/123");
-        webElementsVendorContract.rightToSignDateStep1.shouldNot(exist);
-        webElementsVendorContract.bikStep1.setValue("8765432");
-        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
-        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
-        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
-        webElementsVendorContract.buttonSubmitStep1.click();
-        webElementsVendorContract.defermentStep2.setValue("20");
-        webElementsVendorContract.groupStep2.setValue("Товарная группа №5678");
-        webElementsVendorContract.nameStep2.setValue("Динное наименование товара номер 456EWj");
-        webElementsVendorContract.discountStep2.setValue("30");
-        webElementsVendorContract.buttonSubmitStep2.click();
+        lib.ui.VendorContractPageObgect.OpenVendorContractPage();
+        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
+        lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
+        lib.ui.VendorContractPageObgect.FillingStep1();
+        lib.ui.VendorContractPageObgect.SubmitStep1();
+        lib.ui.VendorContractPageObgect.FillingStep2();
+        lib.ui.VendorContractPageObgect.SubmitStep2();
         webElementsVendorContract.buttonSubmitStep3.click();
         webElementsVendorContract.step3ImageGoodsDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
         webElementsVendorContract.step3ConfiguratorDateHelp.shouldHave(text("Пожалуйста, заполните обязательное поле"));
@@ -264,43 +230,13 @@ public class VendorContractTests {
     @Tag("")
     @DisplayName("Заполнение Шага 3 без выбора способа передачи информации о товарах")
     void FillingAndSubmitWithoutMethodOfTransmitionProductInfoStep3() {
-        webelements.mainLogo.click();
-        webelements.menuVendorContract.click();
-        webelements.title.shouldHave(text("Договор поставщика"));
-        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
-        webElementsVendorContract.radiobuttonStepONO.click();
-        webElementsVendorContract.buttonSubmitStep0.click();
-        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
-        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
-        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
-        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
-        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
-        webElementsVendorContract.managementSelectStep1.click();
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.pressEnter();
-        webElementsVendorContract.ogrnStep1.setValue("1234567890");
-        webElementsVendorContract.emailStep1.setValue("test@test.ru");
-        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
-        webElementsVendorContract.checkboxAddressStep1.click();
-        webElementsVendorContract.factoAddressStep1.shouldHave(text("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890"));
-        webElementsVendorContract.rightToSignSelectStep1.click();
-        webElementsVendorContract.rightToSignListStep1.pressEnter();
-        webElementsVendorContract.rightToSignSelectStep1.shouldHave(text("Устава"));
-        webElementsVendorContract.rightToSignNumberStep1.shouldNot(exist);
-        webElementsVendorContract.rightToSignDateStep1.shouldNot(exist);
-        webElementsVendorContract.bikStep1.setValue("8765432");
-        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
-        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
-        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
-        webElementsVendorContract.buttonSubmitStep1.click();
-        webElementsVendorContract.defermentStep2.setValue("20");
-        webElementsVendorContract.groupStep2.setValue("Товарная группа №5678");
-        webElementsVendorContract.nameStep2.setValue("Длинное наименование товара номер 456EWj");
-        webElementsVendorContract.discountStep2.setValue("30");
-        webElementsVendorContract.buttonSubmitStep2.click();
+        lib.ui.VendorContractPageObgect.OpenVendorContractPage();
+        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
+        lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
+        lib.ui.VendorContractPageObgect.FillingStep1();
+        lib.ui.VendorContractPageObgect.SubmitStep1();
+        lib.ui.VendorContractPageObgect.FillingStep2();
+        lib.ui.VendorContractPageObgect.SubmitStep2();
 
         String weekAfterToday = lib.ui.MainPageObject.GetFullDateWeekAfterToday();
         String monthAfterToday = lib.ui.MainPageObject.GetFullDateMonthAfterToday();
@@ -548,40 +484,13 @@ public class VendorContractTests {
     @Tag("")
     @DisplayName("Заполнение Шага 3 с выбором способа передачи информации о товарах")
     void FillingAndSubmitWithMethodOfTransmitionProductInfoStep3() {
-        webelements.mainLogo.click();
-        webelements.menuVendorContract.click();
-        webelements.title.shouldHave(text("Договор поставщика"));
-        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
-        webElementsVendorContract.radiobuttonStepONO.click();
-        webElementsVendorContract.buttonSubmitStep0.click();
-        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
-        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
-        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
-        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
-        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
-        webElementsVendorContract.managementSelectStep1.click();
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.pressEnter();
-        webElementsVendorContract.ogrnStep1.setValue("1234567890");
-        webElementsVendorContract.emailStep1.setValue("test@test.ru");
-        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
-        webElementsVendorContract.checkboxAddressStep1.click();
-        webElementsVendorContract.factoAddressStep1.shouldHave(text("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890"));
-        webElementsVendorContract.rightToSignSelectStep1.click();
-        webElementsVendorContract.rightToSignListStep1.pressEnter();
-        webElementsVendorContract.rightToSignSelectStep1.shouldHave(text("Устава"));
-        webElementsVendorContract.rightToSignNumberStep1.shouldNot(exist);
-        webElementsVendorContract.rightToSignDateStep1.shouldNot(exist);
-        webElementsVendorContract.bikStep1.setValue("8765432");
-        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
-        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
-        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
-        webElementsVendorContract.buttonSubmitStep1.click();
-        webElementsVendorContract.defermentStep2.setValue("100");
-        webElementsVendorContract.groupStep2.setValue("Товарная группа №АБВГДЕ");
-        webElementsVendorContract.nameStep2.setValue("Длинное наименование товара");
-        webElementsVendorContract.discountStep2.setValue("10");
-        webElementsVendorContract.buttonSubmitStep2.click();
+        lib.ui.VendorContractPageObgect.OpenVendorContractPage();
+        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
+        lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
+        lib.ui.VendorContractPageObgect.FillingStep1();
+        lib.ui.VendorContractPageObgect.SubmitStep1();
+        lib.ui.VendorContractPageObgect.FillingStep2();
+        lib.ui.VendorContractPageObgect.SubmitStep2();
 
         String weekAfterToday = lib.ui.MainPageObject.GetFullDateWeekAfterToday();
         String monthAfterToday = lib.ui.MainPageObject.GetFullDateMonthAfterToday();
@@ -862,41 +771,13 @@ public class VendorContractTests {
     @Tag("")
     @DisplayName("Заполнение Шага 3 с добавлением сотрудников, возврат на Шаг 2")
     void FillingAndSubmitWithAddingEmloyeesBackToStep2() {
-        Configuration.holdBrowserOpen = true;
-        webelements.mainLogo.click();
-        webelements.menuVendorContract.click();
-        webelements.title.shouldHave(text("Договор поставщика"));
-        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
-        webElementsVendorContract.radiobuttonStepONO.click();
-        webElementsVendorContract.buttonSubmitStep0.click();
-        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
-        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
-        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
-        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
-        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
-        webElementsVendorContract.managementSelectStep1.click();
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.pressEnter();
-        webElementsVendorContract.ogrnStep1.setValue("1234567890");
-        webElementsVendorContract.emailStep1.setValue("test@test.ru");
-        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
-        webElementsVendorContract.checkboxAddressStep1.click();
-        webElementsVendorContract.factoAddressStep1.shouldHave(text("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890"));
-        webElementsVendorContract.rightToSignSelectStep1.click();
-        webElementsVendorContract.rightToSignListStep1.pressEnter();
-        webElementsVendorContract.rightToSignSelectStep1.shouldHave(text("Устава"));
-        webElementsVendorContract.rightToSignNumberStep1.shouldNot(exist);
-        webElementsVendorContract.rightToSignDateStep1.shouldNot(exist);
-        webElementsVendorContract.bikStep1.setValue("8765432");
-        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
-        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
-        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
-        webElementsVendorContract.buttonSubmitStep1.click();
-        webElementsVendorContract.defermentStep2.setValue("100");
-        webElementsVendorContract.groupStep2.setValue("Товарная группа №АБВГДЕ");
-        webElementsVendorContract.nameStep2.setValue("Длинное наименование товара");
-        webElementsVendorContract.discountStep2.setValue("10");
-        webElementsVendorContract.buttonSubmitStep2.click();
+        lib.ui.VendorContractPageObgect.OpenVendorContractPage();
+        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
+        lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
+        lib.ui.VendorContractPageObgect.FillingStep1();
+        lib.ui.VendorContractPageObgect.SubmitStep1();
+        lib.ui.VendorContractPageObgect.FillingStep2();
+        lib.ui.VendorContractPageObgect.SubmitStep2();
 
         String weekAfterToday = lib.ui.MainPageObject.GetFullDateWeekAfterToday();
         String monthAfterToday = lib.ui.MainPageObject.GetFullDateMonthAfterToday();
@@ -1165,40 +1046,13 @@ public class VendorContractTests {
     @Tag("")
     @DisplayName("Заполнение Шага 3 с добавлением 2 сотрудников, заполнением 2, удалением 1")
     void FillingAndSubmitWithAddingAndFillingEmloyeesStep3() {
-        webelements.mainLogo.click();
-        webelements.menuVendorContract.click();
-        webelements.title.shouldHave(text("Договор поставщика"));
-        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
-        webElementsVendorContract.radiobuttonStepONO.click();
-        webElementsVendorContract.buttonSubmitStep0.click();
-        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
-        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
-        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
-        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
-        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
-        webElementsVendorContract.managementSelectStep1.click();
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.pressEnter();
-        webElementsVendorContract.ogrnStep1.setValue("1234567890");
-        webElementsVendorContract.emailStep1.setValue("test@test.ru");
-        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
-        webElementsVendorContract.checkboxAddressStep1.click();
-        webElementsVendorContract.factoAddressStep1.shouldHave(text("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890"));
-        webElementsVendorContract.rightToSignSelectStep1.click();
-        webElementsVendorContract.rightToSignListStep1.pressEnter();
-        webElementsVendorContract.rightToSignSelectStep1.shouldHave(text("Устава"));
-        webElementsVendorContract.rightToSignNumberStep1.shouldNot(exist);
-        webElementsVendorContract.rightToSignDateStep1.shouldNot(exist);
-        webElementsVendorContract.bikStep1.setValue("8765432");
-        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
-        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
-        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
-        webElementsVendorContract.buttonSubmitStep1.click();
-        webElementsVendorContract.defermentStep2.setValue("100");
-        webElementsVendorContract.groupStep2.setValue("Товарная группа №АБВГДЕ");
-        webElementsVendorContract.nameStep2.setValue("Длинное наименование товара");
-        webElementsVendorContract.discountStep2.setValue("10");
-        webElementsVendorContract.buttonSubmitStep2.click();
+        lib.ui.VendorContractPageObgect.OpenVendorContractPage();
+        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
+        lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
+        lib.ui.VendorContractPageObgect.FillingStep1();
+        lib.ui.VendorContractPageObgect.SubmitStep1();
+        lib.ui.VendorContractPageObgect.FillingStep2();
+        lib.ui.VendorContractPageObgect.SubmitStep2();
 
         String weekAfterToday = lib.ui.MainPageObject.GetFullDateWeekAfterToday();
         String monthAfterToday = lib.ui.MainPageObject.GetFullDateMonthAfterToday();
@@ -1465,43 +1319,13 @@ public class VendorContractTests {
     @Tag("")
     @DisplayName("Сабмит Шага 4 без заполнения, возврат Назад на шаг 0")
     void SubmitStep4WithoutFillingGoBackToStep0() throws InterruptedException{
-        webelements.mainLogo.click();
-        webelements.menuVendorContract.click();
-        webelements.title.shouldHave(text("Договор поставщика"));
-        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
-        webElementsVendorContract.radiobuttonStepONO.click();
-        webElementsVendorContract.buttonSubmitStep0.click();
-        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
-        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
-        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
-        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
-        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
-        webElementsVendorContract.managementSelectStep1.click();
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.pressEnter();
-        webElementsVendorContract.ogrnStep1.setValue("1234567890");
-        webElementsVendorContract.emailStep1.setValue("test@test.ru");
-        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
-        webElementsVendorContract.checkboxAddressStep1.click();
-        webElementsVendorContract.factoAddressStep1.shouldHave(text("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890"));
-        webElementsVendorContract.rightToSignSelectStep1.click();
-        webElementsVendorContract.rightToSignListStep1.pressEnter();
-        webElementsVendorContract.rightToSignSelectStep1.shouldHave(text("Устава"));
-        webElementsVendorContract.rightToSignNumberStep1.shouldNot(exist);
-        webElementsVendorContract.rightToSignDateStep1.shouldNot(exist);
-        webElementsVendorContract.bikStep1.setValue("8765432");
-        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
-        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
-        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
-        webElementsVendorContract.buttonSubmitStep1.click();
-        webElementsVendorContract.defermentStep2.setValue("20");
-        webElementsVendorContract.groupStep2.setValue("Товарная группа №5678");
-        webElementsVendorContract.nameStep2.setValue("Длинное наименование товара номер 456EWj");
-        webElementsVendorContract.discountStep2.setValue("30");
-        webElementsVendorContract.buttonSubmitStep2.click();
+        lib.ui.VendorContractPageObgect.OpenVendorContractPage();
+        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
+        lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
+        lib.ui.VendorContractPageObgect.FillingStep1();
+        lib.ui.VendorContractPageObgect.SubmitStep1();
+        lib.ui.VendorContractPageObgect.FillingStep2();
+        lib.ui.VendorContractPageObgect.SubmitStep2();
 
         String weekAfterToday = lib.ui.MainPageObject.GetFullDateWeekAfterToday();
         String monthAfterToday = lib.ui.MainPageObject.GetFullDateMonthAfterToday();
@@ -1741,9 +1565,12 @@ public class VendorContractTests {
         webElementsVendorContract.step3PublicationMaterialsEmloyeesPhoneOrEmail.setValue("987654345678, test_test.test@mail.ru");
 
         webElementsVendorContract.buttonSubmitStep3.click();
+        Thread.sleep(1000);
         webElementsVendorContract.step4IsActiveAfterStep3.should(exist);
 
+
         webElementsVendorContract.buttonSubmitStep4.click();
+        Thread.sleep(300);
         webElementsVendorContract.uploadContractHelpStep4.shouldHave(text("Пожалуйста, загрузите обязательный документ"));
         webElementsVendorContract.uploadProtocolHelpStep4.shouldHave(text("Пожалуйста, загрузите обязательный документ"));
         webElementsVendorContract.uploadRegulationsHelpStep4.shouldHave(text("Пожалуйста, загрузите обязательный документ"));
@@ -1777,6 +1604,7 @@ public class VendorContractTests {
         webElementsVendorContract.buttonSubmitStep2.click();
         webElementsVendorContract.step3IsActive.should(exist);
         webElementsVendorContract.buttonSubmitStep3.click();
+        Thread.sleep(500);
         webElementsVendorContract.step4IsActiveAfterStep3.should(exist);
     }
 
@@ -1784,37 +1612,13 @@ public class VendorContractTests {
     @Tag("")
     @DisplayName("Заполнение и сабмит Шага 4 только с обязательными валидными файлами")
     void SubmitStep4WithRequiredValidFiles() throws InterruptedException {
-        webelements.mainLogo.click();
-        webelements.menuVendorContract.click();
-        webelements.title.shouldHave(text("Договор поставщика"));
-        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
-        webElementsVendorContract.radiobuttonStepONO.click();
-        webElementsVendorContract.buttonSubmitStep0.click();
-        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
-        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
-        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
-        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
-        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
-        webElementsVendorContract.managementSelectStep1.click();
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.pressEnter();
-        webElementsVendorContract.ogrnStep1.setValue("1234567890");
-        webElementsVendorContract.emailStep1.setValue("test@test.ru");
-        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
-        webElementsVendorContract.checkboxAddressStep1.click();
-        webElementsVendorContract.rightToSignSelectStep1.click();
-        webElementsVendorContract.rightToSignListStep1.pressEnter();
-        webElementsVendorContract.bikStep1.setValue("8765432");
-        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
-        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
-        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
-        webElementsVendorContract.buttonSubmitStep1.click();
-        webElementsVendorContract.defermentStep2.setValue("20");
-        webElementsVendorContract.groupStep2.setValue("Товарная группа №5678");
-        webElementsVendorContract.nameStep2.setValue("Длинное наименование товара номер 456EWj");
-        webElementsVendorContract.discountStep2.setValue("30");
-        webElementsVendorContract.buttonSubmitStep2.click();
+        lib.ui.VendorContractPageObgect.OpenVendorContractPage();
+        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
+        lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
+        lib.ui.VendorContractPageObgect.FillingStep1();
+        lib.ui.VendorContractPageObgect.SubmitStep1();
+        lib.ui.VendorContractPageObgect.FillingStep2();
+        lib.ui.VendorContractPageObgect.SubmitStep2();
 
         selectEnabledDayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
         selectWeekAfterTodayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
@@ -2012,37 +1816,13 @@ public class VendorContractTests {
     @Tag("")
     @DisplayName("Заполнение и сабмит Шага 4 с валидными файлами во всех юнитах")
     void SubmitStep4WithAllValidFiles() throws InterruptedException {
-        webelements.mainLogo.click();
-        webelements.menuVendorContract.click();
-        webelements.title.shouldHave(text("Договор поставщика"));
-        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
-        webElementsVendorContract.radiobuttonStepONO.click();
-        webElementsVendorContract.buttonSubmitStep0.click();
-        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
-        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
-        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
-        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
-        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
-        webElementsVendorContract.managementSelectStep1.click();
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.pressEnter();
-        webElementsVendorContract.ogrnStep1.setValue("1234567890");
-        webElementsVendorContract.emailStep1.setValue("test@test.ru");
-        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
-        webElementsVendorContract.checkboxAddressStep1.click();
-        webElementsVendorContract.rightToSignSelectStep1.click();
-        webElementsVendorContract.rightToSignListStep1.pressEnter();
-        webElementsVendorContract.bikStep1.setValue("8765432");
-        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
-        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
-        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
-        webElementsVendorContract.buttonSubmitStep1.click();
-        webElementsVendorContract.defermentStep2.setValue("20");
-        webElementsVendorContract.groupStep2.setValue("Товарная группа №5678");
-        webElementsVendorContract.nameStep2.setValue("Длинное наименование товара номер 456EWj");
-        webElementsVendorContract.discountStep2.setValue("30");
-        webElementsVendorContract.buttonSubmitStep2.click();
+        lib.ui.VendorContractPageObgect.OpenVendorContractPage();
+        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
+        lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
+        lib.ui.VendorContractPageObgect.FillingStep1();
+        lib.ui.VendorContractPageObgect.SubmitStep1();
+        lib.ui.VendorContractPageObgect.FillingStep2();
+        lib.ui.VendorContractPageObgect.SubmitStep2();
 
         selectEnabledDayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
         selectWeekAfterTodayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
@@ -2245,37 +2025,13 @@ public class VendorContractTests {
     @Tag("")
     @DisplayName("Заполнение Шага 4 с невалидными файлами, замена их на валидные, сабмит")
     void FillingStep4WithUnvalidFilesChangingToValid() throws InterruptedException {
-        webelements.mainLogo.click();
-        webelements.menuVendorContract.click();
-        webelements.title.shouldHave(text("Договор поставщика"));
-        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
-        webElementsVendorContract.radiobuttonStepONO.click();
-        webElementsVendorContract.buttonSubmitStep0.click();
-        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
-        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
-        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
-        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
-        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
-        webElementsVendorContract.managementSelectStep1.click();
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.pressEnter();
-        webElementsVendorContract.ogrnStep1.setValue("1234567890");
-        webElementsVendorContract.emailStep1.setValue("test@test.ru");
-        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
-        webElementsVendorContract.checkboxAddressStep1.click();
-        webElementsVendorContract.rightToSignSelectStep1.click();
-        webElementsVendorContract.rightToSignListStep1.pressEnter();
-        webElementsVendorContract.bikStep1.setValue("8765432");
-        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
-        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
-        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
-        webElementsVendorContract.buttonSubmitStep1.click();
-        webElementsVendorContract.defermentStep2.setValue("20");
-        webElementsVendorContract.groupStep2.setValue("Товарная группа №5678");
-        webElementsVendorContract.nameStep2.setValue("Длинное наименование товара номер 456EWj");
-        webElementsVendorContract.discountStep2.setValue("30");
-        webElementsVendorContract.buttonSubmitStep2.click();
+        lib.ui.VendorContractPageObgect.OpenVendorContractPage();
+        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
+        lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
+        lib.ui.VendorContractPageObgect.FillingStep1();
+        lib.ui.VendorContractPageObgect.SubmitStep1();
+        lib.ui.VendorContractPageObgect.FillingStep2();
+        lib.ui.VendorContractPageObgect.SubmitStep2();
 
         selectEnabledDayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
         selectWeekAfterTodayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
@@ -2525,37 +2281,13 @@ public class VendorContractTests {
     @Tag("")
     @DisplayName("Заполнение и сабмит Шага 4 со сбоем загрузки файла")
     void SubmitStep4WithFailedDownloading() throws InterruptedException {
-        webelements.mainLogo.click();
-        webelements.menuVendorContract.click();
-        webelements.title.shouldHave(text("Договор поставщика"));
-        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
-        webElementsVendorContract.radiobuttonStepONO.click();
-        webElementsVendorContract.buttonSubmitStep0.click();
-        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
-        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
-        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
-        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
-        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
-        webElementsVendorContract.managementSelectStep1.click();
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.pressEnter();
-        webElementsVendorContract.ogrnStep1.setValue("1234567890");
-        webElementsVendorContract.emailStep1.setValue("test@test.ru");
-        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
-        webElementsVendorContract.checkboxAddressStep1.click();
-        webElementsVendorContract.rightToSignSelectStep1.click();
-        webElementsVendorContract.rightToSignListStep1.pressEnter();
-        webElementsVendorContract.bikStep1.setValue("8765432");
-        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
-        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
-        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
-        webElementsVendorContract.buttonSubmitStep1.click();
-        webElementsVendorContract.defermentStep2.setValue("20");
-        webElementsVendorContract.groupStep2.setValue("Товарная группа №5678");
-        webElementsVendorContract.nameStep2.setValue("Длинное наименование товара номер 456EWj");
-        webElementsVendorContract.discountStep2.setValue("30");
-        webElementsVendorContract.buttonSubmitStep2.click();
+        lib.ui.VendorContractPageObgect.OpenVendorContractPage();
+        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
+        lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
+        lib.ui.VendorContractPageObgect.FillingStep1();
+        lib.ui.VendorContractPageObgect.SubmitStep1();
+        lib.ui.VendorContractPageObgect.FillingStep2();
+        lib.ui.VendorContractPageObgect.SubmitStep2();
 
         selectEnabledDayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
         selectWeekAfterTodayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
@@ -2766,37 +2498,13 @@ public class VendorContractTests {
     @Tag("")
     @DisplayName("Заполнение Шага 4 с невалидными файлами 100Mb, замена их на валидные")
     void FillingStep4WithUnvalidFiles100MbChangingToValid() throws InterruptedException {
-        webelements.mainLogo.click();
-        webelements.menuVendorContract.click();
-        webelements.title.shouldHave(text("Договор поставщика"));
-        webelements.alert.shouldHave(text("Все данные, которые вы добавляете, автоматически вносятся в текст договора. Вам останется только распечатать его, подписать, прикрепить скан-копию и отправить его нам"));
-        webElementsVendorContract.radiobuttonStepONO.click();
-        webElementsVendorContract.buttonSubmitStep0.click();
-        webElementsVendorContract.subtitleStep1.shouldHave(text("Данные о юридическом лице"));
-        webElementsVendorContract.fioSignatoryStep1.setValue("Сидорова Петра Сидоровича");
-        webElementsVendorContract.positionSignatoryStep1.setValue("Начальника территориального отделения");
-        webElementsVendorContract.fioPropsStep1.setValue("Сидоров П.С.");
-        webElementsVendorContract.positionPropsStep1.setValue("Начальник территориального отделения");
-        webElementsVendorContract.managementSelectStep1.click();
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.sendKeys(Keys.ARROW_DOWN);
-        webElementsVendorContract.managementListStep1.pressEnter();
-        webElementsVendorContract.ogrnStep1.setValue("1234567890");
-        webElementsVendorContract.emailStep1.setValue("test@test.ru");
-        webElementsVendorContract.juroAddressStep1.setValue("Ленинградская область, г. Всеволожск, ул. Ленинградская, дом 5, строение FGHF, офис 34567890");
-        webElementsVendorContract.checkboxAddressStep1.click();
-        webElementsVendorContract.rightToSignSelectStep1.click();
-        webElementsVendorContract.rightToSignListStep1.pressEnter();
-        webElementsVendorContract.bikStep1.setValue("8765432");
-        webElementsVendorContract.nameBankStep1.setValue("Северо-Западный ПАО Сбербанк России 123456");
-        webElementsVendorContract.correspondentAccountStep1.setValue("98765432123456");
-        webElementsVendorContract.currentAccountStep1.setValue("345678909876456");
-        webElementsVendorContract.buttonSubmitStep1.click();
-        webElementsVendorContract.defermentStep2.setValue("20");
-        webElementsVendorContract.groupStep2.setValue("Товарная группа №5678");
-        webElementsVendorContract.nameStep2.setValue("Длинное наименование товара номер 456EWj");
-        webElementsVendorContract.discountStep2.setValue("30");
-        webElementsVendorContract.buttonSubmitStep2.click();
+        lib.ui.VendorContractPageObgect.OpenVendorContractPage();
+        lib.ui.VendorContractPageObgect.CheckVendorContractHeader();
+        lib.ui.VendorContractPageObgect.SubmitStep0ToStep1();
+        lib.ui.VendorContractPageObgect.FillingStep1();
+        lib.ui.VendorContractPageObgect.SubmitStep1();
+        lib.ui.VendorContractPageObgect.FillingStep2();
+        lib.ui.VendorContractPageObgect.SubmitStep2();
 
         selectEnabledDayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
         selectWeekAfterTodayInCalendar(webElementsVendorContract.imageGoodsDatePickerStep3);
